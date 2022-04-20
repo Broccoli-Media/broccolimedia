@@ -36,9 +36,10 @@
   <h3 align="center">BROCCOLI MEDIA</h3>
 
   <p align="center">
+    <br />
     This repository is mainly for set up the BROCCOLI MEDIA official website
     <br />
-    <a href="https://github.com/Broccoli-Media/broccolimedia"><strong>Explore the docs »</strong></a>
+<!--     <a href="https://github.com/Broccoli-Media/broccolimedia"><strong>Explore the docs »</strong></a> -->
     <br />
     <br />
     <a href="/">View Demo</a>
