@@ -33,7 +33,7 @@
     <img src="https://i.imgur.com/0nCscCD.png" alt="Logo" width="100%" height="100%">
   </a>
 
-  <h3 align="center">BROCCOLI MEDIA</h3>
+  <h1 align="center">BROCCOLI MEDIA</h1>
 
   <p align="center">
     <br />
