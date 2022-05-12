@@ -145,7 +145,9 @@ _Below is an example of how you can instruct your audience on installing and set
    ```js
    const API_KEY = 'ENTER YOUR API';
    ```
-
+5. Database account and password
+   Username: broccolimedia
+   Password: moneyja00ed00je98
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 

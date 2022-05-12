@@ -1,24 +1,10 @@
 footer{
-    padding-top:5rem;
+    padding-top:2rem;
     padding-bottom: 1rem;
-    background: #08385f !important;
+    background: #034d97 !important;
     font-family: 'Oswald', sans-serif !important;
     color: white;
 }
-
-.footer-section .header{
-    color: #E6B85C;
-    padding-bottom: 7px;
-}
-.footer h5 {
-    font-size: 2rem !important;
-    color: beige;
-}
-
-
-/* footer .sitemap{
-    border-left: 2px solid white;
-} */
 
 .nav-link-items{
     filter: brightness(200%);
@@ -38,6 +24,7 @@ footer div.social-logo{
     height: 40px;
     border-radius: 50%;
     background-color: white;
+    filter: brightness(0.8);
 }
 
 
