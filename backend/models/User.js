@@ -16,6 +16,9 @@ const UcerSchema = new mongoose.Schema(
 			required: true,
 			unique: true,
 		},
+		// workingtype: {
+		// 	type: String,
+		// },
 		img: {
 			type: String,
 		},
@@ -38,7 +41,15 @@ const UcerSchema = new mongoose.Schema(
 		isCompanyOwner: {
 			type: Boolean,
 			default: false
-		}
+		},
+		// socialmediatype: {
+		// 	type: String,
+		// 	required: true,
+		// },
+		// socialmedialink: {
+		// 	type: String,
+		// 	required: true
+		// }
 	},
 	{ timestamps: true }
 );

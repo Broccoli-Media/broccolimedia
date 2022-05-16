@@ -36,6 +36,10 @@ const CompanySchema = new mongoose.Schema({
 		type: Boolean,
 		default: false,
 	},
+	// hiringnum: {
+	// 	type: Number,
+	// 	required: true,
+	// }
 });
 
 export default mongoose.model("Company", CompanySchema);

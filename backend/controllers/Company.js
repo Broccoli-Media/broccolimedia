@@ -92,3 +92,18 @@ export const countByCity = async (req, res, next) => {
 		next(err);
 	}
 };
+
+export const countByType = async (req, res, next) => {
+	const types = req.query.types.split(",");
+	try {
+		const list = await Promise.all(
+			types.map((type) => {
+				return Company.countDocuments({ type: type });
+			})
+		);
+		res.status(STATUS_200).json(list);
+
+	} catch (err) {
+		next(err);
+	}
+};
