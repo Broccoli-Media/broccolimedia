@@ -17,7 +17,8 @@ export default function SignUpInf() {
             <Go className='button-block' to='/'>
                 <ArrowBackIcon />
             </Go>
-            <Box
+            <iframe title='Individual Form' src="https://docs.google.com/forms/d/e/1FAIpQLScK8TAOebQY9DVfuEUV60krgYO_yr97Ud29I1Zx6ztqr62jPg/viewform?embedded=true" width="100%" height="1500" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            {/* <Box
                 component="main"
                 sx={{
                     alignItems: 'center',
@@ -27,7 +28,7 @@ export default function SignUpInf() {
                 }}
             >
                 <iframe title='Individual Form' src="https://docs.google.com/forms/d/e/1FAIpQLScK8TAOebQY9DVfuEUV60krgYO_yr97Ud29I1Zx6ztqr62jPg/viewform?embedded=true" width="100%" height="1500" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-            </Box>
+            </Box> */}
         </div>
 
     );

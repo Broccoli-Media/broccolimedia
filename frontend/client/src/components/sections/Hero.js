@@ -6,8 +6,6 @@ import Button from '../elements/Button';
 // import Image from '../elements/Image';
 import Modal from '../elements/Modal';
 
-import SnapFinger from '../../assets/videos/snap_finger.mp4'
-
 const propTypes = {
 	...SectionProps.types
 }
@@ -74,10 +72,10 @@ const Hero = ({
 							</h3>
 							<div className="reveal-from-bottom" data-reveal-delay="600">
 								<ButtonGroup>
-									<Button tag="a" color="primary" wideMobile href="/companyregister">
+									<Button tag="a" color="primary" wideMobile href="https://forms.gle/idGkmkmVX61XPAvu9">
 										Register as Company
 									</Button>
-									<Button tag="a" color="primary" wideMobile href="/influencerregister">
+									<Button tag="a" color="primary" wideMobile href="https://forms.gle/svo5zJpeTpUFcrk49">
 										Register as Influencer
 									</Button>
 								</ButtonGroup>
@@ -98,13 +96,13 @@ const Hero = ({
 								width={896}
 								height={504} />
 						</a>
-					</div> */}
+					</div> 
 					<Modal
 						id="video-modal"
 						show={videoModalActive}
 						handleClose={closeModal}
 						video={SnapFinger}
-						videoTag="iframe" />
+						videoTag="iframe" />*/}
 				</div>
 			</div>
 		</section>

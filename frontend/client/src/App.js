@@ -6,7 +6,7 @@ import ScrollReveal from './utils/ScrollReveal';
 import Home from './views/Home';
 import SignUpCom from './views/SignUpCom';
 import SignUpInf from './views/SignUpInf';
-import NotFound from './views/404';
+// import NotFound from './views/404';
 
 const App = () => {
 
@@ -31,7 +31,7 @@ const App = () => {
 
 					{/* <Route exact */}
 					{/* For wrong link to our website */}
-					<Route path='*' element={<NotFound/>}  />
+					{/* <Route exact path='/*' element={<NotFound/>}  /> */}
 				</Routes>
 			)} />
 	);

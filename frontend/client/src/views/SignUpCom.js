@@ -15,7 +15,8 @@ export default function SignUpCom () {
             <Go className='button-block' to='/'>
                 <ArrowBackIcon />
             </Go>
-            <Box
+            <iframe title='Company Form' src="https://docs.google.com/forms/d/e/1FAIpQLScIviRapTn3LBBOQ1-oBQ8IfYeZxVjg02lrLEfmmkQkwQ_lHQ/viewform?embedded=true" width="100%" height="1500" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+            {/* <Box
                 component="main"
                 sx={{
                     alignItems: 'center',
@@ -25,7 +26,7 @@ export default function SignUpCom () {
                 }}
             >
                 <iframe title='Company Form' src="https://docs.google.com/forms/d/e/1FAIpQLScIviRapTn3LBBOQ1-oBQ8IfYeZxVjg02lrLEfmmkQkwQ_lHQ/viewform?embedded=true" width="100%" height="1500" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
-            </Box>
+            </Box> */}
         </div>
     );
 
