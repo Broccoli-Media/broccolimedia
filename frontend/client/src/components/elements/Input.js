@@ -6,6 +6,7 @@ import FormHint from './FormHint';
 
 const propTypes = {
   children: PropTypes.node,
+  onChange: PropTypes.func,
   label: PropTypes.string,
   labelHidden: PropTypes.bool,
   type: PropTypes.oneOf(['textarea', 'text', 'email', 'tel', 'password', 'number', 'search', 'color', 'date', 'time', 'datetime-local']),
@@ -23,6 +24,7 @@ const propTypes = {
 
 const defaultProps = {
   children: null,
+  onChange: null,
   label: '',
   labelHidden: false,
   type: 'text',
@@ -54,6 +56,7 @@ const Input = ({
   placeholder,
   rows,
   hint,
+  onChange,
   ...props
 }) => {
 
@@ -84,6 +87,7 @@ const Input = ({
           disabled={disabled}
           value={value}
           placeholder={placeholder}
+          onChange={onChange}
           rows={type === 'textarea' ? rows : null}
         />
         {children}

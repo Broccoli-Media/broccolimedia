@@ -126,6 +126,42 @@
 	}
 }
 
+.button-wangwang {
+	color: color(button-wangwang);
+	background-color: color-bg(button-wangwang);
+	border-color: color-border(button-wangwang);
+
+	&:hover {
+		background-color: color-bg(button-wangwang-hover);
+		border-color: color-border(button-wangwang-hover);
+	}
+
+	&.is-loading {
+
+		&::after {
+			border-color: color(button-wangwang);
+		}
+	}
+}
+
+.button-golden {
+	color: color(button-golden);
+	background-color: color-bg(button-golden);
+	border-color: color-border(button-golden);
+
+	&:hover {
+		background-color: color-bg(button-golden-hover);
+		border-color: color-border(button-golden-hover);
+	}
+
+	&.is-loading {
+
+		&::after {
+			border-color: color(button-golden);
+		}
+	}
+}
+
 .button-block {
     display: flex;
 	width: 100%;

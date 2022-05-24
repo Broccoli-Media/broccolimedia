@@ -62,12 +62,12 @@ const Testimonial = ({
 							<div className="tiles-item-inner">
 								<div className="testimonial-item-content">
 									<p className="text-sm mb-0">
-										— We will do our best for our client, wherever you are, you will always be
-										our priority to support and have our instant services.
+										— Our clients will be offerd the best services wherever you are, and always be
+										our priority to serve.
 									</p>
 								</div>
 								<div className="testimonial-item-footer text-xs mt-32 mb-0 has-top-divider">
-									<span className="testimonial-item-name text-color-high">CEO</span>
+									<span className="testimonial-item-name text-color-high">Co-Funder &amp; CEO</span>
 									<span className="text-color-low"> / </span>
 									<span className="testimonial-item-link">
 										<a href="https://www.linkedin.com/in/jackson-feng-b31557239">BM Jackson Feng</a>
@@ -80,19 +80,38 @@ const Testimonial = ({
 							<div className="tiles-item-inner">
 								<div className="testimonial-item-content">
 									<p className="text-sm mb-0">
-										— Your privacy is always the priority to us, we will secure all your personal data and keep
-										them safe from any risks.
+										— Privacy is always the priority to us, we will secure all personal data under 
+										all circumstatnces.
 									</p>
 								</div>
 								<div className="testimonial-item-footer text-xs mt-32 mb-0 has-top-divider">
 									<span className="testimonial-item-name text-color-high">CTO</span>
 									<span className="text-color-low"> / </span>
 									<span className="testimonial-item-link">
-										<a href="https://jeremyhuang-portfolio.netlify.app/">Jeremy Huang</a>
+										<a href="https://jeremyhuang-portfolio.netlify.app/">BM Jeremy Huang</a>
 									</span>
 								</div>
 							</div>
 						</div>
+
+						<div className="tiles-item reveal-from-bottom">
+							<div className="tiles-item-inner">
+								<div className="testimonial-item-content">
+									<p className="text-sm mb-0">
+										— All our users are valualbe, you deserve the best.
+									</p>
+								</div>
+								<div className="testimonial-item-footer text-xs mt-32 mb-0 has-top-divider">
+									<span className="testimonial-item-name text-color-high">Co-Funder</span>
+									<span className="text-color-low"> / </span>
+									<span className="testimonial-item-link">
+										<a href="https://jeremyhuang-portfolio.netlify.app/">BM Edmond Weng</a>
+									</span>
+								</div>
+							</div>
+						</div>
+
+						
 
 						{/* <div className="tiles-item reveal-from-left" data-reveal-delay="200">
               <div className="tiles-item-inner">

@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { SectionProps } from '../../utils/SectionProps';
 import ButtonGroup from '../elements/ButtonGroup';
 import Button from '../elements/Button';
 // import Image from '../elements/Image';
-import Modal from '../elements/Modal';
+// import Modal from '../elements/Modal';
 
 const propTypes = {
 	...SectionProps.types
@@ -25,17 +26,17 @@ const Hero = ({
 	...props
 }) => {
 
-	const [videoModalActive, setVideomodalactive] = useState(false);
+	// const [videoModalActive, setVideomodalactive] = useState(false);
 
 	// const openModal = (e) => {
 	// 	e.preventDefault();
 	// 	setVideomodalactive(true);
 	// }
 
-	const closeModal = (e) => {
-		e.preventDefault();
-		setVideomodalactive(false);
-	}
+	// const closeModal = (e) => {
+	// 	e.preventDefault();
+	// 	setVideomodalactive(false);
+	// }
 
 	const outerClasses = classNames(
 		'hero section center-content',
@@ -64,7 +65,7 @@ const Hero = ({
 							<span className="Sim">
 								<b>BM</b>
 							</span>
-							<span className="Full">Broccoli Media</span>
+							<span className="Full">&nbsp; Broccoli Media</span>
 						</h1>
 						<div className="container-xs">
 							<h3 className="m-0 mb-32 reveal-from-bottom" data-reveal-delay="400">
@@ -75,6 +76,7 @@ const Hero = ({
 									<Button tag="a" color="primary" wideMobile href="https://forms.gle/idGkmkmVX61XPAvu9">
 										Register as Company
 									</Button>
+									&nbsp; &nbsp;
 									<Button tag="a" color="primary" wideMobile href="https://forms.gle/svo5zJpeTpUFcrk49">
 										Register as Influencer
 									</Button>

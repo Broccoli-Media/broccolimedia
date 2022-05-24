@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Logo from './partials/Logo';
 
 const propTypes = {
@@ -86,7 +86,7 @@ const Header = ({
 						bottomDivider && 'has-bottom-divider'
 					)}>
 					<Logo />
-					{/* {!hideNav &&
+					{!hideNav &&
 						<>
 							<button
 								ref={hamburger}
@@ -111,12 +111,12 @@ const Header = ({
 											className="list-reset header-nav-right"
 										>
 											<li>
-												<Link to="/signin" className="button button-primary button-wide-mobile button-secondary " onClick={openMenu}>Sign In</Link>
+												<Link to="/signin" className="button button-wangwang button-wide-mobile button-wangwang " onClick={openMenu}>Sign In</Link>
 											</li>
 										</ul>}
 								</div>
 							</nav>
-						</>} */}
+						</>}
 				</div>
 			</div>
 		</header>

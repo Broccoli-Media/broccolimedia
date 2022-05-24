@@ -11,7 +11,8 @@ $button--color: (
 	button-dark: 		get-color(light, 1),
 	button-primary: 	get-color(light, 1),
 	button-secondary:	get-color(light, 1),
-	button-disabled: 	get-color(dark, 3)
+	button-disabled: 	get-color(dark, 3),
+	button-deep-dark:   get-color(deep-dark, 1)
 );
 
 // Buttons: background color
@@ -24,7 +25,11 @@ $button--bg: (
 	button-primary-hover: 	lighten(get-color(primary, 1), 2%),
 	button-secondary: 		get-color(secondary, 1),
 	button-secondary-hover:	lighten(get-color(secondary, 1), 2%),
-	button-disabled: 		get-color(light, 3)
+	button-disabled: 		get-color(light, 3),
+	button-wangwang:        get-color(wangwang, 1),
+	button-wangwang-hover: darken(get-color(wangwang, 1), 5%),
+	button-golden: get-color(golden, 1),
+	button-golden-hover: darken(get-color(golden, 1), 5%)
 );
 
 // Buttons: border color
@@ -122,14 +127,16 @@ $form--size: (
 	input:			'eta',
 	label: 			'theta',
 	check-radio:	'eta',
-	hint: 			'theta'
+	hint: 			'theta',
+	body:           'eta'
 );
 
 // Forms: font weight
 $form--weight: (
 	input: 			null,
 	label: 			500,
-	check-radio:	null
+	check-radio:	null,
+	body:           null
 );
 
 // More forms settings

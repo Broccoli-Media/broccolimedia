@@ -4,6 +4,7 @@ import ScrollReveal from './utils/ScrollReveal';
 
 // Views 
 import Home from './views/Home';
+import SignIn from './views/SignIn';
 import SignUpCom from './views/SignUpCom';
 import SignUpInf from './views/SignUpInf';
 // import NotFound from './views/404';
@@ -25,6 +26,7 @@ const App = () => {
 			children={() => (
 				<Routes>
 					<Route exact path='/' element={<Home/>} />
+					<Route exact path='/signin' element={<SignIn/>} />
 					<Route exact path='/companyregister' element={<SignUpCom />} />
 					<Route exact path='/influencerregister' element={<SignUpInf />} />
 

@@ -63,7 +63,7 @@ const FeaturesTiles = ({
 								<div className="features-tiles-item-header">
 									<div className="features-tiles-item-image mb-16">
 										<Image
-											src={'https://i.imgur.com/mdRIQmS.png'}
+											src={'https://i.imgur.com/07TtjJD.png'}
 											alt="Features tile icon 01"
 											width={64}
 											height={64} />
@@ -85,7 +85,7 @@ const FeaturesTiles = ({
 								<div className="features-tiles-item-header">
 									<div className="features-tiles-item-image mb-16">
 										<Image
-											src={'https://i.imgur.com/69F1m1J.png'}
+											src={'https://i.imgur.com/xBmh2ge.png'}
 											alt="Features tile icon 02"
 											width={64}
 											height={64} />
@@ -107,7 +107,7 @@ const FeaturesTiles = ({
 								<div className="features-tiles-item-header">
 									<div className="features-tiles-item-image mb-16">
 										<Image
-											src={'https://i.imgur.com/WMGtvM2.png'}
+											src={'https://i.imgur.com/swzAtX2.png'}
 											alt="Features tile icon 03"
 											width={64}
 											height={64} />
