@@ -16,9 +16,10 @@ const UcerSchema = new mongoose.Schema(
 			required: true,
 			unique: true,
 		},
-		// workingtype: {
-		// 	type: String,
-		// },
+		Admin: {
+			type: Boolean,
+			default: false,
+		},
 		img: {
 			type: String,
 		},
@@ -29,6 +30,7 @@ const UcerSchema = new mongoose.Schema(
 		phone: {
 			type: String,
 			required: true,
+			unique: true,
 		},
 		password: {
 			type: String,
@@ -42,6 +44,13 @@ const UcerSchema = new mongoose.Schema(
 			type: Boolean,
 			default: false
 		},
+		onRevenue:{
+			type: Boolean,
+			default: false,
+		}
+		// workingtype: {
+		// 	type: String,
+		// },
 		// socialmediatype: {
 		// 	type: String,
 		// 	required: true,

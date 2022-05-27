@@ -1,13 +1,36 @@
 import User from "../models/User.js";
+import bcrypt from "bcryptjs";
+
+const SALT_NUM = 20;
 
 export const updateUser = async (req, res, next) => {
 	try {
+		const user = await User.findOne({ username: req.body.username });
+		if (!user) return next(CreateError(NO_USER, "User not found!"));
+
+		const isPasswordCorrect = await bcrypt.compare(
+			req.body.password,
+			user.password
+		);
+
+		if (!isPasswordCorrect)
+			return next(CreateError(STATUS_400, "Wrong password or username!"));
+
+		const salt = bcrypt.genSaltSync(SALT_NUM);
+		const hash = bcrypt.hashSync(req.body.password, salt);
+
+		await newUser.save();
+
 		const updatedUser = await User.findByIdAndUpdate(
 			req.params.id,
-			{ $set: req.body },
+			{ $set: {
+				...req.body,
+				password: hash,
+			}},
 			{ new: true }
 		);
 		res.status(200).json(updatedUser);
+		res.redirect("/api/user/:id");
 	} catch (err) {
 		next(err);
 	}

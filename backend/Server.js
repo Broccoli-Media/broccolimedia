@@ -1,8 +1,8 @@
-import express from "express";
+import cors from "cors";
 import dotenv from "dotenv";
+import express from "express";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
-import cors from "cors";
 
 import authRoute from "./routes/Auth.js";
 import userRoute from "./routes/User.js";
@@ -16,14 +16,14 @@ dotenv.config();
 const connect = async () => {
 	try {
 		await mongoose.connect(process.env.MONGO);
-		console.log("Connected to mongoDB.");
+		console.log("MongoDB Gotcha.");
 	} catch (error) {
 		throw error;
 	}
 };
 
 mongoose.connection.on("disconnected", () => {
-	console.log("mongoDB disconnected!");
+	console.log("No MongoDB");
 });
 
 //middlewares
@@ -37,7 +37,7 @@ app.use("/api/company", companyRoute);
 
 app.use((err, req, res, next) => {
 	const errorStatus = err.status || STATUS_500;
-	const errorMessage = err.message || "Something went wrong!";
+	const errorMessage = err.message || "Hey! Something wrong here";
 	return res.status(errorStatus).json({
 		success: false,
 		status: errorStatus,
@@ -48,5 +48,5 @@ app.use((err, req, res, next) => {
 
 app.listen(PORT, () => {
 	connect();
-	console.log("Connected to backend.");
+	console.log(`Listening to ${PORT}, MongoDB connected`);
 });

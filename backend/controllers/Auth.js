@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs";
 import { CreateError } from "../utils/error.js";
 import jwt from "jsonwebtoken";
 
-const SALT_NUM = 10;
+const SALT_NUM = 20;
 const NO_USER = 404;
 const STATUS_200 = 200;
 const STATUS_400 = 400;
@@ -36,7 +36,7 @@ export const register = async (req, res, next) => {
 
 			await newUser.save();
 			res.status(200).send("User has been created.");
-			res.redirect("/api/auth/login");
+			res.redirect("/api/auth/signin");
 		}
 
 	} catch (err) {
@@ -44,8 +44,9 @@ export const register = async (req, res, next) => {
 	}
 };
 
-export const login = async (req, res, next) => {
+export const signin = async (req, res, next) => {
 	try {
+		
 		const user = await User.findOne({ username: req.body.username });
 		if (!user) return next(CreateError(NO_USER, "User not found!"));
 
