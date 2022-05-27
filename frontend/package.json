@@ -1,5 +1,5 @@
 {
-	"name": "BroccoliMedia",
+	"name": "broccolimedia",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
@@ -14,10 +14,10 @@
 		"lodash": "^4.17.15",
 		"nth-check": "^2.1.1",
 		"react": "^18.1.0",
-		"react-circular-progressbar": "^2.0.4",
 		"react-dom": "^18.1.0",
 		"react-hook-form": "^7.31.2",
 		"react-router-dom": "^6.3.0",
+		"react-circular-progressbar": "^2.0.4",
 		"recharts": "^2.1.9",
 		"sass": "^1.51.0",
 		"yup": "^0.32.11"
