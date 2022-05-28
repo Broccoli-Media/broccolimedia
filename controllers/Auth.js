@@ -1,6 +1,6 @@
 import User from "../models/User.js";
 import bcrypt from "bcryptjs";
-import { CreateError } from "../utils/error.js";
+import { CreateError } from "../utils/Error.js";
 import jwt from "jsonwebtoken";
 
 const SALT_NUM = 20;
