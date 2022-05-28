@@ -4,8 +4,8 @@ import classNames from 'classnames';
 import { useNavigate } from "react-router-dom";
 
 // import important components 
-import { AuthContext } from "../context/AuthContext";
-import { SectionProps } from '../utils/SectionProps';
+import { AuthContext } from "../context/AuthContext.js";
+import { SectionProps } from '../utils/SectionProps.js';
 
 // import other sections
 import Footer from '../components/layout/Footer';

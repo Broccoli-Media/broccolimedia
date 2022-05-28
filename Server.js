@@ -1,7 +1,9 @@
 import cors from "cors";
+import path from "path";
 import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
+import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 
 import authRoute from "./routes/Auth.js";
@@ -12,6 +14,11 @@ const PORT = 5000;
 const STATUS_500 = 500;
 const app = express();
 dotenv.config();
+//middlewares
+app.use(cors())
+app.use(cookieParser())
+app.use(express.json());
+app.use(bodyParser.json());
 
 const connect = async () => {
 	try {
@@ -26,10 +33,7 @@ mongoose.connection.on("disconnected", () => {
 	console.log("No MongoDB");
 });
 
-//middlewares
-app.use(cors())
-app.use(cookieParser())
-app.use(express.json());
+
 
 app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
@@ -45,6 +49,9 @@ app.use((err, req, res, next) => {
 		stack: err.stack,
 	});
 });
+
+app.use(express.static("client/build"))
+app.get("*", (req, res) => { res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')) })
 
 app.listen(PORT, () => {
 	connect();

@@ -7,8 +7,8 @@ import NotFound from './Mainpage/views/404';
 // import Dashboard from './Dashboard/Dashboard';
 import ScrollReveal from './Mainpage/utils/ScrollReveal';
 // Context
-import { AuthContext } from "./Mainpage/context/AuthContext";
-import { DarkModeContext } from "./Mainpage/context/darkModeContext";
+import { AuthContext } from "./Mainpage/context/AuthContext.js";
+import { DarkModeContext } from "./Mainpage/context/darkModeContext.js";
 // import "./Dashboard/dark.scss"
 // Dashboard components
 // import Users from './Dashboard/pages/users/Users'
