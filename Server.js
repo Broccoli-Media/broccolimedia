@@ -55,7 +55,8 @@ if (process.env.NODE_ENV === 'production') {
 
 }
 
-app.listen(PORT, () => {
+
+app.listen((process.env.PORT || PORT), () => {
 	connect();
 	console.log(`Listening to ${PORT}, MongoDB connected`);
 });
