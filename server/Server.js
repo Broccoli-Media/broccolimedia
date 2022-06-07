@@ -13,12 +13,6 @@ import authRoute from "./routes/Auth.js";
 import userRoute from "./routes/User.js";
 import companyRoute from "./routes/Company.js";
 
-import { fileURLToPath } from 'url';
-import { dirname } from 'path';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
 const PORT = process.env.PORT || 5000;
 const STATUS_500 = 500;
 const app = express();
@@ -107,14 +101,6 @@ app.use((err, req, res, next) => {
 		stack: err.stack,
 	});
 });
-
-// if (process.env.NODE_ENV === 'production') {
-// 	app.use(express.static(path.resolve(__dirname, "./client/build")))
-// 	app.get("*", (req, res) => { res.sendFile(path.resolve(__dirname, './client/build', 'index.html')) })
-// }
-
-// app.use(express.static(path.resolve(__dirname, "./client/build")))
-// app.get("*", (req, res) => { res.sendFile(path.resolve(__dirname, './client/build', 'index.html')) })
 
 app.get('/', (req, res) => {
 	res.send('Broccolimedia is serving');
