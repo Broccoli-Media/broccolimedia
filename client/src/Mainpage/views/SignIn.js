@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
-import axios from "axios";
 import classNames from 'classnames';
 import { useNavigate } from "react-router-dom";
+import axios from "../utils/Axios.js";
 
 // import important components 
 import { AuthContext } from "../context/AuthContext.js";
