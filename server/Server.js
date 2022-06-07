@@ -42,10 +42,10 @@ const connect = async () => {
 };
 
 // Connect to MongoDB
-mongoose
-	.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
-	.then(() => console.log("MongoDB Connected..."))
-	.catch((err) => console.log(err));
+// mongoose
+// 	.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+// 	.then(() => console.log("MongoDB Connected..."))
+// 	.catch((err) => console.log(err));
 // const connection = mongoose.connection;
 // connection.once("open", () => {
 // 	const userChangeStream = connection.collection("users").watch();
