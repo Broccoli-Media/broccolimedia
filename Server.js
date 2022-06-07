@@ -93,8 +93,6 @@ mongoose.connection.on("disconnected", () => {
 	console.log("No MongoDB");
 });
 
-
-
 app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
 app.use("/api/company", companyRoute);
