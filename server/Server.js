@@ -46,41 +46,41 @@ mongoose
 	.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
 	.then(() => console.log("MongoDB Connected..."))
 	.catch((err) => console.log(err));
-const connection = mongoose.connection;
-connection.once("open", () => {
-	const userChangeStream = connection.collection("users").watch();
+// const connection = mongoose.connection;
+// connection.once("open", () => {
+// 	const userChangeStream = connection.collection("users").watch();
 
-	userChangeStream.on("change", (change) => {
-		switch (change.operationType) {
-			case "create":
-				console.log("insertion detected at backend");
-				const user = {
-					_id: change.fullDocument._id,
-					username: change.fullDocument.username,
-					displayname: change.fullDocument.displayname,
-					email: change.fullDocument.email,
-					Admin: change.fullDocument.Admin,
-					img: change.fullDocument.img,
-					livingcity: change.fullDocument.livingcity,
-					phone: change.fullDocument.phone,
-					password: change.fullDocument.password,
-					isAdmin: change.fullDocument.isAdmin,
-					isCompanyOwner: change.fullDocument.isCompanyOwner,
-					onRevenue: change.fullDocument.onRevenue,
-				}
-				io.of("/api/socket").emit("newUser", user);
-				break;
-			case "update":
-				console.log("update detected at backend");
-				io.of("/api/socket").emit("updateUser", change.documentKey._id);
-				break;
-			case "delete":
-				console.log("deletion detected at backend")
-				io.of("/api/socket").emit("deleteUser", change.documentKey._id);
-				break;
-		}
-	})
-})
+// 	userChangeStream.on("change", (change) => {
+// 		switch (change.operationType) {
+// 			case "create":
+// 				console.log("insertion detected at backend");
+// 				const user = {
+// 					_id: change.fullDocument._id,
+// 					username: change.fullDocument.username,
+// 					displayname: change.fullDocument.displayname,
+// 					email: change.fullDocument.email,
+// 					Admin: change.fullDocument.Admin,
+// 					img: change.fullDocument.img,
+// 					livingcity: change.fullDocument.livingcity,
+// 					phone: change.fullDocument.phone,
+// 					password: change.fullDocument.password,
+// 					isAdmin: change.fullDocument.isAdmin,
+// 					isCompanyOwner: change.fullDocument.isCompanyOwner,
+// 					onRevenue: change.fullDocument.onRevenue,
+// 				}
+// 				io.of("/api/socket").emit("newUser", user);
+// 				break;
+// 			case "update":
+// 				console.log("update detected at backend");
+// 				io.of("/api/socket").emit("updateUser", change.documentKey._id);
+// 				break;
+// 			case "delete":
+// 				console.log("deletion detected at backend")
+// 				io.of("/api/socket").emit("deleteUser", change.documentKey._id);
+// 				break;
+// 		}
+// 	})
+// })
 
 
 mongoose.connection.on("disconnected", () => {
