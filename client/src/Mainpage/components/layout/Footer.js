@@ -6,51 +6,51 @@ import Logo from './partials/Logo';
 import FooterSocial from './partials/FooterSocial';
 
 const propTypes = {
-  topOuterDivider: PropTypes.bool,
-  topDivider: PropTypes.bool
+	topOuterDivider: PropTypes.bool,
+	topDivider: PropTypes.bool
 }
 
 const defaultProps = {
-  topOuterDivider: false,
-  topDivider: false
+	topOuterDivider: false,
+	topDivider: false
 }
 
 const Footer = ({
-  className,
-  topOuterDivider,
-  topDivider,
-  ...props
+	className,
+	topOuterDivider,
+	topDivider,
+	...props
 }) => {
 
-  const classes = classNames(
-    'site-footer center-content-mobile',
-    topOuterDivider && 'has-top-divider',
-    className
-  );
+	const classes = classNames(
+		'site-footer center-content-mobile',
+		topOuterDivider && 'has-top-divider',
+		className
+	);
 
-  return (
-    <footer
-      {...props}
-      className={classes}
-    >
-      <div className="container">
-        <div className={
-          classNames(
-            'site-footer-inner',
-            topDivider && 'has-top-divider'
-          )}>
-          <div className="footer-top space-between text-xxs">
-            <Logo />
-            <FooterSocial />
-          </div>
-          <div className="footer-bottom space-between text-xxs invert-order-desktop">
-            {/* <FooterNav /> */}
-            <p >Copyright &copy; BROCCOLI MEDIA {(new Date().getFullYear())}</p>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
+	return (
+		<footer
+			{...props}
+			className={classes}
+		>
+			<div className="container">
+				<div className={
+					classNames(
+						'site-footer-inner',
+						topDivider && 'has-top-divider'
+					)}>
+					<div className="footer-top space-between text-xxs">
+						<Logo />
+						<FooterSocial />
+					</div>
+					<div className="footer-bottom space-between text-xxs invert-order-desktop">
+						{/* <FooterNav /> */}
+						<p >Copyright &copy; BROCCOLI MEDIA {(new Date().getFullYear())}</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+	);
 }
 
 Footer.propTypes = propTypes;
