@@ -86,9 +86,9 @@ mongoose.connection.on("disconnected", () => {
 	console.log("Fail to connect Mongoose");
 });
 
-app.use("/api/auth", authRoute);
-app.use("/api/user", userRoute);
-app.use("/api/company", companyRoute);
+app.use("/auth", authRoute);
+app.use("/user", userRoute);
+app.use("/company", companyRoute);
 
 app.use((err, req, res, next) => {
 	const errorStatus = err.status || STATUS_500;
