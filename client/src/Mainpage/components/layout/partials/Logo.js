@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import { GOLD_BROCCOLI } from '../../../assets/images/imageURL/Constants.js';
+import { GOLD_BROCCOLI } from '../../../../Assets/images/imageURL/Constants.js';
 
 const Logo = ({
   className,

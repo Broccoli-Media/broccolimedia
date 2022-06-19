@@ -16,11 +16,10 @@ export default function Home () {
 			<Header navPosition="right" className="reveal-from-bottom" />
 			<br />
 			<br />
-			<Hero className="illustration-section-01" />
+			<Hero />
 			<FeaturesTiles />
-			<FeaturesSplit invertMobile topDivider imageFill className="illustration-section-02" />
+			<FeaturesSplit invertMobile topDivider imageFill />
 			<Testimonial topDivider />
-			{/* <Cta split /> */}
 			<Footer />
 		</div>
 	);

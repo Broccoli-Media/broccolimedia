@@ -7,7 +7,7 @@ import BroccoliMedia from './BroccoliMedia';
 import { AuthContextProvider } from "./Mainpage/context/AuthContext";
 import { SearchContextProvider } from "./Mainpage/context/SearchContext";
 import { DarkModeContextProvider } from "./Mainpage/context/darkModeContext";
-import './Mainpage/assets/scss/style.scss';
+import './Assets/scss/style.scss';
 
 // Service Worker
 // import * as serviceWorker from './serviceWorker';
