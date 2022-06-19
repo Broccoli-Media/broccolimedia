@@ -1,6 +1,14 @@
 import mongoose from "mongoose";
 const UcerSchema = new mongoose.Schema(
-	{
+	{   
+		firstname: {
+			type: String,
+			required: true,
+		},
+		lastname: {
+			type: String,
+			required: true,
+		},
 		username: {
 			type: String,
 			required: true,
