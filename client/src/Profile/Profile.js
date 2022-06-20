@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import { Container, ChakraProvider } from '@chakra-ui/react';
+import { useParams } from "react-router-dom";
+import Axios from '../Mainpage/utils/Axios';
 
 import Cover from './Cover';
 import Content from './Content/Content';
@@ -11,7 +13,10 @@ import Footer from "../Mainpage/components/layout/Footer"
 
 import { AuthContext } from "../Mainpage/context/AuthContext.js";
 
-export default function Profile() {
+export default function Profile(showUser) {
+    const suburl = useParams();
+    const id = suburl.id;
+    const res = Axios.get(`/user/${id}`);
 
     const { user } = useContext(AuthContext);
 

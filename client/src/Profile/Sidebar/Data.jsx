@@ -2,17 +2,19 @@ import { Box, Text, VStack } from '@chakra-ui/react'
 
 function Data( user, rank ) {
 
+	const cur_user = user.user;
+
 	const list = [
 		{
 			id: 1,
 			name: 'Total Followers',
-			value: user.totalfollowers,
+			value: cur_user.totalfollowers,
 			color: 'yellow',
 		},
 		{
 			id: 2,
 			name: 'Collaborated Companies',
-			value: user.collaboratedcompanies,
+			value: cur_user.collaboratedcompanies,
 			color: 'yellow',
 		},
 		{

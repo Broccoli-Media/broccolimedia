@@ -17,7 +17,6 @@ const UcerSchema = new mongoose.Schema(
 		displayname: {
 			type: String,
 			required: true,
-			unique: true,
 		},
 		email: {
 			type: String,
@@ -55,18 +54,16 @@ const UcerSchema = new mongoose.Schema(
 		onRevenue:{
 			type: Boolean,
 			default: false,
-		}
-		// workingtype: {
-		// 	type: String,
-		// },
-		// socialmediatype: {
-		// 	type: String,
-		// 	required: true,
-		// },
-		// socialmedialink: {
-		// 	type: String,
-		// 	required: true
-		// }
+		},
+		workingtype: [{
+			type: String,
+		}],
+		socialmediatype: [{
+			type: String,
+		}],
+		socialmedialink: [{
+			type: String,
+		}]
 	},
 	{ timestamps: true }
 );

@@ -20,7 +20,7 @@ const propTypes = {
   placeholder: PropTypes.string,
   rows: PropTypes.number,
   hint: PropTypes.string,
-  id: PropTypes.string
+  id: PropTypes.string,
 }
 
 const defaultProps = {
@@ -39,7 +39,7 @@ const defaultProps = {
   placeholder: '',
   rows: 3,
   hint: null,
-  id: ''
+  id: '',
 }
 
 const Input = ({

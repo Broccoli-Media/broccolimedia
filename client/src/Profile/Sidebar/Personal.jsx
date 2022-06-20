@@ -14,6 +14,8 @@ function Personal(user) {
 		profileImage.current.click()
 	}
 
+	const cur_user = user.user;
+
 	const changeProfileImage = event => {
 		const ALLOWED_TYPES = ['image/png', 'image/jpeg', 'image/jpg']
 		const selected = event.target.files[0]
@@ -31,10 +33,10 @@ function Personal(user) {
 		<VStack spacing={3} py={5} borderBottomWidth={1} borderColor="brand.light">
 			<Avatar
 				size="2xl"
-				name="Tim Cook"
+				name={user.username}
 				cursor="pointer"
 				onClick={openChooseImage}
-				src={userProfile ? userProfile : '/img/tim-cook.jpg'}
+				src={userProfile ? userProfile : cur_user.img}
 			>
 				<AvatarBadge bg="brand.blue" boxSize="1em">
 					<svg width="0.4em" fill="currentColor" viewBox="0 0 20 20">
@@ -76,10 +78,10 @@ function Personal(user) {
 			</Modal>
 			<VStack spacing={1}>
 				<Heading as="h3" fontSize="xl" color="brand.dark">
-					Tim Cook
+					{cur_user.username}
 				</Heading>
 				<Text color="brand.gray" fontSize="sm">
-					CEO of Apple
+					{cur_user.userTitle}
 				</Text>
 			</VStack>
 		</VStack>

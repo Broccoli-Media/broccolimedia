@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { Button, Input, InputGroup, InputRightAddon, useClipboard, VStack } from '@chakra-ui/react'
 
 export default function Actions(user) {
-	const value = `https://broccolimedia.net/${user.id}/${user.username}`
+	const cur_user = user.user;
+	const value = `https://broccolimedia.net/${cur_user._id}/${cur_user.username}`
 	const { hasCopied, onCopy } = useClipboard(value)
 
 	const profileUrl = useRef(null)
@@ -17,7 +18,7 @@ export default function Actions(user) {
 
 	return (
 		<VStack py={8} px={5} spacing={3}>
-			<Link to={`https://broccolimedia.net/${user.id}/${user.username}`}>
+			<Link to={`https://broccolimedia.net/${cur_user._id}/${cur_user.username}`}>
 			<Button w="full" variant="outline">
 				View Public Profile
 			</Button>

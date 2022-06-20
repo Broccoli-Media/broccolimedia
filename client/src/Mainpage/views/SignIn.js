@@ -70,9 +70,17 @@ const SignIn = ({
         }
     };
 
+    const handleKeyDown = async (e) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            handleClick(e);
+        }
+    };
+
     const { user } = useContext(AuthContext);
     useEffect(() => {
-        if (user) { navigate("/dashboard") }
+        if (user) { navigate("/profile") }
+        window.addEventListener("keydown", handleKeyDown);
     });
 
     return (
@@ -105,6 +113,7 @@ const SignIn = ({
                                         onChange={handleChange}
                                         placeholder="Username"
                                     />
+                                    { }
                                     <br />
                                     <br />
                                     <Input

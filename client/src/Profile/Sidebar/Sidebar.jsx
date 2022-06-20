@@ -5,6 +5,7 @@ import Data from './Data'
 import Personal from './Personal'
 
 function Sidebar(user) {
+	const cur_user = user.user;
 	return (
 		<Box
 			as="aside"
@@ -17,9 +18,9 @@ function Sidebar(user) {
 			borderColor="brand.light"
 			style={{ transform: 'translateY(-100px)' }}
 		>
-			<Personal user={user} />
-			<Data user={user} />
-			<Actions user={user} />
+			<Personal user={cur_user} />
+			<Data user={cur_user} />
+			<Actions user={cur_user} />
 		</Box>
 	)
 }

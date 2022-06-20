@@ -1,6 +1,6 @@
 import { FormHelperText, FormControl, FormLabel, Switch } from '@chakra-ui/react'
 
-function Notifications() {
+function Notifications(user) {
 	return (
 		<FormControl
 			display="column"

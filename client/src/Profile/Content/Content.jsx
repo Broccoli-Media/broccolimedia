@@ -5,9 +5,9 @@ import Actions from './Actions'
 // import CompanySettings from './CompanySettings'
 import Notifications from './Notifications'
 
-const Content = () => {
-	const tabs = ['Account Settings', 'Notifications']
-
+const Content = (user) => {
+	const tabs = ['Account Settings', 'Notifications'];
+	const cur_user = user.user;
 	return (
 		<Box
 			as="main"
@@ -43,13 +43,13 @@ const Content = () => {
 
 				<TabPanels px={3} mt={5}>
 					<TabPanel>
-						<AccountSettings />
+						<AccountSettings user={cur_user} />
 					</TabPanel>
 					{/* <TabPanel>
 						<CompanySettings />
 					</TabPanel> */}
 					<TabPanel>
-						<Notifications />
+						<Notifications user={cur_user} />
 					</TabPanel>
 				</TabPanels>
 			</Tabs>
