@@ -64,13 +64,13 @@ const Header = ({
 	const { dispatch } = useContext(AuthContext);
 	const signOut = () => {
 		localStorage.clear();
-		try{
+		try {
 			dispatch({ type: "SIGNOUT", payload: {} });
 			navigate("/")
 		} catch (err) {
 			dispatch({ type: "SIGNIN_FAILURE", payload: err.response.data });
 		}
-		
+
 	}
 
 	const keyPress = (e) => {
@@ -121,12 +121,19 @@ const Header = ({
 										isActive && 'is-active'
 									)}>
 								<div className="header-nav-inner">
+									{/* <ul className={
+										classNames(
+											'list-reset text-xs',
+											navPosition && `header-nav-${navPosition}`
+										)}>
+										
+									</ul> */}
 									<ul
 										className="list-reset header-nav-right"
 									>
 										{user &&
 											<li>
-											<Link to="/profile" className="button button-golden button-wide-mobile button-golden " onClick={openMenu}>{user.displayname}</Link>
+												<Link to={`/profile/${user._id}/${user.username}`} className="button button-golden button-wide-mobile button-golden " onClick={openMenu}>{user.displayname}</Link>
 											</li>}
 										{user ?
 											(<li>
@@ -135,7 +142,6 @@ const Header = ({
 											(<li>
 												<Link to="/signin" className="button button-wangwang button-wide-mobile button-wangwang " onClick={openMenu}>Sign In</Link>
 											</li>)}
-
 									</ul>
 								</div>
 							</nav>

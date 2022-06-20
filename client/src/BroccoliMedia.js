@@ -19,6 +19,7 @@ import { DarkModeContext } from "./Mainpage/context/darkModeContext.js";
 // import "./Dashboard/dark.scss"
 // Profile Components
 import Profile from './Profile/Profile';
+import ProfileShow from './Profile/ProfileShow';
 
 const BroccoliMedia = () => {
 
@@ -48,20 +49,21 @@ const BroccoliMedia = () => {
 				children={() => (
 					<Routes>
 						<Route path="/">
-							<Route path="signin" element={<SignIn />}
-							/>
+							<Route path="signin" element={<SignIn />} />
+
 							{/* For Main Usage */}
 							<Route index element={<Home />} />
 
 							{/* For Personal Profile */}
 							<Route path="profile">
-								<Route index element={
+								{user && <Route path={`${user._id}/${user.username}`} element={
 									<ProtectedRoute>
 										<Profile />
 									</ProtectedRoute>
-								} />
-
-								<Route path=":id" element={<Profile />} />
+								} />}
+							</Route>
+							<Route path="public">
+								<Route path=":id/:username" element={<ProfileShow />} />
 							</Route>
 						</Route>
 						{/* For Error Page */}

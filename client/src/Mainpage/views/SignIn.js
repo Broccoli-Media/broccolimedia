@@ -1,17 +1,16 @@
 import React, { useContext, useState, useEffect } from "react";
-import classNames from 'classnames';
 import { useNavigate } from "react-router-dom";
 import axios from "../utils/Axios.js";
-
+import classNames from 'classnames';
+import { Alert } from "@chakra-ui/react";
 // import important components 
 import { AuthContext } from "../context/AuthContext.js";
 import { SectionProps } from '../utils/SectionProps.js';
-
 // import other sections
-import Footer from '../components/layout/Footer';
-import Button from '../components/elements/Button';
 import FormHeader from '../components/elements/FormHeader'
+import Button from '../components/elements/Button';
 import Input from "../components/elements/Input";
+import Footer from '../components/layout/Footer';
 
 const propTypes = {
     ...SectionProps.types
@@ -57,22 +56,26 @@ const SignIn = ({
     const handleChange = (e) => {
         setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
     };
-
+    const [nouser, setNouser] = useState(false);
+    const [nopass, setpass] = useState(false);
     const handleClick = async (e) => {
+        if ((credentials.username === undefined)) { setNouser(true); }
+        if ((credentials.password === undefined)) { setpass(true); }
         e.preventDefault();
-        dispatch({ type: "SIGNIN_START" });
-        try {
-            const res = await axios.post("/auth/signin", credentials);
-            dispatch({ type: "SIGNIN_SUCCESS", payload: res.data.details });
-            navigate("/")
-        } catch (err) {
-            dispatch({ type: "SIGNIN_FAILURE", payload: err.response.data });
+        if ((credentials.username !== undefined) && (credentials.password !== undefined)) {
+            dispatch({ type: "SIGNIN_START" });
+            try {
+                const res = await axios.post("/auth/signin", credentials);
+                dispatch({ type: "SIGNIN_SUCCESS", payload: res.data.details });
+                navigate("/")
+            } catch (err) {
+                dispatch({ type: "SIGNIN_FAILURE", payload: err.response.data });
+            }
         }
     };
 
-    const handleKeyDown = async (e) => {
+    const handleKeypress = (e) => {
         if (e.key === "Enter") {
-            e.preventDefault();
             handleClick(e);
         }
     };
@@ -80,7 +83,6 @@ const SignIn = ({
     const { user } = useContext(AuthContext);
     useEffect(() => {
         if (user) { navigate("/profile") }
-        window.addEventListener("keydown", handleKeyDown);
     });
 
     return (
@@ -111,8 +113,12 @@ const SignIn = ({
                                         type="text"
                                         className="row"
                                         onChange={handleChange}
+                                        onKeyPress={handleKeypress}
                                         placeholder="Username"
                                     />
+                                    {nouser && <Alert status='warning' className="headerTitle">
+                                        Username cannot be empty
+                                    </Alert>}
                                     { }
                                     <br />
                                     <br />
@@ -121,8 +127,12 @@ const SignIn = ({
                                         type="password"
                                         className="row"
                                         onChange={handleChange}
+                                        onKeyPress={handleKeypress}
                                         placeholder="Password"
                                     />
+                                    {nopass && <Alert status='warning' className="headerTitle">
+                                        Password cannot be empty
+                                    </Alert>}
                                     <br />
                                     <br />
                                     <Button disabled={loading} onClick={handleClick} tag="a" color="button-gold" wideMobile>

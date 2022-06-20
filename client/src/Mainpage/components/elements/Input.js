@@ -59,6 +59,7 @@ const Input = ({
   rows,
   hint,
   onChange,
+  onKeyPress,
   id,
   ...props
 }) => {
@@ -92,6 +93,7 @@ const Input = ({
           value={value}
           placeholder={placeholder}
           onChange={onChange}
+          onKeyPress={onKeyPress}
           rows={type === 'textarea' ? rows : null}
         />
         {children}
