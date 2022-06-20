@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box } from '@chakra-ui/react'
 
-import Data from './Data'
+import DataShow from './DataShow'
 import PersonalShow from './PersonalShow'
 
 function SidebarShow(user) {
@@ -20,7 +20,7 @@ function SidebarShow(user) {
 			style={{ transform: 'translateY(-100px)' }}
 		>
 			<PersonalShow user={cur_user} />
-			<Data user={cur_user} />
+			<DataShow user={cur_user} />
 		</Box>
 	)
 }

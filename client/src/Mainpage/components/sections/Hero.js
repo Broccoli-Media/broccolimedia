@@ -76,7 +76,6 @@ const Hero = ({
 									<Button tag="a" color="primary" wideMobile href="https://forms.gle/idGkmkmVX61XPAvu9">
 										Register as Company
 									</Button>
-									&nbsp; &nbsp;
 									<Button tag="a" color="primary" wideMobile href="https://forms.gle/svo5zJpeTpUFcrk49">
 										Register as Influencer
 									</Button>

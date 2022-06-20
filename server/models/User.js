@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 const UcerSchema = new mongoose.Schema(
-	{   
+	{
 		firstname: {
 			type: String,
 			required: true,
@@ -27,6 +27,9 @@ const UcerSchema = new mongoose.Schema(
 			type: Boolean,
 			default: false,
 		},
+		dateOfBirth:{
+			type: Date,
+		},
 		img: {
 			type: String,
 		},
@@ -51,19 +54,41 @@ const UcerSchema = new mongoose.Schema(
 			type: Boolean,
 			default: false
 		},
-		onRevenue:{
+		onRevenue: {
 			type: Boolean,
 			default: false,
 		},
-		workingtype: [{
+		workingType: [{
 			type: String,
 		}],
-		socialmediatype: [{
-			type: String,
+		socialMedia: [{
+			name: {
+				type: String,
+			},
+			link: {
+				type: String,
+			},
+			followers: {
+				type: Number,
+			}
 		}],
-		socialmedialink: [{
-			type: String,
-		}]
+		totalfollowers: {
+			type: Number,
+		},
+		level: {
+			type: Number,
+		},
+		collaboratedcompanies:[{
+			name: {
+				type: String,
+			},
+			times: {
+				type: Number,
+			},
+		}],
+		collaboratedcompaniesnumber: {
+			type: Number,
+		}
 	},
 	{ timestamps: true }
 );

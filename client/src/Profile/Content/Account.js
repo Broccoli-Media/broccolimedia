@@ -5,42 +5,49 @@ function Account(user) {
 	const cur_user = user.user;
 	return (
 		<Grid
+			style={{ resize: "both" }}
 			templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)' }}
 			gap={6}
 		>
 			<FormControl id="firstName">
 				<FormLabel>First Name</FormLabel>
-				<Text color="brand.dark" fontSize="2xl">
+				<Text color="brand.dark" fontSize="lg">
 					{cur_user.firstname}
 				</Text>
 			</FormControl>
 			<FormControl id="lastName">
 				<FormLabel>Last Name</FormLabel>
-				<Text color="brand.dark" fontSize="2xl">
+				<Text color="brand.dark" fontSize="lg">
 					{cur_user.lastname}
+				</Text>
+			</FormControl>
+			<FormControl id="displayname">
+				<FormLabel>Display Name</FormLabel>
+				<Text color="brand.dark" fontSize="lg">
+					{cur_user.displayname}
 				</Text>
 			</FormControl>
 			<FormControl id="phoneNumber">
 				<FormLabel>Phone Number</FormLabel>
-				<Text color="brand.dark" fontSize="2xl">
+				<Text color="brand.dark" fontSize="lg">
 					{cur_user.phone}
 				</Text>
 			</FormControl>
 			<FormControl id="emailAddress">
 				<FormLabel>Email Address</FormLabel>
-				<Text color="brand.dark" fontSize="2xl">
+				<Text color="brand.dark" fontSize="lg">
 					{cur_user.email}
 				</Text>
 			</FormControl>
 			<FormControl id="city">
 				<FormLabel>Your Living City</FormLabel>
-				<Text color="brand.dark" fontSize="2xl">
+				<Text color="brand.dark" fontSize="lg">
 					{cur_user.livingcity}
 				</Text>
 			</FormControl>
 			<FormControl id="revenue">
 				<FormLabel>On Revenue</FormLabel>
-				<Text color="brand.dark" fontSize="2xl">
+				<Text color="brand.dark" fontSize="lg">
 					{(cur_user.onrevenue && "Yes") || ((!cur_user.onrevenue || cur_user === false) && "No")}
 				</Text>
 			</FormControl>

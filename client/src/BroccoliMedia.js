@@ -38,7 +38,6 @@ const BroccoliMedia = () => {
 		document.body.classList.add('is-loaded')
 		childRef.current.init();
 
-
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [location]);
 
@@ -61,10 +60,10 @@ const BroccoliMedia = () => {
 										<Profile />
 									</ProtectedRoute>
 								} />}
+								<Route path="public/:id/:username" element={<ProfileShow />}/>
+
 							</Route>
-							<Route path="public">
-								<Route path=":id/:username" element={<ProfileShow />} />
-							</Route>
+
 						</Route>
 						{/* For Error Page */}
 						<Route path="*" element={<NotFound />} />

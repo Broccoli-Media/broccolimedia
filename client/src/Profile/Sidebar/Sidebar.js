@@ -1,7 +1,7 @@
 import React from 'react'
 import { Box } from '@chakra-ui/react'
 
-import Actions from './Actions'
+import { Public } from './Actions'
 import Data from './Data'
 import Personal from './Personal'
 
@@ -22,7 +22,7 @@ function Sidebar(user) {
 		>
 			<Personal user={cur_user} />
 			<Data user={cur_user} />
-			<Actions user={cur_user} />
+			<Public user={cur_user} />
 		</Box>
 	)
 }

@@ -15,19 +15,18 @@ export default function ProfileShow() {
     const id = suburl.id;
     const [show, setShow] = useState([]);
 
-    async function fetchData() {
+    const fetchData = async () => {
         const res = await Axios.get(`/user/${id}`);
         setShow(res.data);
     }
 
     fetchData();
 
-
     return (
         <ChakraProvider theme={theme}>
             <Header />
             <Cover />
-            <Container display={{ base: 'block', md: 'flex' }} maxW="container.xl">
+            <Container display={{ base: 'block', md: 'flex' }} maxW="1240">
                 <SidebarShow user={show} />
             </Container>
             <Footer />

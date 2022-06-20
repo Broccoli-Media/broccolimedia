@@ -1,12 +1,15 @@
-import { Box, Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { Box, Button, Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
 import Settings from './Settings';
 import Notifications from './Notifications';
-import { Update, Save } from './Actions';
 import Account from './Account';
 
 const Content = (user) => {
-	const tabs = ['Account', 'Settings', 'Notifications'];
 	const cur_user = user.user;
+	const [showUpdate, setShowUpdate] = useState(false);
+
+	const tabs = (!showUpdate) ? ['Account', 'Notifications'] : ['Settings', 'Notifications'];
+
 	return (
 		<Box
 			as="main"
@@ -41,21 +44,25 @@ const Content = (user) => {
 				</TabList>
 
 				<TabPanels px={3} mt={5}>
-					<TabPanel>
+					{!showUpdate && <TabPanel>
 						<Account user={cur_user} />
-					</TabPanel>
-					<TabPanel>
+						<Box mt={5} py={5} px={0} borderTopWidth={1} borderColor="brand.light">
+							<Button onClick={() => { setShowUpdate(!showUpdate) }}>Edit</Button>
+						</Box>
+					</TabPanel>}
+					{showUpdate && <TabPanel>
 						<Settings user={cur_user} />
-						<Update />
-					</TabPanel>
+						<Box mt={5} py={5} px={0} borderTopWidth={1} borderColor="brand.light">
+							<Button ml={0} onClick={() => { setShowUpdate(!showUpdate) }}>Cancel</Button>
+						</Box>
+					</TabPanel>}
 					<TabPanel>
 						<Notifications user={cur_user} />
-						<Save />
 					</TabPanel>
 				</TabPanels>
 			</Tabs>
 		</Box>
 	)
-}
+};
 
 export default Content

@@ -1,22 +1,23 @@
-import { Box, Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { Box, Button, Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
 import Notifications from './Notifications';
 import AddUser from './AddUser';
 import Account from './Account';
 import Settings from './Settings';
-import {Update, Add, Save} from './Actions';
-// import CompanySettings from './CompanySettings';
-
 
 const Content = (user) => {
-	const tabs = ['Account', 'Settings', 'Add User', 'Notifications'];
 	const cur_user = user.user;
+	const [showUpdate, setShowUpdate] = useState(false);
+	const tabs = (!showUpdate) ? ['Account', 'Add User', 'Notifications'] : ['Settings', 'Add User', 'Notifications'];
+
 	return (
 		<Box
-			as="main"
 			flex={5}
+			w='100%'
 			d="flex"
 			flexDir="column"
-			justifyContent="space-between"
+			alignItems="center"
+			justifyContent="space-around"
 			pt={5}
 			bg="white"
 			rounded="md"
@@ -25,13 +26,15 @@ const Content = (user) => {
 			style={{ transform: 'translateY(-100px)' }}
 		>
 			<Tabs>
-				<TabList px={3}>
+				<TabList px={1}>
 					{tabs.map(tab => (
 						<Tab
+							style={{ resize: "both" }}
+							fontSize="sm"
 							key={tab}
 							mx={3}
+							my={0}
 							px={0}
-							py={3}
 							fontWeight="semibold"
 							color="brand.cadet"
 							borderBottomWidth={1}
@@ -44,23 +47,23 @@ const Content = (user) => {
 				</TabList>
 
 				<TabPanels px={2} mt={3}>
-					<TabPanel>
+					{!showUpdate && <TabPanel>
 						<Account user={cur_user} />
-					</TabPanel>
-					<TabPanel>
+						<Box mt={5} py={5} px={0} borderTopWidth={1} borderColor="brand.light">
+							<Button onClick={() => { setShowUpdate(!showUpdate) }}>Edit</Button>
+						</Box>
+					</TabPanel>}
+					{showUpdate && <TabPanel>
 						<Settings user={cur_user} />
-						<Update />
-					</TabPanel>
+						<Box mt={3} py={5} px={0} borderTopWidth={1} borderColor="brand.light">
+							<Button ml={0} onClick={() => { setShowUpdate(!showUpdate) }}>Cancel</Button>
+						</Box>
+					</TabPanel>}
 					<TabPanel>
 						<AddUser user={cur_user} />
-						<Add />
 					</TabPanel>
-					{/* <TabPanel>
-						<CompanySettings />
-					</TabPanel> */}
 					<TabPanel>
 						<Notifications user={cur_user} />
-						<Save />
 					</TabPanel>
 				</TabPanels>
 			</Tabs>
