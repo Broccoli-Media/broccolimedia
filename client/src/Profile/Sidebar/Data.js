@@ -5,7 +5,7 @@ function Data(user, rank) {
 	const cur_user = user.user;
 	const ranking = (rank.current === undefined) ? 0 : rank.current;
 	const followers = (cur_user.totalfollowers === undefined) ? 0 : cur_user.totalfollowers;
-	const companies = (cur_user.collaboratedcompanies === undefined) ? 0 : cur_user.collaboratedcompanies;
+	const companies = (cur_user.collaboratedcompaniesnumber === undefined) ? 0 : cur_user.collaboratedcompaniesnumber;
 	const curLevel = (cur_user.level === undefined) ? 1 : cur_user.level;
 
 	const totalLevel = 20;

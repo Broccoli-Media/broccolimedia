@@ -133,7 +133,7 @@ const Header = ({
 									>
 										{user &&
 											<li>
-												<Link to={`/profile/${user._id}/${user.username}`} className="button button-golden button-wide-mobile button-golden " onClick={openMenu}>{user.displayname}</Link>
+												<Link to={`/profile/in/${user.username}`} className="button button-golden button-wide-mobile button-golden " onClick={openMenu}>{user.displayname}</Link>
 											</li>}
 										{user ?
 											(<li>

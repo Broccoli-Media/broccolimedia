@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, ChakraProvider } from '@chakra-ui/react';
 import { useParams } from "react-router-dom";
-import Axios from '../Mainpage/utils/Axios';
+import axios from '../Mainpage/utils/Axios';
 // Page components
 import Cover from './Cover';
 import SidebarShow from './Sidebar/SidebarShow';
@@ -16,7 +16,7 @@ export default function ProfileShow() {
     const [show, setShow] = useState([]);
 
     const fetchData = async () => {
-        const res = await Axios.get(`/user/${id}`);
+        const res = await axios.get(`/user/${id}`);
         setShow(res.data);
     }
 
@@ -26,7 +26,7 @@ export default function ProfileShow() {
         <ChakraProvider theme={theme}>
             <Header />
             <Cover />
-            <Container display={{ base: 'block', md: 'flex' }} maxW="1240">
+            <Container display={{ base: 'block', md: 'flex' }} maxW="1240px">
                 <SidebarShow user={show} />
             </Container>
             <Footer />
