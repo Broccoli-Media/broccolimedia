@@ -38,7 +38,7 @@ const BroccoliMedia = () => {
 	useEffect(() => {
 		document.body.classList.add('is-loaded')
 		childRef.current.init();
-
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [location]);
 
 	const curPathEle = window.location.pathname.split('/'); //yields: "/js" (where snippets run)
