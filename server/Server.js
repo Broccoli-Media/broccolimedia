@@ -87,7 +87,7 @@ mongoose.connection.on("disconnected", () => {
 
 // Coping with cors issue
 app.use('/api', createProxyMiddleware({
-	target: `http://localhost:${PORT}/`, //original url
+	target: `http://localhost:3000/`, //original url
 	changeOrigin: true,
 	//secure: false,
 	onProxyRes: function (proxyRes, req, res) {
