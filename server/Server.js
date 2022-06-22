@@ -85,26 +85,25 @@ mongoose.connection.on("disconnected", () => {
 	console.log("Fail to connect Mongoose");
 });
 
-// https://broccolimedia.herokuapp.com/
 // Coping with cors issue
-app.use('/auth', createProxyMiddleware({
-	target: `https://broccolimedia.herokuapp.com/`, //original url
+app.use('/api', createProxyMiddleware({
+	target: `http://localhost:5000/`, //original url
 	changeOrigin: true,
 	//secure: false,
 	onProxyRes: function (proxyRes, req, res) {
 		proxyRes.headers['Access-Control-Allow-Origin'] = '*';
 	}
-}), authRoute);
-app.use('/user', createProxyMiddleware({
-	target: `https://broccolimedia.herokuapp.com/`, //original url
-	changeOrigin: true,
-	//secure: false,
-	onProxyRes: function (proxyRes, req, res) {
-		proxyRes.headers['Access-Control-Allow-Origin'] = '*';
-	}
-}), userRoute);
-// app.use("/auth", authRoute);
-// app.use("/user", userRoute);
+}));
+// app.use('/api', createProxyMiddleware({
+// 	target: `http://localhost:5000/`, //original url
+// 	changeOrigin: true,
+// 	//secure: false,
+// 	onProxyRes: function (proxyRes, req, res) {
+// 		proxyRes.headers['Access-Control-Allow-Origin'] = '*';
+// 	}
+// }));
+app.use("/auth", authRoute);
+app.use("/user", userRoute);
 
 app.use((err, req, res, next) => {
 	const errorStatus = err.status || STATUS_500;
