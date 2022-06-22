@@ -1,12 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export const config = {
-    headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
-    }
-};
 
 const useFetch = (url) => {
     const [data, setData] = useState([]);
@@ -17,7 +11,7 @@ const useFetch = (url) => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                const res = await axios.get(url, config);
+                const res = await axios.get(url);
                 setData(res.data);
             } catch (err) {
                 setError(err);
@@ -30,7 +24,7 @@ const useFetch = (url) => {
     const reFetch = async () => {
         setLoading(true);
         try {
-            const res = await axios.get(url, config);
+            const res = await axios.get(url);
             setData(res.data);
         } catch (err) {
             setError(err);

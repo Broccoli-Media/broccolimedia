@@ -17,8 +17,9 @@ const STATUS_500 = 500;
 const app = express();
 dotenv.config();
 const corsOptions = {
-	origin: "*",
-	credentials: true,            //access-control-allow-credentials:true
+	origin: ['https://broccolimedia.net/', 'http://localhost:3000'],
+	methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
+	// credentials: true,            //access-control-allow-credentials:true
 	optionSuccessStatus: 200
 }
 //middlewares
