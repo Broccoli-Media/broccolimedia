@@ -58,6 +58,15 @@ const SignIn = ({
     };
     const [nouser, setNouser] = useState(false);
     const [nopass, setpass] = useState(false);
+
+
+    const config = {
+        headers: {
+            "Access-Control-Allow-Origin": ['https://broccolimedia.net/', 'http://localhost:3000', 'https://broccolimedia.herokuapp.com/', 'http://localhost:5000'],
+            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+        }
+    };
+
     const handleClick = async (e) => {
         if ((credentials.username === undefined)) { setNouser(true); }
         if ((credentials.password === undefined)) { setpass(true); }
@@ -65,7 +74,7 @@ const SignIn = ({
         if ((credentials.username !== undefined) && (credentials.password !== undefined)) {
             dispatch({ type: "SIGNIN_START" });
             try {
-                const res = await Axios.post("/auth/signin", credentials);
+                const res = await Axios.post("/auth/signin", credentials, config);
                 dispatch({ type: "SIGNIN_SUCCESS", payload: res.data.details });
                 navigate("/")
             } catch (err) {
