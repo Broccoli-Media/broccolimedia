@@ -17,7 +17,7 @@ const STATUS_500 = 500;
 const app = express();
 dotenv.config();
 const corsOptions = {
-	origin: 'https://broccolimedia.net/',
+	origin: 'https://broccolimedia.herokuapp.com/',
 	credentials: true,            //access-control-allow-credentials:true
 	optionSuccessStatus: 200
 }
@@ -26,8 +26,6 @@ app.use(cors(corsOptions))
 app.use(cookieParser())
 app.use(express.json());
 app.use(bodyParser.json());
-
-
 
 const server = http.createServer(app);
 const io = new Server(server);
