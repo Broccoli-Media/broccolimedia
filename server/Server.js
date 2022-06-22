@@ -27,7 +27,6 @@ const corsOptions = {
 };
 //middlewares
 app.use(cors(corsOptions));
-app.options('*', cors());
 app.use(cookieParser());
 app.use(express.json());
 app.use(bodyParser.json());
