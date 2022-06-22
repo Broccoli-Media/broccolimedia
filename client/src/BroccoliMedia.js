@@ -8,7 +8,6 @@ import NotFound from './Mainpage/views/404';
 import ScrollReveal from './Mainpage/utils/ScrollReveal';
 import { AuthContext } from "./Mainpage/context/AuthContext.js";
 import { DarkModeContext } from "./Mainpage/context/darkModeContext.js";
-import useFetch from './Mainpage/components/hooks/UseFetch'
 
 // Dashboard Components
 // import Dashboard from './Dashboard/Dashboard';
@@ -42,9 +41,6 @@ const BroccoliMedia = () => {
 		childRef.current.init();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [location]);
-
-	const curPathEle = window.location.pathname.split('/'); //yields: "/js" (where snippets run)
-	const { data, loading } = useFetch(`https://broccolimedia.herokuapp.com/user/` + curPathEle[curPathEle.length - 1]);
 	
 	return (
 		<div className={darkMode ? "app dark" : "app"}>
@@ -65,7 +61,7 @@ const BroccoliMedia = () => {
 										<Profile user={user} isLoading={userLoading} />
 									</ProtectedRoute>
 								} />
-								<Route path=":username" element={<ProfileShow user={data} isLoading={loading} />} />
+								<Route path=":username" element={<ProfileShow />} />
 							</Route>
 
 						</Route>

@@ -6,7 +6,7 @@ import {
 	CheckboxContainer, CheckboxControl, CheckboxSingleControl, InputControl, NumberInputControl, PercentComplete,
 	RadioGroupControl, ResetButton, SelectControl, SliderControl, SubmitButton, SwitchControl, TextareaControl
 } from "formik-chakra-ui";
-import Axios, { config } from "../../Mainpage/utils/Axios"
+import Axios from "../../Mainpage/utils/Axios"
 
 function AddUser() {
 
@@ -52,7 +52,7 @@ function AddUser() {
 		try {
 
 			console.log(info)
-			await Axios.post('/user/:id', info, config);
+			await Axios.post('/user/:id', info);
 		} catch (err) {
 			console.log(err);
 		}
