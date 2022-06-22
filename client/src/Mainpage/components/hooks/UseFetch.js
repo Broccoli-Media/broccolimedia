@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
+const config = {
+    headers: {
+        "Access-Control-Allow-Origin": ['https://broccolimedia.net/', 'http://localhost:3000', 'https://broccolimedia.herokuapp.com/', 'http://localhost:5000'],
+        "Access-Control-Allow-Methods": ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
+        "Access-Control-Allow-Headers": ['Origin', ' Content - Type', 'X - Auth - Token']
+    }
+};
 
 const useFetch = (url) => {
     const [data, setData] = useState([]);
@@ -11,7 +18,7 @@ const useFetch = (url) => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                const res = await axios.get(url);
+                const res = await axios.get(url, config);
                 setData(res.data);
             } catch (err) {
                 setError(err);
@@ -24,7 +31,7 @@ const useFetch = (url) => {
     const reFetch = async () => {
         setLoading(true);
         try {
-            const res = await axios.get(url);
+            const res = await axios.get(url, config);
             setData(res.data);
         } catch (err) {
             setError(err);

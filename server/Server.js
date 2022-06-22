@@ -15,10 +15,11 @@ const PORT = process.env.PORT || 5000;
 const STATUS_500 = 500;
 const app = express();
 dotenv.config();
-// 
+
 const corsOptions = {
 	origin: ['https://broccolimedia.net/', 'http://localhost:3000', 'https://broccolimedia.herokuapp.com/', 'http://localhost:5000'],
 	methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
+	headers: ['Origin',' Content-Type', 'X-Auth-Token'],
 	credentials: true,            //access-control-allow-credentials:true
 	optionSuccessStatus: 200
 };

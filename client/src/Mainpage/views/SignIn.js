@@ -59,11 +59,11 @@ const SignIn = ({
     const [nouser, setNouser] = useState(false);
     const [nopass, setpass] = useState(false);
 
-
     const config = {
         headers: {
             "Access-Control-Allow-Origin": ['https://broccolimedia.net/', 'http://localhost:3000', 'https://broccolimedia.herokuapp.com/', 'http://localhost:5000'],
-            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS"
+            "Access-Control-Allow-Methods": ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
+            "Access-Control-Allow-Headers": ['Origin',' Content - Type', 'X - Auth - Token']
         }
     };
 
