@@ -59,14 +59,14 @@ const SignIn = ({
     const [nouser, setNouser] = useState(false);
     const [nopass, setpass] = useState(false);
 
-    const config = {
-        headers: {
-            "Access-Control-Allow-Origin": 'https://broccolimedia.net/, http://localhost:3000',
-            "Access-Control-Allow-Methods": 'GET,POST,DELETE,UPDATE,PUT,PATCH,OPTIONS',
-            "Access-Control-Allow-Headers": "X-Requested-With, Access-Control-Request-Method, Access-Control-Request-Headers, Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token, application/json",
-            "Access-Control-Allow-Credentials": true
-        }
-    };
+    // const config = {
+    //     headers: {
+    //         "Access-Control-Allow-Origin": 'https://broccolimedia.net/, http://localhost:3000',
+    //         "Access-Control-Allow-Methods": 'GET,POST,DELETE,UPDATE,PUT,PATCH,OPTIONS',
+    //         "Access-Control-Allow-Headers": "X-Requested-With, Access-Control-Request-Method, Access-Control-Request-Headers, Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token, application/json",
+    //         "Access-Control-Allow-Credentials": true
+    //     }
+    // };
 
     const handleClick = async (e) => {
         if ((credentials.username === undefined)) { setNouser(true); }
@@ -75,7 +75,7 @@ const SignIn = ({
         if ((credentials.username !== undefined) && (credentials.password !== undefined)) {
             dispatch({ type: "SIGNIN_START" });
             try {
-                const res = await Axios.post("/auth/signin", credentials, config);
+                const res = await Axios.post("/auth/signin", credentials);
                 dispatch({ type: "SIGNIN_SUCCESS", payload: res.data.details });
                 navigate("/")
             } catch (err) {
