@@ -24,7 +24,7 @@ function PersonalShow(props) {
 				<>
 					<Avatar
 						size="2xl"
-						name={user.displayname}
+						name={user.displayName}
 						cursor="pointer"
 						onClick={() => {
 							setOverlay(<OverlayOne />)
@@ -36,10 +36,10 @@ function PersonalShow(props) {
 
 					<VStack spacing={2}>
 						<Heading as="h3" fontSize="xl" color="brand.dark">
-							{user.displayname}
+							{user.displayName}
 						</Heading>
 						<Text color="brand.gray" fontSize="xl">
-							{user.userTitle}
+							{user.livingCity}
 						</Text>
 					</VStack>
 				</>)
@@ -50,7 +50,7 @@ function PersonalShow(props) {
 			<Modal isCentered isOpen={isOpen} onClose={onClose}>
 				{overlay}
 				<ModalContent>
-					<ModalHeader>{user.displayname}</ModalHeader>
+					<ModalHeader>{user.displayName}</ModalHeader>
 					<ModalCloseButton />
 					<ModalBody>
 						<Image boxSize='80%' src={user.img} alt={user.username} />

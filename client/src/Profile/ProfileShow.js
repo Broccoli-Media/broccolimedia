@@ -8,20 +8,16 @@ import { theme } from '../Assets/scss/settings/profile/extendTheme';
 import Header from "../Mainpage/components/layout/Header";
 import Footer from "../Mainpage/components/layout/Footer"
 
-import useFetch from '../Mainpage/components/hooks/UseFetch'
-import { useParams } from 'react-router-dom';
-
 export default function ProfileShow(props) {
-    const path = useParams();    
-    const username = path.username;
-    const { data, loading } = useFetch(`https://broccolimedia.herokuapp.com/user/` + username);
+    const isLoading = props.isLoading;
+    const user = props.user;
 
     return (
         <ChakraProvider theme={theme}>
             <Header />
             <Cover />
             <Container display={{ base: 'block', md: 'flex' }} maxW="1240px">
-                <SidebarShow user={data} isLoading={loading} />
+                <SidebarShow user={user} isLoading={isLoading} />
             </Container>
             <Footer />
         </ChakraProvider>
