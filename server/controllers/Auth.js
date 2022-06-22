@@ -12,7 +12,7 @@ export const register = async (req, res, next) => {
 	try {
 		const existingEmail = await User.findOne({ email: req.body.email });
 		const existingUser = await User.findOne({ username: req.body.username });
-		const existingPhone = await User.findOne({ username: req.body.username });
+		const existingPhone = await User.findOne({ phone: req.body.phone });
 
 		if (existingEmail) {
 			return res

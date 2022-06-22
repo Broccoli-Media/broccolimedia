@@ -4,17 +4,17 @@ import {
 	ModalContent, ModalFooter, ModalHeader, ModalOverlay, SkeletonCircle, Text, useDisclosure, VStack
 } from '@chakra-ui/react'
 
-function Personal(user, isLoading) {
-	const [userProfile, setUserProfile] = useState(null)
+function Personal(props) {
+	const isLoading = props.isLoading;
+	const user = props.user;
 
+	const [userProfile, setUserProfile] = useState(null)
 	const { isOpen, onOpen, onClose } = useDisclosure()
 	const profileImage = useRef(null)
 
 	const openChooseImage = () => {
 		profileImage.current.click()
 	}
-
-	const cur_user = user.user;
 
 	const changeProfileImage = event => {
 		const ALLOWED_TYPES = ['image/png', 'image/jpeg', 'image/jpg']
@@ -31,14 +31,14 @@ function Personal(user, isLoading) {
 
 	return (
 		<VStack spacing={3} py={5} borderBottomWidth={1} borderColor="brand.light">
-			{isLoading ? (
+			{!isLoading ? (
 				<>
 					<Avatar
 						size="2xl"
 						name={user.username}
 						cursor="pointer"
 						onClick={openChooseImage}
-						src={userProfile ? userProfile : cur_user.img}
+						src={userProfile ? userProfile : user.img}
 					>
 						<AvatarBadge bg="brand.blue" boxSize="1em">
 							<svg width="0.4em" fill="currentColor" viewBox="0 0 20 20">
@@ -58,10 +58,10 @@ function Personal(user, isLoading) {
 					/>
 					<VStack spacing={1}>
 						<Heading as="h3" fontSize="xl" color="brand.dark">
-							{cur_user.username}
+							{user.username}
 						</Heading>
 						<Text color="brand.gray" fontSize="sm">
-							{cur_user.userTitle}
+							{user.userTitle}
 						</Text>
 					</VStack>
 				</>)

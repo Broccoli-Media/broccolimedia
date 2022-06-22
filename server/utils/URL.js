@@ -2,13 +2,13 @@ let URLs = {};
 
 if (process.env.NODE_ENV === "production") {
     URLs = {
-        baseURL: "/api",
-        socketURL: "https://broccolimedia.net/api",
+        baseURL: "https://broccolimedia.herokuapp.com/",
+        socketURL: "https://broccolimedia.herokuapp.com/",
     };
 } else {
     URLs = {
-        baseURL: "http://localhost:5000/api",
-        socketURL: "http://localhost:5000/api",
+        baseURL: "http://localhost:5000/",
+        socketURL: "http://localhost:5000/",
     }
 }
 

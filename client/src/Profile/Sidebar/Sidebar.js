@@ -5,12 +5,13 @@ import { Public } from './Actions'
 import Data from './Data'
 import Personal from './Personal'
 
-function Sidebar(user, isLoading) {
-	const cur_user = user.user;
+function Sidebar(props) {
+	const isLoading = props.isLoading;
+	const user = props.user;
 
 	return (
 		<>
-			{isLoading ?
+			{!isLoading ?
 				(<Box
 					as="aside"
 					flex={1}
@@ -22,9 +23,9 @@ function Sidebar(user, isLoading) {
 					borderColor="brand.light"
 					style={{ transform: 'translateY(-100px)' }}
 				>
-					<Personal user={cur_user} isLoading={isLoading} />
-					<Data user={cur_user} isLoading={isLoading} />
-					<Public user={cur_user} isLoading={isLoading} />
+					<Personal user={user} isLoading={isLoading} />
+					<Data user={user}/>
+					<Public user={user} isLoading={isLoading} />
 				</Box>) :
 				(<Box
 					as="aside"

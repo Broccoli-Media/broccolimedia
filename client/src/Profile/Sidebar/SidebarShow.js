@@ -4,11 +4,12 @@ import { Box, Skeleton, SkeletonCircle } from '@chakra-ui/react'
 import DataShow from './DataShow'
 import PersonalShow from './PersonalShow'
 
-function SidebarShow(user, isLoading) {
-	const cur_user = user.user;
+function SidebarShow(props) {
+	const isLoading = props.isLoading;
+	const user = props.user;
 
 	return (
-		<>{isLoading ?
+		<>{!isLoading ?
 			(<Box
 				as="aside"
 				flex={1}
@@ -20,8 +21,8 @@ function SidebarShow(user, isLoading) {
 				borderColor="brand.light"
 				style={{ transform: 'translateY(-100px)' }}
 			>
-				<PersonalShow user={cur_user} isLoading={isLoading} />
-				<DataShow user={cur_user} isLoading={isLoading} />
+				<PersonalShow user={user} isLoading={isLoading} />
+				<DataShow user={user} />
 			</Box>)
 			:
 			(<Box
