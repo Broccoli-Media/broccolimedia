@@ -56,10 +56,10 @@ const BroccoliMedia = () => {
 							{/* For Personal Profile */}
 							<Route path="profile">
 								<Route path={`in/:username`} element={
-										<ProtectedRoute>
-											<Profile />
-										</ProtectedRoute>
-									} />
+									<ProtectedRoute>
+										<Profile />
+									</ProtectedRoute>
+								} />
 								<Route path="public/:id" element={<ProfileShow />} />
 							</Route>
 
