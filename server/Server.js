@@ -32,7 +32,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use((req, res, next) => {
 	res.header("Access-Control-Allow-Methods", "POST, PUT, OPTIONS, DELETE, GET, UPDATE, PATCH");
-	res.header("Access-Control-Allow-Origin", "http://localhost:3000, https://broccolimedia.net/");
+	res.header("Access-Control-Allow-Origin", "*");
 	res.header("Access-Control-Allow-Headers", "X-Requested-With, Access-Control-Request-Method, Access-Control-Request-Headers, Origin, Content-Type, Accept");
 	res.header("Access-Control-Allow-Credentials", true);
 	next();
