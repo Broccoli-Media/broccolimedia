@@ -18,7 +18,7 @@ dotenv.config();
 
 const corsOptions = {
 	origin: ['https://broccolimedia.net/', 'http://localhost:3000', 'https://broccolimedia.herokuapp.com/', 'http://localhost:5000'],
-	methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH'],
+	methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH', 'OPTIONS'],
 	headers: ['Origin',' Content-Type', 'X-Auth-Token'],
 	credentials: true,            //access-control-allow-credentials:true
 	optionSuccessStatus: 200
