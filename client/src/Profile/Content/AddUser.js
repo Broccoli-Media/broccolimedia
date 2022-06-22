@@ -17,7 +17,7 @@ function AddUser() {
 		displayname: "",
 		password: "",
 		email: "",
-		socialMedia: [{name:"facebook", link:"", followers: 0}],
+		socialMedia: [{ name: "facebook", link: "", followers: 0 }],
 		workingType: ["text"],
 		livingcity: "",
 		phone: "",
@@ -33,7 +33,7 @@ function AddUser() {
 		select: Yup.string().required(),
 		foo: Yup.number(),
 		bar: Yup.string(),
-		
+
 	});
 
 	const [info, setInfo] = useState({});

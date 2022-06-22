@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "../utils/Axios.js";
+import Axios from "../utils/Axios.js";
 import classNames from 'classnames';
 import { Alert } from "@chakra-ui/react";
 // import important components 
@@ -65,7 +65,7 @@ const SignIn = ({
         if ((credentials.username !== undefined) && (credentials.password !== undefined)) {
             dispatch({ type: "SIGNIN_START" });
             try {
-                const res = await axios.post("/auth/signin", credentials);
+                const res = await Axios.post("/auth/signin", credentials);
                 dispatch({ type: "SIGNIN_SUCCESS", payload: res.data.details });
                 navigate("/")
             } catch (err) {

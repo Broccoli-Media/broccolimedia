@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Avatar, Heading, Text, VStack, ModalOverlay, useDisclosure, Modal, ModalContent, 
-		ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button, Image } from '@chakra-ui/react'
+import {
+	Avatar, Heading, Text, VStack, ModalOverlay, useDisclosure, Modal, ModalContent,
+	ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button, Image, SkeletonCircle
+} from '@chakra-ui/react'
 
-function PersonalShow(user) {
+function PersonalShow(user, isLoading) {
 	const cur_user = user.user;
 	const OverlayOne = () => (
 		<ModalOverlay
@@ -16,26 +18,32 @@ function PersonalShow(user) {
 
 	return (
 		<VStack spacing={3} py={5} borderBottomWidth={1} borderColor="brand.light">
-			<Avatar
-				size="2xl"
-				name={user.displayname}
-				cursor="pointer"
-				onClick={() => {
-					setOverlay(<OverlayOne />)
-					onOpen()
-				}}
-				src={cur_user.img}
-			>
-			</Avatar>
+			{isLoading ? (
+				<>
+					<Avatar
+						size="2xl"
+						name={user.displayname}
+						cursor="pointer"
+						onClick={() => {
+							setOverlay(<OverlayOne />)
+							onOpen()
+						}}
+						src={cur_user.img}
+					>
+					</Avatar>
 
-			<VStack spacing={2}>
-				<Heading as="h3" fontSize="xl" color="brand.dark">
-					{cur_user.displayname}
-				</Heading>
-				<Text color="brand.gray" fontSize="xl">
-					{cur_user.userTitle}
-				</Text>
-			</VStack>
+					<VStack spacing={2}>
+						<Heading as="h3" fontSize="xl" color="brand.dark">
+							{cur_user.displayname}
+						</Heading>
+						<Text color="brand.gray" fontSize="xl">
+							{cur_user.userTitle}
+						</Text>
+					</VStack>
+				</>)
+				:
+				(<SkeletonCircle size='160' />)
+			}
 
 			<Modal isCentered isOpen={isOpen} onClose={onClose}>
 				{overlay}

@@ -3,7 +3,7 @@ import { Button, Input, InputGroup, InputRightAddon, useClipboard, VStack, Link 
 
 export function Public(user) {
 	const cur_user = user.user;
-	const value = `https://broccolimedia.net/profile/public/${cur_user._id}`
+	const value = `https://broccolimedia.net/profile/public/${cur_user.username}`
 	const { hasCopied, onCopy } = useClipboard(value)
 
 	const profileUrl = useRef(null)
@@ -17,7 +17,7 @@ export function Public(user) {
 
 	return (
 		<VStack py={4} px={5} spacing={3}>
-			<Link isExternal href={`https://broccolimedia.net/profile/public/${cur_user._id}`}>
+			<Link isExternal href={`https://broccolimedia.net/profile/public/${cur_user.username}`}>
 				<Button w="full" variant="outline">
 				View Public Profile
 			</Button>

@@ -13,7 +13,7 @@ import Footer from "../Mainpage/components/layout/Footer"
 import { AuthContext } from "../Mainpage/context/AuthContext.js";
 
 export default function Profile() {
-    const { user } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
     const Admin = (user.Admin === true) ? true : false;
 
     return (
@@ -21,9 +21,9 @@ export default function Profile() {
             <Header />
             <Cover />
             <Container display={{ base: 'block', md: 'flex' }} maxW="container.xl">
-                <Sidebar user={user} />
-                {(!Admin && <Content user={user} />) ||
-                (Admin && <ContentAdmin user={user} />)}
+                <Sidebar user={user} isLoading={loading} />
+                {(!Admin && <Content user={user} isLoading={loading} />) ||
+                    (Admin && <ContentAdmin user={user} isLoading={loading} />)}
             </Container>
             <Footer />
         </ChakraProvider>
