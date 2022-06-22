@@ -85,10 +85,10 @@ mongoose.connection.on("disconnected", () => {
 	console.log("Fail to connect Mongoose");
 });
 
-// https://broccolimedia.herokuapp.com/test
+// https://broccolimedia.herokuapp.com/
 // Coping with cors issue
 app.use('/auth', createProxyMiddleware({
-	target: `https://broccolimedia.net/`, //original url
+	target: `https://broccolimedia.herokuapp.com/`, //original url
 	changeOrigin: true,
 	//secure: false,
 	onProxyRes: function (proxyRes, req, res) {
@@ -96,7 +96,7 @@ app.use('/auth', createProxyMiddleware({
 	}
 }), authRoute);
 app.use('/user', createProxyMiddleware({
-	target: `https://broccolimedia.net/`, //original url
+	target: `https://broccolimedia.herokuapp.com/`, //original url
 	changeOrigin: true,
 	//secure: false,
 	onProxyRes: function (proxyRes, req, res) {
