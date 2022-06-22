@@ -63,7 +63,7 @@ const SignIn = ({
         headers: {
             "Access-Control-Allow-Origin": 'https://broccolimedia.net/, http://localhost:3000',
             "Access-Control-Allow-Methods": 'GET,POST,DELETE,UPDATE,PUT,PATCH,OPTIONS',
-            "Access-Control-Allow-Headers": "Access-Control-Allow-Headers, X-Requested-With, Access-Control-Request-Method, Access-Control-Request-Headers, Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token, application/json",
+            "Access-Control-Allow-Headers": "X-Requested-With, Access-Control-Request-Method, Access-Control-Request-Headers, Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token, application/json",
             "Access-Control-Allow-Credentials": true
         }
     };
