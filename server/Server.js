@@ -19,7 +19,7 @@ dotenv.config();
 const corsOptions = {
 	origin: ['https://broccolimedia.net/', 'http://localhost:3000'],
 	methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH', 'OPTIONS'],
-	headers: ['Origin', 'Content-Type', 'X-Auth-Token', 'X-Requested-With', 'Accept', 'application/json', 'X-Auth-Token'],
+	headers: ['Origin', 'Content-Type', 'X-Auth-Token', 'X-Requested-With', 'Accept', 'application/json', 'X-Auth-Token', 'Access-Control-Allow-Headers', 'Access-Control-Request-Method', 'Access-Control-Request-Headers'],
 	preflightContinue: false,
 	origin: true,
 	credentials: true,            //access-control-allow-credentials:true
@@ -33,7 +33,7 @@ app.use(bodyParser.json());
 app.use((req, res, next) => {
 	res.header("Access-Control-Allow-Methods", "POST, PUT, OPTIONS, DELETE, GET, UPDATE, PATCH");
 	res.header("Access-Control-Allow-Origin", "http://localhost:3000, https://broccolimedia.net/");
-	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token, application/json");
+	res.header("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, X-Requested-With, Access-Control-Request-Method, Access-Control-Request-Headers, Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token, application/json");
 	res.header("Access-Control-Allow-Credentials", true);
 	next();
 });
