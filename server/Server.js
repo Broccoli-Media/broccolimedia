@@ -32,7 +32,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use((req, res, next) => {
 	res.header("Access-Control-Allow-Methods", "POST, PUT, OPTIONS, DELETE, GET, UPDATE, PATCH");
-	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Origin", "http://localhost:3000, https://broccolimedia.net/");
 	res.header("Access-Control-Allow-Headers", "X-Requested-With, Access-Control-Request-Method, Access-Control-Request-Headers, Origin, Content-Type, Accept");
 	res.header("Access-Control-Allow-Credentials", true);
 	next();
@@ -59,7 +59,7 @@ const connect = async () => {
 // Connect to MongoDB
 mongoose
 	.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
-	.then(() => console.log("Start running mongoose..."))
+	.then(() => console.log("Mongoose is operating"))
 	.catch((err) => console.log(err));
 
 mongoose.connection.on("disconnected", () => {
@@ -67,10 +67,6 @@ mongoose.connection.on("disconnected", () => {
 });
 
 // Coping with cors issue
-fetch("https://broccolimedia.herokuapp.com/", {
-	mode: 'no-cors'
-});
-
 app.use("/auth", authRoute);
 app.use("/user", userRoute);
 app.get('/test', (req, res) => { res.send('Broccolimedia is serving'); })
