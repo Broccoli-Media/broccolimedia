@@ -65,10 +65,10 @@ app.use("/user", userRoute);
 app.use((err, req, res, next) => {
 	const errorStatus = err.status || STATUS_500;
 	const errorMessage = err.message || "Hey! Something wrong here";
-	res.setHeader("Access-Control-Allow-Methods", "POST, PUT, OPTIONS, DELETE, GET, UPDATE, PATCH");
-	res.header("Access-Control-Allow-Origin", "http://localhost:3000, https://broccolimedia.net/");
-	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token");
-	res.header("Access-Control-Allow-Credentials", true);
+	// res.setHeader("Access-Control-Allow-Methods", "POST, PUT, OPTIONS, DELETE, GET, UPDATE, PATCH");
+	// res.header("Access-Control-Allow-Origin", "http://localhost:3000, https://broccolimedia.net/");
+	// res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token");
+	// res.header("Access-Control-Allow-Credentials", true);
 
 	return res.status(errorStatus).json({
 		success: false,
