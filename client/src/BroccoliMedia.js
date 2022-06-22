@@ -60,7 +60,7 @@ const BroccoliMedia = () => {
 										<Profile />
 									</ProtectedRoute>
 								} />
-								<Route path="public/:id" element={<ProfileShow />} />
+								<Route path="public/:username" element={<ProfileShow />} />
 							</Route>
 
 						</Route>

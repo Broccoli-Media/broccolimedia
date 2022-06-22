@@ -10,7 +10,6 @@ import cookieParser from "cookie-parser";
 import { MONGODB as db } from "./utils/Confit.js";
 import authRoute from "./routes/Auth.js";
 import userRoute from "./routes/User.js";
-import companyRoute from "./routes/Company.js";
 
 const PORT = process.env.PORT || 5000;
 const STATUS_500 = 500;
@@ -81,14 +80,12 @@ connection.once("open", () => {
 	})
 })
 
-
 mongoose.connection.on("disconnected", () => {
 	console.log("Fail to connect Mongoose");
 });
 
 app.use("/auth", authRoute);
 app.use("/user", userRoute);
-app.use("/company", companyRoute);
 
 app.use((err, req, res, next) => {
 	const errorStatus = err.status || STATUS_500;

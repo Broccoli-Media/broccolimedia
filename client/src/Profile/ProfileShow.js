@@ -12,11 +12,11 @@ import Footer from "../Mainpage/components/layout/Footer"
 
 export default function ProfileShow() {
     const suburl = useParams();
-    const id = suburl.id;
+    const username = suburl.username;
     const [show, setShow] = useState([]);
 
     const fetchData = async () => {
-        const res = await axios.get(`/user/${id}`);
+        const res = await axios.get(`/user/${username}`);
         setShow(res.data);
     }
 
