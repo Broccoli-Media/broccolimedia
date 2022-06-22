@@ -17,32 +17,26 @@ const app = express();
 dotenv.config();
 
 const corsOptions = {
-	origin: ['https://broccolimedia.net/', 'http://localhost:3000', 'https://broccolimedia.herokuapp.com/', 'http://localhost:5000'],
+	origin: ['https://broccolimedia.net/', 'http://localhost:3000'],
 	methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH', 'OPTIONS'],
-	headers: ['Origin',' Content-Type', 'X-Auth-Token'],
+	headers: ['Origin', 'Content-Type', 'X-Auth-Token', 'X-Requested-With', 'Accept', 'application/json', 'X-Auth-Token'],
+	preflightContinue: false,
+	origin: true,
 	credentials: true,            //access-control-allow-credentials:true
 	optionSuccessStatus: 200
 };
 //middlewares
-app.use(cors());
+app.use(cors(corsOptions));
 app.options('*', cors());
 app.use(cookieParser());
 app.use(express.json());
 app.use(bodyParser.json());
-app.use((err, req, res, next) => {
-	const errorStatus = err.status || STATUS_500;
-	const errorMessage = err.message || "Hey! Something wrong here";
-	res.setHeader("Access-Control-Allow-Methods", "POST, PUT, OPTIONS, DELETE, GET, UPDATE, PATCH");
+app.use((req, res, next) => {
+	res.header("Access-Control-Allow-Methods", "POST, PUT, OPTIONS, DELETE, GET, UPDATE, PATCH");
 	res.header("Access-Control-Allow-Origin", "http://localhost:3000, https://broccolimedia.net/");
-	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token");
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token, application/json");
 	res.header("Access-Control-Allow-Credentials", true);
-
-	return res.status(errorStatus).json({
-		success: false,
-		status: errorStatus,
-		message: errorMessage,
-		stack: err.stack,
-	});
+	next();
 });
 
 const server = http.createServer(app);

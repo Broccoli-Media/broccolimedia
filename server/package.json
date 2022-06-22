@@ -8,7 +8,7 @@
 		"start": "node Server.js"
 	},
 	"keywords": [],
-	"author": "",
+	"author": "Fu-Sheng",
 	"license": "ISC",
 	"dependencies": {
 		"bcryptjs": "^2.4.3",

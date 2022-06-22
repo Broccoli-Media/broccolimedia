@@ -3,9 +3,9 @@ import axios from "axios";
 
 const config = {
     headers: {
-        "Access-Control-Allow-Origin": 'https://broccolimedia.net/, http://localhost:3000, https://broccolimedia.herokuapp.com/, http://localhost:5000',
-        "Access-Control-Allow-Methods": 'GET,POST,DELETE,UPDATE,PUT,PATCH,OPTIONS',
-        "Access-Control-Allow-Headers": 'Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token',
+        "Access-Control-Allow-Origin": 'https://broccolimedia.net/, http://localhost:3000',
+        "Access-Control-Allow-Methods": 'GET, POST, DELETE, UPDATE, PUT, PATCH, OPTIONS',
+        "Access-Control-Allow-Headers": 'Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token, application/json',
         "Access-Control-Allow-Credentials": true
     }
 };
