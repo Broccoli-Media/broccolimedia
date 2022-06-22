@@ -67,6 +67,10 @@ mongoose.connection.on("disconnected", () => {
 });
 
 // Coping with cors issue
+fetch("https://broccolimedia.herokuapp.com/", {
+	mode: 'no-cors'
+});
+
 app.use("/auth", authRoute);
 app.use("/user", userRoute);
 app.get('/test', (req, res) => { res.send('Broccolimedia is serving'); })
