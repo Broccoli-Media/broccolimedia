@@ -69,7 +69,7 @@ app.use((err, req, res, next) => {
 	res.header("Access-Control-Allow-Origin", "http://localhost:3000, https://broccolimedia.net/");
 	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token");
 	res.header("Access-Control-Allow-Credentials", true);
-	next();
+
 	return res.status(errorStatus).json({
 		success: false,
 		status: errorStatus,
