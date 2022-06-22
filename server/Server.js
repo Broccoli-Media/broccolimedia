@@ -16,11 +16,18 @@ const PORT = process.env.PORT || 5000;
 const STATUS_500 = 500;
 const app = express();
 dotenv.config();
+const corsOptions = {
+	origin: 'http://localhost:3000' || 'https://broccolimedia.net/',
+	credentials: true,            //access-control-allow-credentials:true
+	optionSuccessStatus: 200
+}
 //middlewares
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(cookieParser())
 app.use(express.json());
 app.use(bodyParser.json());
+
+
 
 const server = http.createServer(app);
 const io = new Server(server);

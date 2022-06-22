@@ -6,7 +6,7 @@ import {
 	CheckboxContainer, CheckboxControl, CheckboxSingleControl, InputControl, NumberInputControl, PercentComplete,
 	RadioGroupControl, ResetButton, SelectControl, SliderControl, SubmitButton, SwitchControl, TextareaControl
 } from "formik-chakra-ui";
-import Axios from "../../Mainpage/utils/Axios"
+import Axios, { config } from "../../Mainpage/utils/Axios"
 
 function AddUser() {
 
@@ -52,7 +52,7 @@ function AddUser() {
 		try {
 
 			console.log(info)
-			await Axios.post('/user/:id', info);
+			await Axios.post('/user/:id', info, config);
 		} catch (err) {
 			console.log(err);
 		}
@@ -65,11 +65,11 @@ function AddUser() {
 				onSubmit={onSubmit}
 				validationSchema={validationSchema}
 			> */}
-				<Grid
-					templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)' }}
-					gap={6}
-				>
-					{/* <FormControl id="firstName">
+			<Grid
+				templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)' }}
+				gap={6}
+			>
+				{/* <FormControl id="firstName">
 					<FormLabel>First Name</FormLabel>
 					<Input onChange={handleChange} focusBorderColor="brand.blue" type="text" />
 				</FormControl>
@@ -102,15 +102,15 @@ function AddUser() {
 				</FormControl> */}
 
 
-				</Grid>
-				
-				<Box mt={5} py={5} px={0} borderTopWidth={1} borderColor="brand.light">
-					{/* <ButtonGroup>
+			</Grid>
+
+			<Box mt={5} py={5} px={0} borderTopWidth={1} borderColor="brand.light">
+				{/* <ButtonGroup>
 					<SubmitButton>Submit</SubmitButton>
 					<ResetButton>Reset</ResetButton>
 				</ButtonGroup> */}
-					<Button onClick={() => { handleClick(); setInfo({}); }}>Add User</Button>
-				</Box>
+				<Button onClick={() => { handleClick(); setInfo({}); }}>Add User</Button>
+			</Box>
 			{/* </Formik> */}
 		</>
 
