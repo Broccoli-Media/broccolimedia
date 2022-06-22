@@ -6,7 +6,7 @@ import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
-import { createProxyMiddleware } from 'http-proxy-middleware';
+// import { createProxyMiddleware } from 'http-proxy-middleware';
 
 import { MONGODB as db } from "./utils/Confit.js";
 import authRoute from "./routes/Auth.js";
@@ -86,30 +86,6 @@ mongoose.connection.on("disconnected", () => {
 });
 
 // Coping with cors issue
-app.use('/auth', createProxyMiddleware({
-	target: `http://localhost:5000/`, //original url
-	changeOrigin: true,
-	//secure: false,
-	onProxyRes: function (proxyRes, req, res) {
-		proxyRes.headers['Access-Control-Allow-Origin'] = '*';
-	}
-}), authRoute);
-app.use('/user', createProxyMiddleware({
-	target: `http://localhost:5000/`, //original url
-	changeOrigin: true,
-	//secure: false,
-	onProxyRes: function (proxyRes, req, res) {
-		proxyRes.headers['Access-Control-Allow-Origin'] = '*';
-	}
-}), userRoute);
-// app.use('/api', createProxyMiddleware({
-// 	target: `http://localhost:5000/`, //original url
-// 	changeOrigin: true,
-// 	//secure: false,
-// 	onProxyRes: function (proxyRes, req, res) {
-// 		proxyRes.headers['Access-Control-Allow-Origin'] = '*';
-// 	}
-// }));
 app.use("/auth", authRoute);
 app.use("/user", userRoute);
 
