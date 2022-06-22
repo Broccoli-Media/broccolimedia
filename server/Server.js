@@ -86,14 +86,22 @@ mongoose.connection.on("disconnected", () => {
 });
 
 // Coping with cors issue
-app.use('/api', createProxyMiddleware({
+app.use('/auth', createProxyMiddleware({
 	target: `http://localhost:5000/`, //original url
 	changeOrigin: true,
 	//secure: false,
 	onProxyRes: function (proxyRes, req, res) {
 		proxyRes.headers['Access-Control-Allow-Origin'] = '*';
 	}
-}));
+}), authRoute);
+app.use('/user', createProxyMiddleware({
+	target: `http://localhost:5000/`, //original url
+	changeOrigin: true,
+	//secure: false,
+	onProxyRes: function (proxyRes, req, res) {
+		proxyRes.headers['Access-Control-Allow-Origin'] = '*';
+	}
+}), userRoute);
 // app.use('/api', createProxyMiddleware({
 // 	target: `http://localhost:5000/`, //original url
 // 	changeOrigin: true,
