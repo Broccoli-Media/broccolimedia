@@ -6,7 +6,6 @@ import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
-// import { createProxyMiddleware } from 'http-proxy-middleware';
 
 import { MONGODB as db } from "./utils/Confit.js";
 import authRoute from "./routes/Auth.js";
