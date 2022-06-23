@@ -15,16 +15,16 @@ const app = express();
 dotenv.config();
 
 //middlewares
-// const corsOptions = {
-// 	origin: ['https://broccolimedia.net/', 'http://localhost:3000'],
-// 	methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH', 'OPTIONS'],
-// 	headers: ['Origin', 'Content-Type', 'X-Auth-Token', 'X-Requested-With', 'Accept', 'application/json', 'X-Auth-Token', 'Access-Control-Request-Method', 'Access-Control-Request-Headers'],
-// 	preflightContinue: false,
-// 	origin: true,
-// 	credentials: true,            //access-control-allow-credentials:true
-// 	optionSuccessStatus: 200
-// };
-app.use(cors());
+const corsOptions = {
+	origin: ['https://broccolimedia.net/', 'http://localhost:3000'],
+	methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH', 'OPTIONS'],
+	headers: ['Origin', 'Content-Type', 'X-Auth-Token', 'X-Requested-With', 'Accept', 'application/json', 'X-Auth-Token', 'Access-Control-Request-Method', 'Access-Control-Request-Headers'],
+	preflightContinue: false,
+	origin: true,
+	credentials: true,            //access-control-allow-credentials:true
+	optionSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(express.json());
 app.use(bodyParser.json());
@@ -59,16 +59,16 @@ app.use("/auth", authRoute);
 app.use("/user", userRoute);
 app.get('/test', (req, res) => { res.send('Broccolimedia is serving'); })
 
-app.use((err, req, res, next) => {
-	const errorStatus = err.status || STATUS_500;
-	const errorMessage = err.message || "Something went wrong!";
-	return res.status(errorStatus).json({
-		success: false,
-		status: errorStatus,
-		message: errorMessage,
-		stack: err.stack,
-	});
-});
+// app.use((err, req, res, next) => {
+// 	const errorStatus = err.status || STATUS_500;
+// 	const errorMessage = err.message || "Something went wrong!";
+// 	return res.status(errorStatus).json({
+// 		success: false,
+// 		status: errorStatus,
+// 		message: errorMessage,
+// 		stack: err.stack,
+// 	});
+// });
 
 // const PORT = process.env.PORT || 5000;
 app.listen(((process.env.PORT || 5000)), () => { console.log(`Listening to ${process.env.PORT || 5000}`); });
