@@ -1,12 +1,13 @@
 import { Box, Progress, Text, VStack } from '@chakra-ui/react'
 
-function DataShow(user, rank) {
+function DataShow(props) {
+	const user = props.user;
 
-	const cur_user = user.user;
+	const rank = { current: undefined }
 	const ranking = (rank.current === undefined) ? 0 : rank.current;
-	const followers = (cur_user.totalfollowers === undefined) ? 0 : cur_user.totalfollowers;
-	const companies = (cur_user.collaboratedcompaniesnumber === undefined) ? 0 : cur_user.collaboratedcompaniesnumber;
-	const curLevel = (cur_user.level === undefined) ? 1 : cur_user.level;
+	const followers = (user.totalfollowers === undefined) ? 0 : user.totalfollowers;
+	const companies = (user.collaboratedcompaniesnumber === undefined) ? 0 : user.collaboratedcompaniesnumber;
+	const curLevel = (user.level === undefined) ? 1 : user.level;
 
 	const totalLevel = 20;
 
@@ -64,7 +65,7 @@ function DataShow(user, rank) {
 				borderColor="brand.light"
 			>
 				<Text color="brand.dark" fontSize="xl">Current Level: {curLevel}</Text>
-				<Progress size='lg' colorScheme='yellow' hasStripe value={(curLevel/totalLevel)*100} />
+				<Progress size='lg' colorScheme='yellow' hasStripe value={(curLevel / totalLevel) * 100} />
 			</Box>
 
 		</VStack>

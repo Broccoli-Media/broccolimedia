@@ -11,9 +11,9 @@ const STATUS_400 = 400;
 export const register = async (req, res, next) => {
 	try {
 		const existingEmail = await User.findOne({ email: req.body.email });
+		const existingPhone = await User.findOne({ phone: req.body.phone });
 		const existingUser = await User.findOne({ username: req.body.username });
-		const existingPhone = await User.findOne({ username: req.body.username });
-
+		
 		if (existingEmail) {
 			return res
 				.status(STATUS_400)

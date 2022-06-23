@@ -17,7 +17,7 @@ function AddUser() {
 		displayname: "",
 		password: "",
 		email: "",
-		socialMedia: [{name:"facebook", link:"", followers: 0}],
+		socialMedia: [{ name: "facebook", link: "", followers: 0 }],
 		workingType: ["text"],
 		livingcity: "",
 		phone: "",
@@ -33,7 +33,7 @@ function AddUser() {
 		select: Yup.string().required(),
 		foo: Yup.number(),
 		bar: Yup.string(),
-		
+
 	});
 
 	const [info, setInfo] = useState({});
@@ -60,6 +60,11 @@ function AddUser() {
 
 	return (
 		<>
+			{/* <Formik
+				initialValues={initialValues}
+				onSubmit={onSubmit}
+				validationSchema={validationSchema}
+			> */}
 			<Grid
 				templateColumns={{ base: 'repeat(1, 1fr)', md: 'repeat(2, 1fr)' }}
 				gap={6}
@@ -98,9 +103,15 @@ function AddUser() {
 
 
 			</Grid>
+
 			<Box mt={5} py={5} px={0} borderTopWidth={1} borderColor="brand.light">
+				{/* <ButtonGroup>
+					<SubmitButton>Submit</SubmitButton>
+					<ResetButton>Reset</ResetButton>
+				</ButtonGroup> */}
 				<Button onClick={() => { handleClick(); setInfo({}); }}>Add User</Button>
 			</Box>
+			{/* </Formik> */}
 		</>
 
 	)
