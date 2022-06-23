@@ -32,9 +32,8 @@ const corsOptions = {
 	headers: ['Origin', 'Content-Type', 'X-Auth-Token', 'X-Requested-With', 'Accept', 'application/json', 'X-Auth-Token', 'Access-Control-Request-Method', 'Access-Control-Request-Headers'],
 	// preflightContinue: false,
 	credentials: true,       //access-control-allow-credentials:true
-	optionSuccessStatus: 200
 };
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 app.use(bodyParser.json());
