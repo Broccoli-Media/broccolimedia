@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Alert } from "@chakra-ui/react";
-import Axios from "../utils/Axios.js";
+import axios from "../utils/Axios.js";
 import classNames from 'classnames';
+import { Alert } from "@chakra-ui/react";
 // import important components 
 import { AuthContext } from "../context/AuthContext.js";
 import { SectionProps } from '../utils/SectionProps.js';
@@ -12,9 +12,24 @@ import Button from '../components/elements/Button';
 import Input from "../components/elements/Input";
 import Footer from '../components/layout/Footer';
 
-const propTypes = { ...SectionProps.types }
-const defaultProps = { ...SectionProps.defaults }
-const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bottomDivider, hasBgColor, invertColor, ...props }) => {
+const propTypes = {
+    ...SectionProps.types
+}
+
+const defaultProps = {
+    ...SectionProps.defaults
+}
+
+const SignIn = ({
+    className,
+    topOuterDivider,
+    bottomOuterDivider,
+    topDivider,
+    bottomDivider,
+    hasBgColor,
+    invertColor,
+    ...props
+}) => {
 
     const outerClasses = classNames(
         'signin section center-content',
@@ -31,14 +46,18 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
         bottomDivider && 'has-bottom-divider'
     );
 
-    const [credentials, setCredentials] = useState({ username: undefined, password: undefined, });
+    const [credentials, setCredentials] = useState({
+        username: undefined,
+        password: undefined,
+    });
+
+    const { loading, error, dispatch } = useContext(AuthContext);
+    const navigate = useNavigate()
+    const handleChange = (e) => {
+        setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+    };
     const [nouser, setNouser] = useState(false);
     const [nopass, setpass] = useState(false);
-
-    const navigate = useNavigate()
-    const { user, loading, error, dispatch } = useContext(AuthContext);
-    const handleChange = (e) => { setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value })); };
-
     const handleClick = async (e) => {
         if ((credentials.username === undefined)) { setNouser(true); }
         if ((credentials.password === undefined)) { setpass(true); }
@@ -46,7 +65,7 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
         if ((credentials.username !== undefined) && (credentials.password !== undefined)) {
             dispatch({ type: "SIGNIN_START" });
             try {
-                const res = await Axios.post("/auth/signin", credentials);
+                const res = await axios.post("/auth/signin", credentials);
                 dispatch({ type: "SIGNIN_SUCCESS", payload: res.data.details });
                 navigate("/")
             } catch (err) {
@@ -56,9 +75,12 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
     };
 
     const handleKeypress = (e) => {
-        // if (e.key === "Enter") { handleClick(e); }
+        if (e.key === "Enter") {
+            handleClick(e);
+        }
     };
 
+    const { user } = useContext(AuthContext);
     useEffect(() => {
         if (user) { navigate("/profile") }
     });
@@ -113,7 +135,7 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
                                     </Alert>}
                                     <br />
                                     <br />
-                                    <Button className="button button-golden button-wide-mobile" disabled={loading} onClick={handleClick} wideMobile>
+                                    <Button disabled={loading} onClick={handleClick} tag="a" color="button-gold" wideMobile>
                                         Get Started
                                     </Button>
                                 </div>

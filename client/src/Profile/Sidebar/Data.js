@@ -1,13 +1,12 @@
 import { Box, Progress, Text, VStack } from '@chakra-ui/react'
 
-function Data(props) {
-	const rank = { current: undefined }
-	const user = props.user;
+function Data(user, rank) {
 
+	const cur_user = user.user;
 	const ranking = (rank.current === undefined) ? 0 : rank.current;
-	const followers = (user.totalfollowers === undefined) ? 0 : user.totalfollowers;
-	const companies = (user.collaboratedcompaniesnumber === undefined) ? 0 : user.collaboratedcompaniesnumber;
-	const curLevel = (user.level === undefined) ? 1 : user.level;
+	const followers = (cur_user.totalfollowers === undefined) ? 0 : cur_user.totalfollowers;
+	const companies = (cur_user.collaboratedcompanies === undefined) ? 0 : cur_user.collaboratedcompanies;
+	const curLevel = (cur_user.level === undefined) ? 1 : cur_user.level;
 
 	const totalLevel = 20;
 

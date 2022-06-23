@@ -1,38 +1,30 @@
 import cors from "cors";
 import http from "http";
+import { Server } from "socket.io";
 import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
-import { Server } from "socket.io";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
-// Routers
+
+import { MONGODB as db } from "./utils/Confit.js";
 import authRoute from "./routes/Auth.js";
 import userRoute from "./routes/User.js";
+import companyRoute from "./routes/Company.js";
 
-// App settings
+const PORT = process.env.PORT || 5000;
 const STATUS_500 = 500;
 const app = express();
 dotenv.config();
+//middlewares
+app.use(cors())
+app.use(cookieParser())
 app.use(express.json());
-app.use(cookieParser());
 app.use(bodyParser.json());
-var origins = ['http://localhost:3000', 'https://broccolimedia.net/']
-var corsOptionsDelegate = function (req, callback) {
-	var corsOptions;
-	if (origins.indexOf(req.header('Origin')) !== -1) {
-		corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
-	} else {
-		corsOptions = { origin: false } // disable CORS for this request
-	}
-	callback(null, corsOptions) // callback expects two parameters: error and options
-}
-app.use(cors());
 
-
-// Socket
 const server = http.createServer(app);
 const io = new Server(server);
+
 io.of("/api/socket").on("connection", (socket) => {
 	console.log("socket.io: User connected: ", socket.id);
 	socket.on("disconnect", () => {
@@ -40,23 +32,67 @@ io.of("/api/socket").on("connection", (socket) => {
 	});
 });
 
-// Database MongoDB
+const connect = async () => {
+	try {
+		await mongoose.connect(db);
+	} catch (error) {
+		throw error;
+	}
+};
+
+// Connect to MongoDB
 mongoose
-	.connect(process.env.MONGO, { useNewUrlParser: true, useUnifiedTopology: true })
-	.then(() => console.log("MongoDB connected"))
+	.connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
+	.then(() => console.log("Start running mongoose..."))
 	.catch((err) => console.log(err));
+const connection = mongoose.connection;
+connection.once("open", () => {
+	const userChangeStream = connection.collection("users").watch();
 
-mongoose.connection.on("disconnected", () => { console.log("Fail to connect MongoDB"); });
+	userChangeStream.on("change", (change) => {
+		switch (change.operationType) {
+			case "create":
+				console.log("insertion detected at backend");
+				const user = {
+					_id: change.fullDocument._id,
+					username: change.fullDocument.username,
+					displayname: change.fullDocument.displayname,
+					email: change.fullDocument.email,
+					Admin: change.fullDocument.Admin,
+					img: change.fullDocument.img,
+					livingcity: change.fullDocument.livingcity,
+					phone: change.fullDocument.phone,
+					password: change.fullDocument.password,
+					isAdmin: change.fullDocument.isAdmin,
+					isCompanyOwner: change.fullDocument.isCompanyOwner,
+					onRevenue: change.fullDocument.onRevenue,
+				}
+				io.of("/api/socket").emit("newUser", user);
+				break;
+			case "update":
+				console.log("update detected at backend");
+				io.of("/api/socket").emit("updateUser", change.documentKey._id);
+				break;
+			case "delete":
+				console.log("deletion detected at backend")
+				io.of("/api/socket").emit("deleteUser", change.documentKey._id);
+				break;
+		}
+	})
+})
 
-// Coping with cors issue
-// app.options('*', cors(corsOptionsDelegate)); // need to use before other routes
-app.use("/auth", authRoute, cors(corsOptionsDelegate));
-app.use("/user", userRoute, cors(corsOptionsDelegate));
-app.get('/test', (req, res) => { res.send('Broccolimedia is serving'); })
+
+mongoose.connection.on("disconnected", () => {
+	console.log("Fail to connect Mongoose");
+});
+
+app.use("/auth", authRoute);
+app.use("/user", userRoute);
+app.use("/company", companyRoute);
 
 app.use((err, req, res, next) => {
 	const errorStatus = err.status || STATUS_500;
-	const errorMessage = err.message || "Something went wrong!";
+	const errorMessage = err.message || "Hey! Something wrong here";
 	return res.status(errorStatus).json({
 		success: false,
 		status: errorStatus,
@@ -65,5 +101,11 @@ app.use((err, req, res, next) => {
 	});
 });
 
-// const PORT = process.env.PORT || 5000;
-app.listen(((process.env.PORT || 5000)), () => { console.log(`Listening to ${process.env.PORT || 5000}`); });
+app.get('/test', (req, res) => {
+	res.send('Broccolimedia is serving');
+})
+
+app.listen((PORT), () => {
+	connect();
+	console.log(`Listening to ${PORT}, MongoDB connected`);
+});

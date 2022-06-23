@@ -1,9 +1,10 @@
 import { useEffect, useRef } from 'react'
+// import { Link } from "react-router-dom";
 import { Button, Input, InputGroup, InputRightAddon, useClipboard, VStack, Link } from '@chakra-ui/react'
 
-export function Public(props) {
-	const user = props.user;
-	const value = `https://broccolimedia.net/profile/${user.username}`
+export function Public(user) {
+	const cur_user = user.user;
+	const value = `https://broccolimedia.net/profile/public/${cur_user._id}/${cur_user.username}`
 	const { hasCopied, onCopy } = useClipboard(value)
 
 	const profileUrl = useRef(null)
@@ -17,7 +18,7 @@ export function Public(props) {
 
 	return (
 		<VStack py={4} px={5} spacing={3}>
-			<Link isExternal href={`https://broccolimedia.net/profile/${user.username}`}>
+			<Link isExternal href={`https://broccolimedia.net/profile/public/${cur_user._id}/${cur_user.username}`}>
 				<Button w="full" variant="outline">
 				View Public Profile
 			</Button>

@@ -1,11 +1,11 @@
 import mongoose from "mongoose";
 const UcerSchema = new mongoose.Schema(
 	{
-		firstName: {
+		firstname: {
 			type: String,
 			required: true,
 		},
-		lastName: {
+		lastname: {
 			type: String,
 			required: true,
 		},
@@ -14,7 +14,7 @@ const UcerSchema = new mongoose.Schema(
 			required: true,
 			unique: true,
 		},
-		displayName: {
+		displayname: {
 			type: String,
 			required: true,
 		},
@@ -27,15 +27,13 @@ const UcerSchema = new mongoose.Schema(
 			type: Boolean,
 			default: false,
 		},
-		isAdmin: {
-			type: Boolean,
-			default: false,
+		dateOfBirth:{
+			type: Date,
 		},
 		img: {
 			type: String,
-			default: "",
 		},
-		livingCity: {
+		livingcity: {
 			type: String,
 			required: true,
 		},
@@ -48,6 +46,10 @@ const UcerSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
+		isAdmin: {
+			type: Boolean,
+			default: false,
+		},
 		isCompanyOwner: {
 			type: Boolean,
 			default: false
@@ -56,46 +58,36 @@ const UcerSchema = new mongoose.Schema(
 			type: Boolean,
 			default: false,
 		},
-		workingType: {
-			type: Array,
-			default: []
-		},
-		socialMedia: {
-			type: [{
-				name: {
-					type: String,
-				},
-				link: {
-					type: String,
-				},
-				followers: {
-					type: Number,
-				}
-			}],
-			default: []
-		},
+		workingType: [{
+			type: String,
+		}],
+		socialMedia: [{
+			name: {
+				type: String,
+			},
+			link: {
+				type: String,
+			},
+			followers: {
+				type: Number,
+			}
+		}],
 		totalfollowers: {
 			type: Number,
-			default: 0,
 		},
 		level: {
 			type: Number,
-			default: 1,
 		},
-		collaboratedcompanies: {
-			type: [{
-				name: {
-					type: String,
-				},
-				times: {
-					type: Number,
-				},
-			}],
-			default: [],
-		},
+		collaboratedcompanies:[{
+			name: {
+				type: String,
+			},
+			times: {
+				type: Number,
+			},
+		}],
 		collaboratedcompaniesnumber: {
 			type: Number,
-			default: 0,
 		}
 	},
 	{ timestamps: true }
