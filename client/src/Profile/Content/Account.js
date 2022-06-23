@@ -12,19 +12,19 @@ function Account(user) {
 			<FormControl id="firstName">
 				<FormLabel>First Name</FormLabel>
 				<Text color="brand.dark" fontSize="lg">
-					{cur_user.firstname}
+					{cur_user.firstName}
 				</Text>
 			</FormControl>
 			<FormControl id="lastName">
 				<FormLabel>Last Name</FormLabel>
 				<Text color="brand.dark" fontSize="lg">
-					{cur_user.lastname}
+					{cur_user.lastName}
 				</Text>
 			</FormControl>
 			<FormControl id="displayname">
 				<FormLabel>Display Name</FormLabel>
 				<Text color="brand.dark" fontSize="lg">
-					{cur_user.displayname}
+					{cur_user.displayName}
 				</Text>
 			</FormControl>
 			<FormControl id="phoneNumber">
@@ -42,13 +42,13 @@ function Account(user) {
 			<FormControl id="city">
 				<FormLabel>Your Living City</FormLabel>
 				<Text color="brand.dark" fontSize="lg">
-					{cur_user.livingcity}
+					{cur_user.livingCity}
 				</Text>
 			</FormControl>
 			<FormControl id="revenue">
 				<FormLabel>On Revenue</FormLabel>
 				<Text color="brand.dark" fontSize="lg">
-					{(cur_user.onrevenue && "Yes") || ((!cur_user.onrevenue || cur_user === false) && "No")}
+					{(cur_user.onRevenue && "Yes") || ((!cur_user.onRevenue) && "No")}
 				</Text>
 			</FormControl>
 			{/* <FormControl id="revenue">

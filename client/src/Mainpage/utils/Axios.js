@@ -1,7 +1,7 @@
 import _axios from "axios";
 
 const Axios = () => {
-    const instance = _axios.create({ baseURL: "https://broccolimedia.herokuapp.com/" });
+    const instance = _axios.create({ baseURL: "http://localhost:5000/" });
     return instance;
 }
 
