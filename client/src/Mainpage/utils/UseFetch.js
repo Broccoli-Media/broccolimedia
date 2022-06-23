@@ -1,15 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const config = {
-    headers: {
-        "Access-Control-Allow-Origin": 'https://broccolimedia.net/, http://localhost:3000',
-        "Access-Control-Allow-Methods": 'GET, POST, DELETE, UPDATE, PUT, PATCH, OPTIONS',
-        "Access-Control-Allow-Headers": 'X-Requested-With, Access-Control-Request-Method, Access-Control-Request-Headers, Origin, X-Requested-With, Content-Type, Accept, X-Auth-Token, application/json',
-        "Access-Control-Allow-Credentials": true
-    }
-};
-
 const useFetch = (url) => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -19,7 +10,7 @@ const useFetch = (url) => {
         const fetchData = async () => {
             setLoading(true);
             try {
-                const res = await axios.get(url, config);
+                const res = await axios.get(url);
                 setData(res.data);
             } catch (err) {
                 setError(err);
@@ -32,7 +23,7 @@ const useFetch = (url) => {
     const reFetch = async () => {
         setLoading(true);
         try {
-            const res = await axios.get(url, config);
+            const res = await axios.get(url);
             setData(res.data);
         } catch (err) {
             setError(err);
