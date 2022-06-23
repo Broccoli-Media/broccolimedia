@@ -14,10 +14,21 @@ import userRoute from "./routes/User.js";
 const STATUS_500 = 500;
 const app = express();
 dotenv.config();
-app.use(cors());
-app.use(cookieParser());
 app.use(express.json());
+app.use(cookieParser());
 app.use(bodyParser.json());
+var origins = ['http://localhost:3000', 'https://broccolimedia.net/']
+var corsOptionsDelegate = function (req, callback) {
+	var corsOptions;
+	if (origins.indexOf(req.header('Origin')) !== -1) {
+		corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
+	} else {
+		corsOptions = { origin: false } // disable CORS for this request
+	}
+	callback(null, corsOptions) // callback expects two parameters: error and options
+}
+app.use(cors());
+
 
 // Socket
 const server = http.createServer(app);
@@ -38,9 +49,9 @@ mongoose
 mongoose.connection.on("disconnected", () => { console.log("Fail to connect MongoDB"); });
 
 // Coping with cors issue
-app.options('*', cors()); // need to use before other routes
-app.use("/auth", authRoute);
-app.use("/user", userRoute);
+// app.options('*', cors(corsOptionsDelegate)); // need to use before other routes
+app.use("/auth", authRoute, cors(corsOptionsDelegate));
+app.use("/user", userRoute, cors(corsOptionsDelegate));
 app.get('/test', (req, res) => { res.send('Broccolimedia is serving'); })
 
 app.use((err, req, res, next) => {

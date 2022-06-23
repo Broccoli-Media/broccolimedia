@@ -56,7 +56,7 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
     };
 
     const handleKeypress = (e) => {
-        if (e.key === "Enter") { handleClick(e); }
+        // if (e.key === "Enter") { handleClick(e); }
     };
 
     useEffect(() => {
@@ -113,7 +113,7 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
                                     </Alert>}
                                     <br />
                                     <br />
-                                    <Button disabled={loading} onClick={handleClick} tag="a" color="button-gold" wideMobile>
+                                    <Button className="button button-golden button-wide-mobile" disabled={loading} onClick={handleClick} wideMobile>
                                         Get Started
                                     </Button>
                                 </div>
