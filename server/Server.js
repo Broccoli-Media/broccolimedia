@@ -28,8 +28,8 @@ const corsOptions = {
 		}
 		return callback(null, true);
 	},
-	// methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH', 'OPTIONS'],
-	// headers: ['Origin', 'Content-Type', 'X-Auth-Token', 'X-Requested-With', 'Accept', 'application/json', 'X-Auth-Token', 'Access-Control-Request-Method', 'Access-Control-Request-Headers'],
+	methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH', 'OPTIONS'],
+	headers: ['Origin', 'Content-Type', 'X-Auth-Token', 'X-Requested-With', 'Accept', 'application/json', 'X-Auth-Token', 'Access-Control-Request-Method', 'Access-Control-Request-Headers'],
 	// preflightContinue: false,
 	credentials: true,       //access-control-allow-credentials:true
 	optionSuccessStatus: 200
@@ -65,6 +65,7 @@ mongoose.connection.on("disconnected", () => { console.log("Fail to connect Mong
 // });
 
 // Coping with cors issue
+app.options('*', cors()); // need to use before other routes
 app.use("/auth", authRoute);
 app.use("/user", userRoute);
 app.get('/test', (req, res) => { res.send('Broccolimedia is serving'); })
