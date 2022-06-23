@@ -16,12 +16,12 @@ dotenv.config();
 
 //middlewares
 const corsOptions = {
-	origin: ['https://broccolimedia.net/', 'http://localhost:3000'],
+	Origin: ['https://broccolimedia.net/', 'http://localhost:3000'],
 	methods: ['GET', 'POST', 'DELETE', 'UPDATE', 'PUT', 'PATCH', 'OPTIONS'],
 	headers: ['Origin', 'Content-Type', 'X-Auth-Token', 'X-Requested-With', 'Accept', 'application/json', 'X-Auth-Token', 'Access-Control-Request-Method', 'Access-Control-Request-Headers'],
-	preflightContinue: false,
+	// preflightContinue: false,
 	origin: true,
-	credentials: true,            //access-control-allow-credentials:true
+	credentials: true,       //access-control-allow-credentials:true
 	optionSuccessStatus: 200
 };
 app.use(cors(corsOptions));
