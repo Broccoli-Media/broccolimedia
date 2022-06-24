@@ -25,6 +25,15 @@ function checkStatus(err, req, res, next) {
 		stack: err.stack,
 	});
 }
+// Coping with cors issue
+function corsSetting(req, res, next) {
+	// https://broccolimedia.net/
+	res.header('Access-Control-Allow-Origin', 'https://broccolimedia.net/');
+	res.header('Access-Control-Allow-Methods', '*');
+	res.header('Access-Control-Allow-Headers', '*');
+	res.header('Access-Control-Allow-Credentials', true);
+	next();
+};
 // Database MongoDB
 mongoose
 	.connect(process.env.MONGO, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -32,16 +41,8 @@ mongoose
 	.catch((err) => console.log(err));
 
 mongoose.connection.on("disconnected", () => { console.log("Fail to connect MongoDB"); });
-// Coping with cors issue
-app.use(cors());
-app.use((req, res, next) => {
-	res.header('Access-Control-Allow-Origin', 'https://broccolimedia.net/');
-	res.header('Access-Control-Allow-Methods', '*');
-	res.header('Access-Control-Allow-Headers', '*');
-	res.header('Access-Control-Allow-Credentials', true);
-	next();
-});
 // Middleware
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.json());
@@ -55,8 +56,9 @@ app.use(checkStatus);
 // 		console.log("socket.io: User disconnected: ", socket.id);
 // 	});
 // });
-app.use("/auth", authRoute);
-app.use("/user", userRoute);
+app.options('*', cors());
+app.use("/auth", authRoute, corsSetting);
+app.use("/user", userRoute, corsSetting);
 app.get('/test', testRoute);
 // const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => { console.log(`Listening to ${PORT}`); });
