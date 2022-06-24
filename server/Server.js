@@ -36,15 +36,6 @@ var corsOptions ={
 	cren
 }
 app.use(cors());
-app.use((req, res, next) => {
-	res.header("Access-Control-Exposed-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-	res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, UPDATE");
-	res.header("Access-Control-Allow-Origin", 'https://broccolimedia.net');	
-	res.header("Access-Control-Allow-Credentials", true);
-	res.header("Access-Control-Max-Age", 1728000);
-	next();
-})
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.json());
@@ -66,6 +57,15 @@ mongoose.connection.on("disconnected", () => { console.log("Fail to connect Mong
 // 	});
 // });
 // Routes
+app.use((req, res, next) => {
+	res.header("Access-Control-Allow-Origin", 'https://broccolimedia.net');
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	res.header("Access-Control-Exposed-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+	res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, UPDATE");
+	res.header("Access-Control-Allow-Credentials", true);
+	res.header("Access-Control-Max-Age", 1728000);
+	next();
+})
 app.use("/auth", authRoute);
 app.use("/user", userRoute);
 app.get('/test', testRoute);
