@@ -30,8 +30,8 @@ dotenv.config();
 // }
 var corsOptions = {
 	'origin': "https://broccolimedia.net",
-	'allowedHeaders': '*',
-	'exposedHeaders': '*',
+	'allowedHeaders': "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options",
+	'exposedHeaders': "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options",
 	'methods': "GET,HEAD,PUT,UPDATE,POST,DELETE",
 	'credential': true,
 	'preflightContinue': false,
@@ -61,8 +61,8 @@ mongoose.connection.on("disconnected", () => { console.log("Fail to connect Mong
 // Routes
 function corsSet (req, res, next){
 	res.header("Access-Control-Allow-Origin", "https://broccolimedia.net");
-	res.header("Access-Control-Allow-Headers","Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method");
-	res.header("Access-Control-Exposed-Headers", "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method");
+	res.header("Access-Control-Allow-Headers","Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options");
+	res.header("Access-Control-Exposed-Headers", "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options");
 	res.header("Access-Control-Allow-Methods", "GET, HEAD, POST, PUT, DELETE, UPDATE");
 	res.header("Access-Control-Allow-Credentials", true);
 	res.header("Access-Control-Max-Age", 1728000);

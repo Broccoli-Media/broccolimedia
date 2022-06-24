@@ -40,7 +40,10 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
         dispatch({ type: "SIGNIN_START" });
         try {
             // https://cors-anywhere.herokuapp.com/https://broccolimedia.herokuapp.com
-            const res = await axios.post('https://broccolimedia.herokuapp.com/auth/signin', credentials);
+            const res = await axios.post('https://broccolimedia.herokuapp.com/auth/signin', credentials, {
+                mode: 'cors',
+                credentials: 'include'
+            });
             dispatch({ type: "SIGNIN_SUCCESS", payload: res.data.details });
             navigate("/")
         } catch (err) {
