@@ -15,7 +15,6 @@ const PORT = process.env.PORT || 5000
 const STATUS_500 = 500;
 const app = express();
 dotenv.config();
-// Cors settings
 function checkStatus(err, req, res, next) {
 	const errorStatus = err.status || STATUS_500;
 	const errorMessage = err.message || "Something went wrong!";
@@ -33,17 +32,19 @@ mongoose
 	.catch((err) => console.log(err));
 
 mongoose.connection.on("disconnected", () => { console.log("Fail to connect MongoDB"); });
-// Middleware
+// Coping with cors issue
 app.use(cors());
+app.use((req, res, next) => {
+	res.header('Access-Control-Allow-Origin', 'https://broccolimedia.net/');
+	res.header('Access-Control-Allow-Methods', '*');
+	res.header('Access-Control-Allow-Headers', '*');
+	res.header('Access-Control-Allow-Credentials', true);
+	next();
+});
+// Middleware
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.json());
-app.use((req, res, next) => {
-	res.header('Access-Control-Allow-Origin', 'https://broccolimedia.net/, http://localhost:3000');
-	res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE');
-	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-	next();
-});
 app.use(checkStatus);
 // Socket
 // const server = http.createServer(app);
@@ -54,7 +55,6 @@ app.use(checkStatus);
 // 		console.log("socket.io: User disconnected: ", socket.id);
 // 	});
 // });
-// Coping with cors issue
 app.use("/auth", authRoute);
 app.use("/user", userRoute);
 app.get('/test', testRoute);

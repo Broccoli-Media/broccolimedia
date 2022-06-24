@@ -10,7 +10,6 @@ import { theme } from '../Assets/scss/settings/profile/extendTheme.js';
 // Necessary Components
 import useFetch from "../Mainpage/utils/UseFetch.js";
 
-
 export default function ProfileShow() {
     const subUrl = useParams();
     const username = subUrl.username;

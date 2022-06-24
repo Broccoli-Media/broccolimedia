@@ -1,8 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Alert } from "@chakra-ui/react";
 import classNames from 'classnames';
 // import important components 
-import Axios from "../utils/Axios.js";
+import axios from "axios";
 import { AuthContext } from "../context/AuthContext.js";
 import { SectionProps } from '../utils/SectionProps.js';
 // import other sections
@@ -38,7 +39,9 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
         e.preventDefault();
         dispatch({ type: "SIGNIN_START" });
         try {
-            const res = await Axios.post("/auth/signin", credentials, { headers: { 'Access-Control-Allow-Origin': 'https://broccolimedia.net/, http://localhost:3000' } });
+            // https://cors-anywhere.herokuapp.com/https://broccolimedia.herokuapp.com
+            const res = await axios.post('https://broccolimedia.herokuapp.com/auth/signin', credentials);
+            console.log(res);
             dispatch({ type: "SIGNIN_SUCCESS", payload: res.data.details });
             navigate("/")
         } catch (err) {
@@ -107,7 +110,7 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
                         </div>
                     </div>
                 </div>
-                {error && <span>{error.message}</span>}
+                {error && <Alert>{error.message}</Alert>}
             </div>
             <Footer />
         </section>

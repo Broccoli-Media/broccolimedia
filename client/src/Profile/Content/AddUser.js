@@ -1,59 +1,56 @@
 import React, { useState } from 'react';
 import { Box, Button, FormControl, FormLabel, Grid, Input, Select, ButtonGroup } from '@chakra-ui/react';
-import { Formik } from "formik";
-import * as Yup from "yup";
-import {
-	CheckboxContainer, CheckboxControl, CheckboxSingleControl, InputControl, NumberInputControl, PercentComplete,
-	RadioGroupControl, ResetButton, SelectControl, SliderControl, SubmitButton, SwitchControl, TextareaControl
-} from "formik-chakra-ui";
-// import important components
-import Axios from "../../Mainpage/utils/Axios";
+// import { Formik } from "formik";
+// import * as Yup from "yup";
+import axios from 'axios';
+// import {
+// 	CheckboxContainer, CheckboxControl, CheckboxSingleControl, InputControl, NumberInputControl, PercentComplete,
+// 	RadioGroupControl, ResetButton, SelectControl, SliderControl, SubmitButton, SwitchControl, TextareaControl
+// } from "formik-chakra-ui";
 
 export default function AddUser() {
 
-	const initialValues = {
-		firstName: "",
-		lastName: "",
-		username: "",
-		displayname: "",
-		password: "",
-		email: "",
-		socialMedia: [{ name: "facebook", link: "", followers: 0 }],
-		workingType: ["text"],
-		livingcity: "",
-		phone: "",
-	};
-	const validationSchema = Yup.object({
-		firstName: Yup.string().required(),
-		lastName: Yup.string().required(),
-		username: Yup.string().required(),
-		password: Yup.string(),
-		toppings: Yup.array().min(1),
-		notes: Yup.string().required(),
-		employedd: Yup.boolean().equals([true]),
-		select: Yup.string().required(),
-		foo: Yup.number(),
-		bar: Yup.string(),
-
-	});
+	// const initialValues = {
+	// 	firstName: "",
+	// 	lastName: "",
+	// 	username: "",
+	// 	displayname: "",
+	// 	password: "",
+	// 	email: "",
+	// 	socialMedia: [{ name: "facebook", link: "", followers: 0 }],
+	// 	workingType: ["text"],
+	// 	livingcity: "",
+	// 	phone: "",
+	// };
+	// const validationSchema = Yup.object({
+	// 	firstName: Yup.string().required(),
+	// 	lastName: Yup.string().required(),
+	// 	username: Yup.string().required(),
+	// 	password: Yup.string(),
+	// 	toppings: Yup.array().min(1),
+	// 	notes: Yup.string().required(),
+	// 	employedd: Yup.boolean().equals([true]),
+	// 	select: Yup.string().required(),
+	// 	foo: Yup.number(),
+	// 	bar: Yup.string(),
+	// });
 
 	const [info, setInfo] = useState({});
 
-	const onSubmit = (values) => {
+	// const onSubmit = (values) => {
 
-	};
-	const handleChange = (e) => {
-		setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
-	};
+	// };
+	// const handleChange = (e) => {
+	// 	setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+	// };
 
 	const handleClick = async (e) => {
 		e.preventDefault();
 		const data = new FormData();
 		data.append("upload_preset", "upload");
 		try {
-
 			console.log(info)
-			await Axios.post('/user/:id', info);
+			await axios.post('https://broccolimedia.herokuapp.com/user/:id', info);
 		} catch (err) {
 			console.log(err);
 		}
