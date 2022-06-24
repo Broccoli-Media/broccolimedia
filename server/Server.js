@@ -16,16 +16,6 @@ const STATUS_500 = 500;
 const app = express();
 dotenv.config();
 // Cors settings
-var whitelist = ['https://broccolimedia.net', 'https://broccolimedia.net/signin', 'https://broccolimedia.net/profile/:username', 'http://localhost:3000', 'http://localhost:3000/profile/:username', 'http://localhost:3000/signin'];
-var corsOptions = {
-	origin: function (origin, callback) {
-		if (whitelist.indexOf(origin) !== -1) {
-			callback(null, true)
-		} else {
-			callback(new Error('Not allowed by CORS'))
-		}
-	}
-}
 function checkStatus(err, req, res, next) {
 	const errorStatus = err.status || STATUS_500;
 	const errorMessage = err.message || "Something went wrong!";
@@ -49,7 +39,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use((req, res, next) => {
-	res.header('Access-Control-Allow-Origin', 'https://cors-anywhere.herokuapp.com/https://broccolimedia.net/signin, https://cors-anywhere.herokuapp.com/https://broccolimedia.net/profile/in/:username, https://cors-anywhere.herokuapp.com/https://broccolimedia.net/profile/:username');
+	res.header('Access-Control-Allow-Origin', 'https://cors-anywhere.herokuapp.com/https://broccolimedia.net/, https://cors-anywhere.herokuapp.com/https://broccolimedia.net/signin, https://cors-anywhere.herokuapp.com/https://broccolimedia.net/profile/in/:username, https://cors-anywhere.herokuapp.com/https://broccolimedia.net/profile/:username');
 	res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE');
 	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
 	next();
