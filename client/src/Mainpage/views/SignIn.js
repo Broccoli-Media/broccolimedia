@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Alert } from "@chakra-ui/react";
 import classNames from 'classnames';
+import Config from 'config';
 // import important components 
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext.js";
@@ -41,8 +42,7 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
         try {
             // https://cors-anywhere.herokuapp.com/https://broccolimedia.herokuapp.com
             const res = await axios.post('https://broccolimedia.herokuapp.com/auth/signin', credentials, {
-                mode: 'cors',
-                credentials: 'include'
+                'headers': Config.headers
             });
             dispatch({ type: "SIGNIN_SUCCESS", payload: res.data.details });
             navigate("/")
