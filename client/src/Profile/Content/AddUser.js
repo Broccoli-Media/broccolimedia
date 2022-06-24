@@ -50,7 +50,7 @@ export default function AddUser() {
 		data.append("upload_preset", "upload");
 		try {
 			console.log(info)
-			await axios.post('https://broccolimedia.herokuapp.com/user/:id', info);
+			await axios.post(`https://broccolimedia.herokuapp.com/auth/register`, info);
 		} catch (err) {
 			console.log(err);
 		}

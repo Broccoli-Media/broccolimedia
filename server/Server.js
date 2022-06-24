@@ -16,7 +16,19 @@ const STATUS_500 = 500;
 const app = express();
 dotenv.config();
 // Middleware
-app.use(cors());
+// const allowedDomains = ['http://localhost:3000', 'https://broccolimedia.net']
+// const corsSettings = () => {
+// 	let isDomainAllowed = allowedDomains.indexOf(req.header('Origin')) !== -1;
+// 	if (isDomainAllowed) {
+// 		// Enable CORS for this request
+// 		corsOptions = { origin: true }
+// 	} else {
+// 		// Disable CORS for this request
+// 		corsOptions = { origin: false }
+// 	}
+// 	callback(null, corsOptions)
+// }
+app.use(cors({ origin: true }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.json());
@@ -37,21 +49,7 @@ mongoose.connection.on("disconnected", () => { console.log("Fail to connect Mong
 // 		console.log("socket.io: User disconnected: ", socket.id);
 // 	});
 // });
-// // Routes
-// Coping with cors issue, Add headers before the routes are defined
-// app.use(function (req, res, next) {
-// 	// Website you wish to allow to connect
-// 	res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-// 	// Request methods you wish to allow
-// 	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE, UPDATE');
-// 	// Request headers you wish to allow
-// 	res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-// 	// Set to true if you need the website to include cookies in the requests sent
-// 	// to the API (e.g. in case you use sessions)
-// 	res.setHeader('Access-Control-Allow-Credentials', true);
-// 	// Pass to next layer of middleware
-// 	next();
-// });
+// Routes
 app.use("/auth", authRoute);
 app.use("/user", userRoute);
 app.get('/test', testRoute);

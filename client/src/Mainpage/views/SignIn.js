@@ -4,7 +4,6 @@ import { Alert } from "@chakra-ui/react";
 import classNames from 'classnames';
 // import important components 
 import axios from "axios";
-import UseKeyPress from "../utils/UseKeyPress.js";
 import { AuthContext } from "../context/AuthContext.js";
 import { SectionProps } from '../utils/SectionProps.js';
 // import other sections
@@ -50,7 +49,7 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
         }
     };
 
-    const handleKeypress = (e) => { if (UseKeyPress("Enter")) { handleClick(e); } };
+    const handleKeypress = (e) => { if (e.key === "Enter") { handleClick(e); } };
 
     useEffect(() => {
         if (user) {
