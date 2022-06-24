@@ -71,3 +71,19 @@ export const getUsers = async (req, res, next) => {
 		next(err);
 	}
 };
+
+export const countByCity = async (req, res, next) => {
+	const cities = req.query.liveingCity.split(",");
+	try {
+		const list = await Promise.all(
+			cities.map((city) => {
+				return User.countDocuments({ livingCity: city });
+			})
+		);
+		res.status(STATUS_200).json(list);
+
+	} catch (err) {
+		next(err);
+	}
+};
+

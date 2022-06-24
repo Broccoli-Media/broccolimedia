@@ -1,7 +1,6 @@
-import { FormControl, FormLabel, Grid, Text } from '@chakra-ui/react'
+import { FormControl, FormLabel, Grid, Text } from '@chakra-ui/react';
 
-
-function Account(user) {
+export default function Account(user) {
 	const cur_user = user.user;
 	return (
 		<Grid
@@ -61,5 +60,3 @@ function Account(user) {
 		</Grid>
 	)
 }
-
-export default Account;

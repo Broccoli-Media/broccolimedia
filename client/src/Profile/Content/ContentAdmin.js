@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Box, Button, Skeleton, Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
-import Notifications from './Notifications';
-import AddUser from './AddUser';
-import Account from './Account';
-import Settings from './Settings';
+// Import important sections
+import Notifications from './Notifications.js';
+import Settings from './Settings.js';
+import AddUser from './AddUser.js';
+import Account from './Account.js';
 
-const Content = (user, isLoading) => {
+export default function Content (user, isLoading){
 	const cur_user = user.user;
 	const [showUpdate, setShowUpdate] = useState(false);
 	const tabs = (!showUpdate) ? ['Account', 'Add User', 'Notifications'] : ['Settings', 'Add User', 'Notifications'];
@@ -89,8 +90,5 @@ const Content = (user, isLoading) => {
 				</Box>)
 			}
 		</>
-
 	)
 }
-
-export default Content

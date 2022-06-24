@@ -1,7 +1,6 @@
-import { Button, FormControl, FormLabel, Grid, Input, Select } from '@chakra-ui/react'
+import { Button, FormControl, FormLabel, Grid, Input, Select } from '@chakra-ui/react';
 
-function Settings() {
-
+export default function Settings() {
 	return (
 		<>
 			<Grid
@@ -41,5 +40,3 @@ function Settings() {
 
 	)
 }
-
-export default Settings;

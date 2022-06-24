@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
+import { Box, Button, FormControl, FormLabel, Grid, Input, Select, ButtonGroup } from '@chakra-ui/react';
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { Box, Button, FormControl, FormLabel, Grid, Input, Select, ButtonGroup } from '@chakra-ui/react'
 import {
 	CheckboxContainer, CheckboxControl, CheckboxSingleControl, InputControl, NumberInputControl, PercentComplete,
 	RadioGroupControl, ResetButton, SelectControl, SliderControl, SubmitButton, SwitchControl, TextareaControl
 } from "formik-chakra-ui";
-import Axios from "../../Mainpage/utils/Axios"
+// import important components
+import Axios from "../../Mainpage/utils/Axios";
 
-function AddUser() {
+export default function AddUser() {
 
 	const initialValues = {
 		firstName: "",
@@ -116,9 +117,6 @@ function AddUser() {
 
 	)
 }
-
-export default AddUser;
-
 
 // const initialValues = {
 // 	firstName: "",

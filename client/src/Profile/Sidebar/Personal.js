@@ -1,20 +1,17 @@
-import { useState, useRef } from 'react'
+import { useState, useRef } from 'react';
 import {
 	Avatar, AvatarBadge, Badge, Button, Heading, HStack, Modal, ModalBody, ModalCloseButton,
 	ModalContent, ModalFooter, ModalHeader, ModalOverlay, SkeletonCircle, Text, useDisclosure, VStack
-} from '@chakra-ui/react'
+} from '@chakra-ui/react';
 
 function Personal(props) {
-	const isLoading = props.isLoading;
 	const user = props.user;
+	const isLoading = props.isLoading;
 
 	const [userProfile, setUserProfile] = useState(null)
 	const { isOpen, onOpen, onClose } = useDisclosure()
 	const profileImage = useRef(null)
-
-	const openChooseImage = () => {
-		profileImage.current.click()
-	}
+	const openChooseImage = () => { profileImage.current.click() }
 
 	const changeProfileImage = event => {
 		const ALLOWED_TYPES = ['image/png', 'image/jpeg', 'image/jpg']
@@ -25,10 +22,8 @@ function Personal(props) {
 			reader.onloadend = () => setUserProfile(reader.result)
 			return reader.readAsDataURL(selected)
 		}
-
 		onOpen()
 	}
-
 	return (
 		<VStack spacing={3} py={5} borderBottomWidth={1} borderColor="brand.light">
 			{!isLoading ? (
@@ -68,7 +63,6 @@ function Personal(props) {
 				:
 				(<SkeletonCircle size='160' />)
 			}
-
 			<Modal isOpen={isOpen} onClose={onClose}>
 				<ModalOverlay />
 				<ModalContent>
@@ -91,7 +85,6 @@ function Personal(props) {
 					</ModalFooter>
 				</ModalContent>
 			</Modal>
-
 		</VStack>
 	)
 }

@@ -1,19 +1,18 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Alert } from "@chakra-ui/react";
-import Axios from "../utils/Axios.js";
 import classNames from 'classnames';
 // import important components 
+import Axios from "../utils/Axios.js";
 import { AuthContext } from "../context/AuthContext.js";
 import { SectionProps } from '../utils/SectionProps.js';
 // import other sections
-import FormHeader from '../components/elements/FormHeader'
-import Button from '../components/elements/Button';
-import Input from "../components/elements/Input";
-import Footer from '../components/layout/Footer';
+import Input from "../components/elements/Input.js";
+import Footer from '../components/layout/Footer.js';
+import Button from '../components/elements/Button.js';
+import FormHeader from '../components/elements/FormHeader.js';
 
-const propTypes = { ...SectionProps.types }
-const defaultProps = { ...SectionProps.defaults }
+const propTypes = { ...SectionProps.types };
+const defaultProps = { ...SectionProps.defaults };
 const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bottomDivider, hasBgColor, invertColor, ...props }) => {
 
     const outerClasses = classNames(
@@ -24,43 +23,35 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
         invertColor && 'invert-color',
         className
     );
-
     const innerClasses = classNames(
         'signin-inner section-inner',
         topDivider && 'has-top-divider',
         bottomDivider && 'has-bottom-divider'
     );
-
-    const [credentials, setCredentials] = useState({ username: undefined, password: undefined, });
-    const [nouser, setNouser] = useState(false);
-    const [nopass, setpass] = useState(false);
-
     const navigate = useNavigate()
     const { user, loading, error, dispatch } = useContext(AuthContext);
-    const handleChange = (e) => { setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value })); };
+    const [credentials, setCredentials] = useState({ username: undefined, password: undefined, });
 
+    // Functions
+    const handleChange = (e) => { setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value })); };
     const handleClick = async (e) => {
-        if ((credentials.username === undefined)) { setNouser(true); }
-        if ((credentials.password === undefined)) { setpass(true); }
         e.preventDefault();
-        if ((credentials.username !== undefined) && (credentials.password !== undefined)) {
-            dispatch({ type: "SIGNIN_START" });
-            try {
-                const res = await Axios.post("/auth/signin", credentials);
-                dispatch({ type: "SIGNIN_SUCCESS", payload: res.data.details });
-                navigate("/")
-            } catch (err) {
-                dispatch({ type: "SIGNIN_FAILURE", payload: err.response.data });
-            }
+        dispatch({ type: "SIGNIN_START" });
+        try {
+            const res = await Axios.post("/auth/signin", credentials);
+            dispatch({ type: "SIGNIN_SUCCESS", payload: res.data.details });
+            navigate("/")
+        } catch (err) {
+            dispatch({ type: "SIGNIN_FAILURE", payload: err.response.data });
+            navigate("/signin")
         }
     };
 
-    const handleKeypress = (e) => {
-        if (e.key === "Enter") { handleClick(e); }
-    };
+    const handleKeypress = (e) => { if (e.key === "Enter") { handleClick(e); } };
 
     useEffect(() => {
-        if (user) { navigate("/profile") }
+        if (user) { navigate(`/profile/in/${user.username}`) };
+
     });
 
     return (
@@ -71,7 +62,6 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
             <div className="container-sm">
                 <div className={innerClasses}>
                     <div className="signin-content">
-
                         <h1 className="mt-0 mb-16 reveal-from-bottom" data-reveal-delay="200">
                             <span className="Sim">
                                 <b>BM</b>
@@ -94,9 +84,6 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
                                         onKeyPress={handleKeypress}
                                         placeholder="Username"
                                     />
-                                    {nouser && <Alert status='warning' className="headerTitle">
-                                        Username cannot be empty
-                                    </Alert>}
                                     { }
                                     <br />
                                     <br />
@@ -108,24 +95,15 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
                                         onKeyPress={handleKeypress}
                                         placeholder="Password"
                                     />
-                                    {nopass && <Alert status='warning' className="headerTitle">
-                                        Password cannot be empty
-                                    </Alert>}
                                     <br />
                                     <br />
-                                    <Button className="button button-golden button-wide-mobile" disabled={loading} onClick={handleClick} wideMobile>
+
+                                    <Button className="button button-golden button-wide-mobile" tag="a" disabled={loading} onClick={handleClick}>
                                         Get Started
                                     </Button>
                                 </div>
-
                             </div>
                             <br />
-                            {/* <div className="m-0 mb-32 reveal-from-bottom" data-reveal-delay="600">
-                                <Button disabled={loading} onClick={handleClick} tag="a" color="button-gold" wideMobile>
-                                    Get Started
-                                </Button>
-                            </div> */}
-
                         </div>
                     </div>
                 </div>
@@ -135,8 +113,6 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
         </section>
     );
 }
-
 SignIn.propTypes = propTypes;
 SignIn.defaultProps = defaultProps;
-
 export default SignIn;

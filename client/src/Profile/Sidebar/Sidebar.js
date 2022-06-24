@@ -1,13 +1,13 @@
-import React from 'react'
-import { Box, Skeleton, SkeletonCircle } from '@chakra-ui/react'
+import React from 'react';
+import { Box, Skeleton, SkeletonCircle } from '@chakra-ui/react';
+// Import sections
+import Data from './Data.js';
+import Personal from './Personal.js';
+import { Public } from './Actions.js';
 
-import { Public } from './Actions'
-import Data from './Data'
-import Personal from './Personal'
-
-function Sidebar(props) {
-	const isLoading = props.isLoading;
+export default function Sidebar(props) {
 	const user = props.user;
+	const isLoading = props.isLoading;
 
 	return (
 		<>
@@ -42,8 +42,5 @@ function Sidebar(props) {
 					<Skeleton mt='8' height='400px' />
 				</Box>)}
 		</>
-
 	)
 }
-
-export default Sidebar

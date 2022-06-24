@@ -1,18 +1,20 @@
 import React, { useRef, useEffect, useContext } from 'react';
 import { useLocation, Routes, Route, Navigate } from 'react-router-dom';
 // Views 
-import Home from './Mainpage/views/Home';
-import SignIn from './Mainpage/views/SignIn';
-import NotFound from './Mainpage/views/404';
+import Home from './Mainpage/views/Home.js';
+import NotFound from './Mainpage/views/404.js';
+import SignIn from './Mainpage/views/SignIn.js';
 // Necessary Components
-import ScrollReveal from './Mainpage/utils/ScrollReveal';
+import ScrollReveal from './Mainpage/utils/ScrollReveal.js';
 import { AuthContext } from "./Mainpage/context/AuthContext.js";
 import { DarkModeContext } from "./Mainpage/context/darkModeContext.js";
 // Profile Components
-import Profile from './Profile/Profile';
-import ProfileShow from './Profile/ProfileShow';
+import Profile from './Profile/Profile.js';
+import ProfileShow from './Profile/ProfileShow.js';
 
-const BroccoliMedia = () => {
+export default function BroccoliMedia () {
+	const childRef = useRef();
+	let location = useLocation();
 	const { darkMode } = useContext(DarkModeContext);
 	const { user, userLoading } = useContext(AuthContext);
 
@@ -21,8 +23,6 @@ const BroccoliMedia = () => {
 		return children;
 	};
 
-	const childRef = useRef();
-	let location = useLocation();
 	useEffect(() => {
 		document.body.classList.add('is-loaded')
 		childRef.current.init();
@@ -37,10 +37,8 @@ const BroccoliMedia = () => {
 					<Routes>
 						<Route path="/">
 							<Route path="signin" element={<SignIn />} />
-
 							{/* For Main Usage */}
 							<Route index element={<Home />} />
-
 							{/* For Personal Profile */}
 							<Route path="profile">
 								<Route path={`in/:username`} element={
@@ -50,15 +48,12 @@ const BroccoliMedia = () => {
 								} />
 								<Route path=":username" element={<ProfileShow />} />
 							</Route>
-
 						</Route>
 						{/* For Error Page */}
 						<Route path="*" element={<NotFound />} />
 					</Routes>
-				)} />
+				)}
+			/>
 		</div>
-
 	);
 }
-
-export default BroccoliMedia;

@@ -1,15 +1,15 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import { Container, ChakraProvider } from '@chakra-ui/react';
 // Page components
-import Cover from './Cover';
-import SidebarShow from './Sidebar/SidebarShow';
-import { theme } from '../Assets/scss/settings/profile/extendTheme';
-// Page settings
-import Header from "../Mainpage/components/layout/Header";
-import Footer from "../Mainpage/components/layout/Footer"
+import Cover from './Cover.js';
+import SidebarShow from './Sidebar/SidebarShow.js';
+import Header from "../Mainpage/components/layout/Header.js";
+import Footer from "../Mainpage/components/layout/Footer.js";
+import { theme } from '../Assets/scss/settings/profile/extendTheme.js';
 // Necessary Components
-import useFetch from "../Mainpage/utils/UseFetch"
-import { useParams } from 'react-router-dom';
+import useFetch from "../Mainpage/utils/UseFetch.js";
+
 
 export default function ProfileShow() {
     const subUrl = useParams();

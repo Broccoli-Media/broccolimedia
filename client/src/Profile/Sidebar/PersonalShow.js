@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import {
 	Avatar, Heading, Text, VStack, ModalOverlay, useDisclosure, Modal, ModalContent,
 	ModalHeader, ModalCloseButton, ModalBody, ModalFooter, Button, Image, SkeletonCircle
-} from '@chakra-ui/react'
+} from '@chakra-ui/react';
 
 function PersonalShow(props) {
-	const isLoading = props.isLoading;
 	const user = props.user;
+	const isLoading = props.isLoading;
+	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	const OverlayOne = () => (
 		<ModalOverlay
@@ -14,9 +15,7 @@ function PersonalShow(props) {
 			backdropFilter='blur(10px) hue-rotate(90deg)'
 		/>
 	)
-
-	const { isOpen, onOpen, onClose } = useDisclosure();
-	const [overlay, setOverlay] = useState(<OverlayOne />)
+	const [overlay, setOverlay] = useState(<OverlayOne />);
 
 	return (
 		<VStack spacing={3} py={5} borderBottomWidth={1} borderColor="brand.light">
@@ -46,7 +45,6 @@ function PersonalShow(props) {
 				:
 				(<SkeletonCircle size='160' />)
 			}
-
 			<Modal isCentered isOpen={isOpen} onClose={onClose}>
 				{overlay}
 				<ModalContent>
@@ -63,5 +61,4 @@ function PersonalShow(props) {
 		</VStack>
 	)
 }
-
 export default PersonalShow;

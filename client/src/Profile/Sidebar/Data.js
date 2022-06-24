@@ -1,4 +1,4 @@
-import { Box, Progress, Text, VStack } from '@chakra-ui/react'
+import { Box, Progress, Text, VStack } from '@chakra-ui/react';
 
 function Data(props) {
 	const rank = { current: undefined }

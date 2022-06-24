@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react'
-import { Button, Input, InputGroup, InputRightAddon, useClipboard, VStack, Link } from '@chakra-ui/react'
+import { useEffect, useRef } from 'react';
+import { Button, Input, InputGroup, InputRightAddon, useClipboard, VStack, Link } from '@chakra-ui/react';
 
 export function Public(props) {
 	const user = props.user;
