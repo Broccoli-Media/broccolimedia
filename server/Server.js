@@ -69,8 +69,8 @@ app.use((req, res, next) => {
 	next();
 })
 app.options('*', cors());
-app.use("/auth", authRoute, cors());
-app.use("/user", userRoute, cors());
+app.use("/auth", authRoute);
+app.use("/user", userRoute);
 app.get('/test', testRoute);
 app.use((err, req, res, next) => {
 	const errorStatus = err.status || STATUS_500;
