@@ -28,14 +28,16 @@ dotenv.config();
 // 	}
 // 	callback(null, corsOptions)
 // }
-var corsOptions ={
-	origin: 'https://broccolimedia.net',
-	origin: true,
-	headers: '*',
-	methods: '*',
-	cren
+var corsOptions = {
+	'origin': 'https://broccolimedia.net',
+	'allowedHeaders': '*',
+	'exposedHeaders': '*',
+	'methods': 'GET,HEAD,PUT,UPDATE,POST,DELETE',
+	'credential': true,
+	'preflightContinue': false,
+	'maxage': 1728000
 }
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.json());
@@ -61,14 +63,14 @@ app.use((req, res, next) => {
 	res.header("Access-Control-Allow-Origin", 'https://broccolimedia.net');
 	res.header("Access-Control-Allow-Headers", '*');
 	res.header("Access-Control-Exposed-Headers", '*');
-	res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, UPDATE");
+	res.header("Access-Control-Allow-Methods", "GET, HEAD, POST, PUT, DELETE, UPDATE");
 	res.header("Access-Control-Allow-Credentials", true);
 	res.header("Access-Control-Max-Age", 1728000);
 	next();
 })
 app.options('*', cors());
-app.use("/auth", authRoute);
-app.use("/user", userRoute);
+app.use("/auth", authRoute, cors());
+app.use("/user", userRoute, cors());
 app.get('/test', testRoute);
 app.use((err, req, res, next) => {
 	const errorStatus = err.status || STATUS_500;
