@@ -3,11 +3,6 @@ import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 import { CreateError } from "../utils/Error.js";
 
-const SALT_NUM = 20;
-const NO_USER = 404;
-const STATUS_200 = 200;
-const STATUS_400 = 400;
-
 export const register = async (req, res, next) => {
 	try {
 		const existingEmail = await User.findOne({ email: req.body.email });
@@ -16,18 +11,18 @@ export const register = async (req, res, next) => {
 
 		if (existingEmail) {
 			return res
-				.status(STATUS_400)
+				.status(400)
 				.json({ message: "This E-mail is alreay in use" });
 		} else if (existingUser) {
 			return res
-				.status(STATUS_400)
+				.status(400)
 				.json({ message: "This Username is alreay in use" });
 		} else if (existingPhone) {
 			return res
-				.status(STATUS_400)
+				.status(400)
 				.json({ message: "This Phone-Number is alreay in use" });
 		} else {
-			const salt = bcrypt.genSaltSync(SALT_NUM);
+			const salt = bcrypt.genSaltSync(20);
 			const hash = bcrypt.hashSync(req.body.password, salt);
 			const newUser = new User({
 				...req.body,
@@ -46,7 +41,7 @@ export const register = async (req, res, next) => {
 export const signin = async (req, res, next) => {
 	try {
 		const user = await User.findOne({ username: req.body.username });
-		if (!user) { return next(CreateError(NO_USER, "User not found!")); }
+		if (!user) { return next(CreateError(404, "User not found!")); }
 
 		const isPasswordCorrect = await bcrypt.compare(
 			req.body.password,
@@ -59,11 +54,11 @@ export const signin = async (req, res, next) => {
 			{ id: user._id, isAdmin: user.isAdmin },
 			process.env.JWT
 		);
-		const { username, password, isAdmin, ...otherDetails } = user._doc;
+		const { password, isAdmin, ...otherDetails } = user._doc;
 
 		res.cookie("access_token", token, {
 			httpOnly: true,
-		}).status(STATUS_200).json({ details: { ...otherDetails }, isAdmin });
+		}).status(200).json({ details: { ...otherDetails }, isAdmin });
 
 	} catch (err) {
 		next(err);

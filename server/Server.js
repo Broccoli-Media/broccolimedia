@@ -1,5 +1,5 @@
 import cors from "cors";
-import http from "http";
+// import http from "http";
 import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
@@ -15,25 +15,11 @@ const PORT = process.env.PORT || 5000
 const STATUS_500 = 500;
 const app = express();
 dotenv.config();
-function checkStatus(err, req, res, next) {
-	const errorStatus = err.status || STATUS_500;
-	const errorMessage = err.message || "Something went wrong!";
-	return res.status(errorStatus).json({
-		success: false,
-		status: errorStatus,
-		message: errorMessage,
-		stack: err.stack,
-	});
-}
-// Coping with cors issue
-function corsSetting(req, res, next) {
-	// https://broccolimedia.net/
-	res.header('Access-Control-Allow-Origin', 'https://broccolimedia.net/');
-	res.header('Access-Control-Allow-Methods', '*');
-	res.header('Access-Control-Allow-Headers', '*');
-	res.header('Access-Control-Allow-Credentials', true);
-	next();
-};
+// Middleware
+app.use(cors());
+app.use(express.json());
+app.use(cookieParser());
+app.use(bodyParser.json());
 // Database MongoDB
 mongoose
 	.connect(process.env.MONGO, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -41,12 +27,7 @@ mongoose
 	.catch((err) => console.log(err));
 
 mongoose.connection.on("disconnected", () => { console.log("Fail to connect MongoDB"); });
-// Middleware
-app.use(cors());
-app.use(express.json());
-app.use(cookieParser());
-app.use(bodyParser.json());
-app.use(checkStatus);
+
 // Socket
 // const server = http.createServer(app);
 // const io = new Server(server);
@@ -56,9 +37,33 @@ app.use(checkStatus);
 // 		console.log("socket.io: User disconnected: ", socket.id);
 // 	});
 // });
-app.options('*', cors());
-app.use("/auth", authRoute, corsSetting);
-app.use("/user", userRoute, corsSetting);
+// // Routes
+// Coping with cors issue, Add headers before the routes are defined
+// app.use(function (req, res, next) {
+// 	// Website you wish to allow to connect
+// 	res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+// 	// Request methods you wish to allow
+// 	res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE, UPDATE');
+// 	// Request headers you wish to allow
+// 	res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+// 	// Set to true if you need the website to include cookies in the requests sent
+// 	// to the API (e.g. in case you use sessions)
+// 	res.setHeader('Access-Control-Allow-Credentials', true);
+// 	// Pass to next layer of middleware
+// 	next();
+// });
+app.use("/auth", authRoute);
+app.use("/user", userRoute);
 app.get('/test', testRoute);
+app.use((err, req, res, next) => {
+	const errorStatus = err.status || STATUS_500;
+	const errorMessage = err.message || "Something went wrong!";
+	return res.status(errorStatus).json({
+		success: false,
+		status: errorStatus,
+		message: errorMessage,
+		stack: err.stack,
+	});
+});
 // const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => { console.log(`Listening to ${PORT}`); });

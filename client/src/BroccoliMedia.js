@@ -41,11 +41,11 @@ export default function BroccoliMedia () {
 							<Route index element={<Home />} />
 							{/* For Personal Profile */}
 							<Route path="profile">
-								<Route path={`in/:username`} element={
+								{user && <Route path={`in/${user.username}`} element={
 									<ProtectedRoute>
 										<Profile user={user} isLoading={userLoading} />
 									</ProtectedRoute>
-								} />
+								} />}
 								<Route path=":username" element={<ProfileShow />} />
 							</Route>
 						</Route>

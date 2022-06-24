@@ -4,6 +4,7 @@ import { Alert } from "@chakra-ui/react";
 import classNames from 'classnames';
 // import important components 
 import axios from "axios";
+import UseKeyPress from "../utils/UseKeyPress.js";
 import { AuthContext } from "../context/AuthContext.js";
 import { SectionProps } from '../utils/SectionProps.js';
 // import other sections
@@ -41,7 +42,6 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
         try {
             // https://cors-anywhere.herokuapp.com/https://broccolimedia.herokuapp.com
             const res = await axios.post('https://broccolimedia.herokuapp.com/auth/signin', credentials);
-            console.log(res);
             dispatch({ type: "SIGNIN_SUCCESS", payload: res.data.details });
             navigate("/")
         } catch (err) {
@@ -50,11 +50,12 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
         }
     };
 
-    const handleKeypress = (e) => { if (e.key === "Enter") { handleClick(e); } };
+    const handleKeypress = (e) => { if (UseKeyPress("Enter")) { handleClick(e); } };
 
     useEffect(() => {
-        if (user) { navigate(`/profile/in/${user.username}`) };
-
+        if (user) {
+            navigate(`/profile/in/${user.username}`);
+        } 
     });
 
     return (
