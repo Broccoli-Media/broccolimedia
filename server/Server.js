@@ -39,7 +39,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use((req, res, next) => {
-	res.header('Access-Control-Allow-Origin', 'https://cors-anywhere.herokuapp.com/https://broccolimedia.net/, https://cors-anywhere.herokuapp.com/https://broccolimedia.net/signin, https://cors-anywhere.herokuapp.com/https://broccolimedia.net/profile/in/:username, https://cors-anywhere.herokuapp.com/https://broccolimedia.net/profile/:username');
+	res.header('Access-Control-Allow-Origin', 'https://broccolimedia.net/, http://localhost:3000');
 	res.header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE');
 	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
 	next();

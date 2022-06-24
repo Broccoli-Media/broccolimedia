@@ -38,7 +38,7 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
         e.preventDefault();
         dispatch({ type: "SIGNIN_START" });
         try {
-            const res = await Axios.post("/auth/signin", credentials);
+            const res = await Axios.post("/auth/signin", credentials, { headers: { 'Access-Control-Allow-Origin': 'https://broccolimedia.net/, http://localhost:3000' } });
             dispatch({ type: "SIGNIN_SUCCESS", payload: res.data.details });
             navigate("/")
         } catch (err) {
