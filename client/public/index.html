@@ -6,12 +6,19 @@
     <meta name="description" content="Enjoy our best services" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="apple-touch-icon" href="logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" /> 
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
     <title>BROCCOLI MEDIA</title>
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+
+    <!-- Load our React component. -->
+    <script src="like_button.js"></script>
 </head>
 
 <body class="has-animations">
+    <div id="like_button_container"></div>
     <div id="root" class="body-wrap"></div>
 </body>
 

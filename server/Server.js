@@ -25,7 +25,7 @@ var corsOptions = {
 	'preflightContinue': false,
 	'maxage': 31536000
 }
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.json());
@@ -57,8 +57,8 @@ function corsSet (req, res, next){
 	next();
 }
 // app.options('*', cors());
-app.use("/auth", authRoute, cors(corsSet));
-app.use("/user", userRoute, cors(corsSet));
+app.use("/auth", authRoute);
+app.use("/user", userRoute);
 app.get('/test', testRoute);
 app.use((err, req, res, next) => {
 	const errorStatus = err.status || STATUS_500;
