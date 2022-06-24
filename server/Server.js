@@ -16,28 +16,16 @@ const STATUS_500 = 500;
 const app = express();
 dotenv.config();
 // Middleware
-// const allowedDomains = ['http://localhost:3000', 'https://broccolimedia.net']
-// const corsSettings = () => {
-// 	let isDomainAllowed = allowedDomains.indexOf(req.header('Origin')) !== -1;
-// 	if (isDomainAllowed) {
-// 		// Enable CORS for this request
-// 		corsOptions = { origin: true }
-// 	} else {
-// 		// Disable CORS for this request
-// 		corsOptions = { origin: false }
-// 	}
-// 	callback(null, corsOptions)
-// }
-// var corsOptions = {
-// 	'origin': "https://broccolimedia.net",
-// 	'allowedHeaders': "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options",
-// 	'exposedHeaders': "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options",
-// 	'methods': "GET,HEAD,PUT,UPDATE,POST,DELETE",
-// 	'credential': true,
-// 	'preflightContinue': false,
-// 	'maxage': 31536000
-// }
-app.use(cors());
+var corsOptions = {
+	'origin': "https://broccolimedia.net",
+	'allowedHeaders': "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options",
+	'exposedHeaders': "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options",
+	'methods': "GET,HEAD,PUT,UPDATE,POST,DELETE",
+	'credential': true,
+	'preflightContinue': false,
+	'maxage': 31536000
+}
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.json());
@@ -59,18 +47,18 @@ mongoose.connection.on("disconnected", () => { console.log("Fail to connect Mong
 // 	});
 // });
 // Routes
-// function corsSet (req, res, next){
-// 	res.header("Access-Control-Allow-Origin", "https://broccolimedia.net");
-// 	res.header("Access-Control-Allow-Headers","Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options");
-// 	res.header("Access-Control-Exposed-Headers", "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options");
-// 	res.header("Access-Control-Allow-Methods", "GET, HEAD, POST, PUT, DELETE, UPDATE");
-// 	res.header("Access-Control-Allow-Credentials", true);
-// 	res.header("Access-Control-Max-Age", 31536000);
-// 	next();
-// }
+function corsSet (req, res, next){
+	res.header("Access-Control-Allow-Origin", "https://broccolimedia.net");
+	res.header("Access-Control-Allow-Headers","Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options");
+	res.header("Access-Control-Exposed-Headers", "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options");
+	res.header("Access-Control-Allow-Methods", "GET, HEAD, POST, PUT, DELETE, UPDATE");
+	res.header("Access-Control-Allow-Credentials", true);
+	res.header("Access-Control-Max-Age", 31536000);
+	next();
+}
 // app.options('*', cors());
-app.use("/auth", authRoute);
-app.use("/user", userRoute);
+app.use("/auth", authRoute, cors(corsSet));
+app.use("/user", userRoute, cors(corsSet));
 app.get('/test', testRoute);
 app.use((err, req, res, next) => {
 	const errorStatus = err.status || STATUS_500;
