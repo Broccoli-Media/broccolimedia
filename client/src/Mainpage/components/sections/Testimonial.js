@@ -4,7 +4,7 @@ import { SectionTilesProps } from '../../utils/SectionProps';
 import SectionHeader from './partials/SectionHeader';
 // Necessary Components
 import useFetch from "../../utils/UseFetch.js";
-import { Avatar, Button, Image, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from '@chakra-ui/react';
+import { Avatar, Button, Image, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, Wrap, WrapItem } from '@chakra-ui/react';
 
 const propTypes = { ...SectionTilesProps.types }
 const defaultProps = { ...SectionTilesProps.defaults }
@@ -36,10 +36,9 @@ const Testimonial = ({ className, topOuterDivider, bottomOuterDivider, topDivide
 		paragraph: 'Our company will provides you with premium services all the time',
 	};
 
-	// const { data } = useFetch(`https://broccolimedia.herokuapp.com/user/alladmin/`);
-	// console.log(data)
-	// const CEO = (data.filter(({ userTitle }) => { return userTitle === "CEO"; }))[0];
-	// const CTO = (data.filter(({ userTitle }) => { return userTitle === "CTO"; }))[0];
+	const { data } = useFetch(`https://broccolimedia.herokuapp.com/user/alladmin/`);
+	const CEO = (data.filter(({ userTitle }) => { return userTitle === "CEO"; }))[0];
+	const CTO = (data.filter(({ userTitle }) => { return userTitle === "CTO"; }))[0];
 	// const Cofunder = (data.filter(({ userTitle }) => { return userTitle === "Co-Funder"; }))[0];
 
 
@@ -92,7 +91,7 @@ const Testimonial = ({ className, topOuterDivider, bottomOuterDivider, topDivide
 								{/* <Avatar
 									size="md"
 									name={CEO.displayName}
-									cursor="pointer"
+									// cursor="pointer"
 									onClick={() => {
 										setCEOOverlay(<CEOOverlay />)
 										onCEOOpen()
@@ -126,15 +125,17 @@ const Testimonial = ({ className, topOuterDivider, bottomOuterDivider, topDivide
 										<a href="https://fusheng.info">BM Jeremy Huang</a>
 									</span>
 								</div>
+
 								{/* <Avatar
 									size="md"
 									name={CTO.displayName}
-									cursor="pointer"
+									// cursor="pointer"
 									onClick={() => {
 										setCTOOverlay(<CTOOverlay />)
 										onCTOOpen()
 									}}
 									src={CTO.img} /> */}
+
 								<p className="text-sm mb-0">
 									— Privacy is always the priority to us, we will secure all personal data under
 									all circumstatnces.

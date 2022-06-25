@@ -36,9 +36,9 @@ mongoose.connection.on("disconnected", () => { console.log("Fail to connect Mong
 // Middleware
 var corsOptions = {
 	'origin': "http://localhost:3000",
-	'allowedHeaders': "Authorization, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options",
-	'exposedHeaders': "Authorization, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options",
-	'methods': "GET,HEAD,PUT,UPDATE,POST,DELETE",
+	// 'allowedHeaders': "Authorization, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options",
+	// 'exposedHeaders': "Authorization, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options",
+	'methods': "GET,HEAD,PUT,UPDATE,POST,DELETE, OPTIONS",
 	'credential': true,
 	'preflightContinue': false,
 	'maxage': 31536000, 
