@@ -42,6 +42,8 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
             // https://broccolimedia.herokuapp.com
             axios.defaults.headers.post['Access-Control-Allow-Origin'] = 'http://localhost:3000';  
             axios.defaults.headers.post['X-Content-Type-Options'] = 'nosniff';
+            axios.defaults.headers.post['Access-Control-Allow-Credentials'] = true;
+            axios.defaults.headers.post['Access-Control-Allow-Headers'] = 'Authorization, , Origin, X-Requested-With, Content-Type, Accept, x-content-type-options';
             const res = await axios.post('https://broccolimedia.herokuapp.com/auth/signin', credentials);
             dispatch({ type: "SIGNIN_SUCCESS", payload: res.data.details });
             navigate("/")

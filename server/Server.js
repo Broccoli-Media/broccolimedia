@@ -45,7 +45,7 @@ var corsOptions = {
 	optionsSuccessStatus: 200
 }
 // Broccolimedia.options('*', cors());
-Broccolimedia.use(cors(corsOptions));
+Broccolimedia.use(cors());
 Broccolimedia.use(express.json());
 Broccolimedia.use(cookieParser());
 Broccolimedia.use(bodyParser.json());
