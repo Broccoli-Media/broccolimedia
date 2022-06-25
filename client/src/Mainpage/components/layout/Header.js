@@ -145,7 +145,7 @@ const Header = ({
 														<Button mt={10} className="button button-wangwang button-wide-mobile button-wangwang" href="https://forms.gle/svo5zJpeTpUFcrk49" >Register as Influencer</Button>
 													</li>
 												</>}
-												{user ?
+												{!user ?
 													<li>
 														<Link mt={10} to="/signin" className="button button-golden button-wide-mobile button-golden ">Sign In</Link>
 													</li>
