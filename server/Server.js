@@ -13,7 +13,7 @@ import testRoute from "./routes/Test.js";
 // App settings
 const PORT = process.env.PORT || 5000
 const STATUS_500 = 500;
-const app = express();
+const Broccolimedia = express();
 dotenv.config();
 // Middleware
 var corsOptions = {
@@ -23,12 +23,14 @@ var corsOptions = {
 	'methods': "GET,HEAD,PUT,UPDATE,POST,DELETE",
 	'credential': true,
 	'preflightContinue': false,
-	'maxage': 31536000
+	'maxage': 31536000, 
+	optionsSuccessStatus: 200
 }
-app.use(cors());
-app.use(express.json());
-app.use(cookieParser());
-app.use(bodyParser.json());
+// Broccolimedia.options('*', cors());
+Broccolimedia.use(cors(corsOptions));
+Broccolimedia.use(express.json());
+Broccolimedia.use(cookieParser());
+Broccolimedia.use(bodyParser.json());
 // Database MongoDB
 mongoose
 	.connect(process.env.MONGO, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -47,7 +49,7 @@ mongoose.connection.on("disconnected", () => { console.log("Fail to connect Mong
 // 	});
 // });
 // Routes
-app.use(function corsSet (req, res, next){
+Broccolimedia.use(function corsSet (req, res, next){
 	res.header("Access-Control-Allow-Origin", "https://broccolimedia.net");
 	res.header("Access-Control-Allow-Headers","Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options");
 	res.header("Access-Control-Exposed-Headers", "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options");
@@ -56,11 +58,11 @@ app.use(function corsSet (req, res, next){
 	res.header("Access-Control-Max-Age", 31536000);
 	next();
 })
-// app.options('*', cors());
-app.use("/auth", authRoute);
-app.use("/user", userRoute);
-app.get('/test', testRoute);
-app.use((err, req, res, next) => {
+
+Broccolimedia.use("/auth", authRoute);
+Broccolimedia.use("/user", userRoute);
+Broccolimedia.get('/test', testRoute);
+Broccolimedia.use((err, req, res, next) => {
 	const errorStatus = err.status || STATUS_500;
 	const errorMessage = err.message || "Something went wrong!";
 	return res.status(errorStatus).json({
@@ -70,5 +72,5 @@ app.use((err, req, res, next) => {
 		stack: err.stack,
 	});
 });
-// const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => { console.log(`Listening to ${PORT}`); });
+// Broccolimedia's port
+Broccolimedia.listen(PORT, () => { console.log(`Listening to ${PORT}`); });

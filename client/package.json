@@ -50,5 +50,5 @@
 		"cross-spawn": "^7.0.3",
 		"nth-check": "^2.1.1"
 	},
-	"proxy": "http://localhost:5000/"
+	"proxy": "https://broccolimedia.herokuapp.com/"
 }
