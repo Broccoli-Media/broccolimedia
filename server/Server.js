@@ -34,36 +34,22 @@ mongoose.connection.on("disconnected", () => { console.log("Fail to connect Mong
 // 	});
 // });
 // Middleware
-// var corsOptions = {
-// 	'origin': "https://broccolimedia.net",
-// 	'allowedHeaders': "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options",
-// 	'exposedHeaders': "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options",
-// 	'methods': "GET,HEAD,PUT,UPDATE,POST,DELETE",
-// 	'credential': true,
-// 	'preflightContinue': false,
-// 	'maxage': 31536000, 
-// 	optionsSuccessStatus: 200
-// }
+var corsOptions = {
+	'origin': "http://localhost:3000",
+	'allowedHeaders': "Authorization, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options",
+	'exposedHeaders': "Authorization, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options",
+	'methods': "GET,HEAD,PUT,UPDATE,POST,DELETE",
+	'credential': true,
+	'preflightContinue': false,
+	'maxage': 31536000, 
+	optionsSuccessStatus: 200
+}
 // Broccolimedia.options('*', cors());
-Broccolimedia.use(cors({
-	credentials: true,
-	origin: ["http://localhost:3000"]
-  }));
+Broccolimedia.use(cors(corsOptions));
 Broccolimedia.use(express.json());
 Broccolimedia.use(cookieParser());
 Broccolimedia.use(bodyParser.json());
-Broccolimedia.use(bodyParser.urlencoded({ extended: true }));
 // Routes
-Broccolimedia.use(function (req, res, next){
-	res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
-	res.setHeader("Access-Control-Allow-Headers","Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options");
-	res.setHeader("Access-Control-Exposed-Headers", "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options");
-	res.setHeader("Access-Control-Allow-Methods", "GET, HEAD, POST, PUT, DELETE, UPDATE");
-	res.setHeader("Access-Control-Allow-Credentials", true);
-	res.setHeader("Access-Control-Max-Age", 31536000);
-	next();
-})
-
 Broccolimedia.use("/auth", authRoute);
 Broccolimedia.use("/user", userRoute);
 Broccolimedia.get('/test', testRoute);
