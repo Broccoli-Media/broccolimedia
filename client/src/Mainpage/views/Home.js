@@ -1,12 +1,13 @@
 import React from 'react';
 // import Header / Footer
-import Header from '../components/layout/Header';
-import Footer from '../components/layout/Footer';
+import Header from '../components/layout/Header.js';
+import Footer from '../components/layout/Footer.js';
 // import sections
-import Hero from '../components/sections/Hero';
-import FeaturesTiles from '../components/sections/FeaturesTiles';
-import FeaturesSplit from '../components/sections/FeaturesSplit';
-import Testimonial from '../components/sections/Testimonial';
+import Hero from '../components/sections/Hero.js';
+import FeaturesTiles from '../components/sections/FeaturesTiles.js';
+import FeaturesSplit from '../components/sections/FeaturesSplit.js';
+import Testimonial from '../components/sections/Testimonial.js';
+import UserCards from '../components/sections/UserCards.js'
 // import Cta from '../components/sections/Cta';
 
 export default function Home () {
@@ -20,6 +21,7 @@ export default function Home () {
 			<FeaturesTiles />
 			<FeaturesSplit invertMobile topDivider imageFill />
 			<Testimonial topDivider />
+			<UserCards />
 			<Footer />
 		</div>
 	);

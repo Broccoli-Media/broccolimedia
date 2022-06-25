@@ -23,10 +23,12 @@ export const updateUser = async (req, res, next) => {
 
 		const updatedUser = await User.findByIdAndUpdate(
 			req.params.id,
-			{ $set: {
-				...req.body,
-				password: hash,
-			}},
+			{
+				$set: {
+					...req.body,
+					password: hash,
+				}
+			},
 			{ new: true }
 		);
 		res.status(200).json(updatedUser);
@@ -56,16 +58,31 @@ export const getUserById = async (req, res, next) => {
 
 export const getUserByUsername = async (req, res, next) => {
 	try {
-		const user = await User.findOne({username : req.params.username});
+		const user = await User.findOne({ username: req.params.username });
 		res.status(200).json(user);
 	} catch (err) {
 		next(err);
 	}
 };
 
-export const getUsers = async (req, res, next) => {
+export const getNormalUsers = async (req, res, next) => {
 	try {
-		const users = await User.find();
+		const users = await User.find({
+			Admin: false,
+			isAdmin: false
+		});
+		res.status(200).json(users);
+	} catch (err) {
+		next(err);
+	}
+};
+
+export const getAdminUsers = async (req, res, next) => {
+	try {
+		const users = await User.find({
+			Admin: true,
+			isAdmin: true
+		});
 		res.status(200).json(users);
 	} catch (err) {
 		next(err);

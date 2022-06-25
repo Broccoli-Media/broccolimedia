@@ -15,22 +15,7 @@ const PORT = process.env.PORT || 5000
 const STATUS_500 = 500;
 const Broccolimedia = express();
 dotenv.config();
-// Middleware
-var corsOptions = {
-	'origin': "https://broccolimedia.net",
-	'allowedHeaders': "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options",
-	'exposedHeaders': "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options",
-	'methods': "GET,HEAD,PUT,UPDATE,POST,DELETE",
-	'credential': true,
-	'preflightContinue': false,
-	'maxage': 31536000, 
-	optionsSuccessStatus: 200
-}
-// Broccolimedia.options('*', cors());
-Broccolimedia.use(cors(corsOptions));
-Broccolimedia.use(express.json());
-Broccolimedia.use(cookieParser());
-Broccolimedia.use(bodyParser.json());
+
 // Database MongoDB
 mongoose
 	.connect(process.env.MONGO, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -48,14 +33,34 @@ mongoose.connection.on("disconnected", () => { console.log("Fail to connect Mong
 // 		console.log("socket.io: User disconnected: ", socket.id);
 // 	});
 // });
+// Middleware
+// var corsOptions = {
+// 	'origin': "https://broccolimedia.net",
+// 	'allowedHeaders': "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options",
+// 	'exposedHeaders': "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options",
+// 	'methods': "GET,HEAD,PUT,UPDATE,POST,DELETE",
+// 	'credential': true,
+// 	'preflightContinue': false,
+// 	'maxage': 31536000, 
+// 	optionsSuccessStatus: 200
+// }
+// Broccolimedia.options('*', cors());
+Broccolimedia.use(cors({
+	credentials: true,
+	origin: [process.env.FRONTEND_APP_URL]
+  }));
+Broccolimedia.use(express.json());
+Broccolimedia.use(cookieParser());
+Broccolimedia.use(bodyParser.json());
+Broccolimedia.use(bodyParser.urlencoded({ extended: true }));
 // Routes
-Broccolimedia.use(function corsSet (req, res, next){
-	res.header("Access-Control-Allow-Origin", "https://broccolimedia.net");
-	res.header("Access-Control-Allow-Headers","Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options");
-	res.header("Access-Control-Exposed-Headers", "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options");
-	res.header("Access-Control-Allow-Methods", "GET, HEAD, POST, PUT, DELETE, UPDATE");
-	res.header("Access-Control-Allow-Credentials", true);
-	res.header("Access-Control-Max-Age", 31536000);
+Broccolimedia.use(function (req, res, next){
+	res.setHeader("Access-Control-Allow-Origin", "https://broccolimedia.net");
+	res.setHeader("Access-Control-Allow-Headers","Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options");
+	res.setHeader("Access-Control-Exposed-Headers", "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options");
+	res.setHeader("Access-Control-Allow-Methods", "GET, HEAD, POST, PUT, DELETE, UPDATE");
+	res.setHeader("Access-Control-Allow-Credentials", true);
+	res.setHeader("Access-Control-Max-Age", 31536000);
 	next();
 })
 
@@ -72,5 +77,6 @@ Broccolimedia.use((err, req, res, next) => {
 		stack: err.stack,
 	});
 });
+
 // Broccolimedia's port
 Broccolimedia.listen(PORT, () => { console.log(`Listening to ${PORT}`); });

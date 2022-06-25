@@ -2,8 +2,6 @@
 import React from 'react';
 import classNames from 'classnames';
 import { SectionProps } from '../../utils/SectionProps';
-import ButtonGroup from '../elements/ButtonGroup';
-import Button from '../elements/Button';
 // import Image from '../elements/Image';
 // import Modal from '../elements/Modal';
 
@@ -71,16 +69,6 @@ const Hero = ({
 							<h3 className="m-0 mb-32 reveal-from-bottom" data-reveal-delay="400">
 								Enjoy BM wherever you are
 							</h3>
-							<div className="reveal-from-bottom" data-reveal-delay="600">
-								<ButtonGroup>
-									<Button tag="a" color="primary" wideMobile href="https://forms.gle/idGkmkmVX61XPAvu9">
-										Register as Company
-									</Button>
-									<Button tag="a" color="primary" wideMobile href="https://forms.gle/svo5zJpeTpUFcrk49">
-										Register as Influencer
-									</Button>
-								</ButtonGroup>
-							</div>
 						</div>
 					</div>
 					{/* <div className="hero-figure reveal-from-bottom illustration-element-01" data-reveal-value="20px" data-reveal-delay="800">

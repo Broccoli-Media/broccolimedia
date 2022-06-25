@@ -9,13 +9,13 @@ function PersonalShow(props) {
 	const isLoading = props.isLoading;
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
-	const OverlayOne = () => (
+	const Overlay = () => (
 		<ModalOverlay
 			bg='blackAlpha.300'
 			backdropFilter='blur(10px) hue-rotate(90deg)'
 		/>
 	)
-	const [overlay, setOverlay] = useState(<OverlayOne />);
+	const [overlay, setOverlay] = useState(<Overlay />);
 
 	return (
 		<VStack spacing={3} py={5} borderBottomWidth={1} borderColor="brand.light">
@@ -26,7 +26,7 @@ function PersonalShow(props) {
 						name={user.displayName}
 						cursor="pointer"
 						onClick={() => {
-							setOverlay(<OverlayOne />)
+							setOverlay(<Overlay />)
 							onOpen()
 						}}
 						src={user.img}

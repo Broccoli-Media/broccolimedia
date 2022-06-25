@@ -18,6 +18,10 @@ const UcerSchema = new mongoose.Schema(
 			type: String,
 			required: true,
 		},
+		userTitle: {
+			type: String,
+			default: "Broccolimedia Cooperative Partner",
+		},
 		email: {
 			type: String,
 			required: true,

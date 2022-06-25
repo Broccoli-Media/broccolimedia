@@ -1,0 +1,110 @@
+.usercards {
+
+    .section-inner {
+        padding-top: $usercards--padding-t__mobile;
+        padding-bottom: $usercards--padding-b__mobile;
+    }
+
+    .section-header {
+        padding-bottom: $usercards-header--padding__mobile;
+    }
+
+    .tiles-wrap {
+        @if ($usercards-items--padding__mobile  !=null) {
+            margin-right: -($usercards-items--padding__mobile * 0.5);
+            margin-left: -($usercards-items--padding__mobile * 0.5);
+            margin-top: -($usercards-items--padding__mobile * 0.5);
+
+            &:last-of-type {
+                margin-bottom: -($usercards-items--padding__mobile * 0.5);
+            }
+
+            &:not(:last-of-type) {
+                margin-bottom: ($usercards-items--padding__mobile * 0.5);
+            }
+        }
+
+        &.push-left {
+
+            &::after {
+                flex-basis: $usercards-item--width;
+                max-width: $usercards-item--width;
+
+                @if ($usercards-items--padding__mobile  !=null) {
+                    padding-left: $usercards-items--padding__mobile * 0.5;
+                    padding-right: $usercards-items--padding__mobile * 0.5;
+                }
+            }
+        }
+    }
+
+    .tiles-item {
+        flex-basis: $usercards-item--width;
+        max-width: $usercards-item--width;
+
+        @if ($usercards-items--padding__mobile  !=null) {
+            padding: $usercards-items--padding__mobile * 0.5;
+        }
+    }
+
+    .tiles-item-inner {
+        padding-top: $usercards-item--inner-padding-v;
+        padding-bottom: $usercards-item--inner-padding-v;
+        padding-left: $usercards-item--inner-padding-h;
+        padding-right: $usercards-item--inner-padding-h;
+    }
+}
+
+.usercards-item-content {
+    flex-grow: 1;
+}
+
+.usercards-item-source {
+    display: flex; // to allow centering when using .content-center on a parent tag
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+@include media('>medium') {
+
+    .usercards {
+
+        .section-inner {
+            padding-top: $usercards--padding-t__desktop;
+            padding-bottom: $usercards--padding-b__desktop;
+        }
+
+        .section-header {
+            padding-bottom: $usercards-header--padding__desktop;
+        }
+
+        @if ($usercards-items--padding__desktop  !=null) {
+
+            .tiles-wrap {
+                margin-right: -($usercards-items--padding__desktop * 0.5);
+                margin-left: -($usercards-items--padding__desktop * 0.5);
+                margin-top: -($usercards-items--padding__desktop * 0.5);
+
+                &:last-of-type {
+                    margin-bottom: -($usercards-items--padding__desktop * 0.5);
+                }
+
+                &:not(:last-of-type) {
+                    margin-bottom: ($usercards-items--padding__desktop * 0.5);
+                }
+
+                &.push-left {
+
+                    &::after {
+                        padding-left: $usercards-items--padding__desktop * 0.5;
+                        padding-right: $usercards-items--padding__desktop * 0.5;
+                    }
+                }
+            }
+
+            .tiles-item {
+                padding: $usercards-items--padding__desktop * 0.5;
+            }
+        }
+    }
+}

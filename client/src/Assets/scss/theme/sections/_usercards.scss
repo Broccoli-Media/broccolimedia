@@ -1,0 +1,32 @@
+.usercards {
+
+    .tiles-item-inner {
+        background: get-color(dark, 2);
+    }
+}
+
+.usercards-item-content {
+    position: relative;
+
+    // &::before {
+    //     content: '';
+    //     display: block;
+    //     width: 24px;
+    //     height: 18px;
+    //     margin-top: 12px;
+    //     margin-bottom: 16px;
+    //     // background-repeat: no-repeat;
+    // }
+}
+
+.usercards-item-footer {
+    font-weight: 600;
+    padding-top: 20px;
+
+    &.has-top-divider {
+
+        &::before {
+            background: get-color(dark, 3);
+        }
+    }
+}

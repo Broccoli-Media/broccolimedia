@@ -1,26 +1,12 @@
 import React from 'react';
 import classNames from 'classnames';
-import { SectionTilesProps } from '../../utils/SectionProps';
-import SectionHeader from './partials/SectionHeader';
-import Image from '../elements/Image';
+import { SectionTilesProps } from '../../utils/SectionProps.js';
+import SectionHeader from './partials/SectionHeader.js';
+import Image from '../elements/Image.js';
 
-const propTypes = {
-	...SectionTilesProps.types
-}
-
-const defaultProps = {
-	...SectionTilesProps.defaults
-}
-const FeaturesTiles = ({
-	className,
-	topOuterDivider,
-	bottomOuterDivider,
-	topDivider,
-	bottomDivider,
-	hasBgColor,
-	invertColor,
-	pushLeft,
-	...props
+const propTypes = { ...SectionTilesProps.types }
+const defaultProps = { ...SectionTilesProps.defaults }
+const FeaturesTiles = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bottomDivider, hasBgColor, invertColor, pushLeft, ...props
 }) => {
 
 	const outerClasses = classNames(
@@ -71,7 +57,7 @@ const FeaturesTiles = ({
 								</div>
 								<div className="features-tiles-item-content">
 									<h4 className="mt-0 mb-8">
-										Simple Actions 
+										Simple Actions
 									</h4>
 									<p className="m-0 text-sm">
 										You will earn money in few steps with clear instructions

@@ -1,0 +1,12 @@
+// usercards (core/sections/_usercards.scss) ---------------
+$usercards--padding-t__mobile: null; // usercards, top padding (mobile)
+$usercards--padding-b__mobile: null; // usercards, bottom padding (mobile)
+$usercards--padding-t__desktop: null; // usercards, top padding (desktop)
+$usercards--padding-b__desktop: null; // usercards, bottom padding (desktop)
+$usercards-header--padding__mobile: null; // usercards header, bottom padding (mobile)
+$usercards-header--padding__desktop: null; // usercards header, bottom padding (desktop)
+$usercards-items--padding__mobile: null; // padding between usercards items (mobile)
+$usercards-items--padding__desktop: null; // padding between usercards items (desktop)
+$usercards-item--width: 344px; // usercards item, width
+$usercards-item--inner-padding-v: 24px; // usercards item, inner top and bottom padding (it inherits $tiles-item--inner-padding-v unless you replace null with a new value)
+$usercards-item--inner-padding-h: 32px; // usercards item, inner left and right padding (it inherits $tiles-item--inner-padding-h unless you replace null with a new value)

@@ -1,10 +1,11 @@
 import express from "express";
-import { updateUser, deleteUser, getUsers, getUserByUsername, countByCity } from "../controllers/User.js";
+import { updateUser, deleteUser, getNormalUsers, getAdminUsers, getUserByUsername, countByCity } from "../controllers/User.js";
 import { verifyUser, verifyAdmin } from "../utils/VerifyTokens.js";
 
 const router = express.Router();
 
-router.get("/", getUsers);
+router.get("/allnormal", getNormalUsers);
+router.get("/alladmin", getAdminUsers);
 // router.get("/:id", getUserById);
 router.get("/countbycity", countByCity);
 router.get("/:username", getUserByUsername);

@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import BroccoliMedia from './BroccoliMedia.js';
 import { AuthContextProvider } from "./Mainpage/context/AuthContext.js";
 import { SearchContextProvider } from "./Mainpage/context/SearchContext.js";
-import { DarkModeContextProvider } from "./Mainpage/context/darkModeContext.js";
+// import { DarkModeContextProvider } from "./Mainpage/context/darkModeContext.js";
 // Scss System
 import './Assets/scss/style.scss';
 // Service Worker
@@ -17,11 +17,9 @@ root.render(
 	<React.StrictMode>
 		<AuthContextProvider>
 			<SearchContextProvider>
-				<DarkModeContextProvider>
-					<Router history={history}>
-						<BroccoliMedia />
-					</Router>
-				</DarkModeContextProvider>
+				<Router history={history}>
+					<BroccoliMedia />
+				</Router>
 			</SearchContextProvider>
 		</AuthContextProvider>
 	</React.StrictMode>

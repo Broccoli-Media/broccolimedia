@@ -50,8 +50,8 @@ const FeaturesSplit = ({
 	);
 
 	const sectionHeader = {
-		title: '',
-		paragraph: ''
+		title: 'Visualized Performance & Competitive Model',
+		paragraph: 'Best platform for both companies and influencers'
 	};
 
 	return (
