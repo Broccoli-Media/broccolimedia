@@ -44,21 +44,21 @@ var corsOptions = {
 	optionsSuccessStatus: 200
 }
 // Broccolimedia.options('*', cors());
-Broccolimedia.use(cors(corsOptions));
+Broccolimedia.use(cors());
 Broccolimedia.use(express.json());
 Broccolimedia.use(cookieParser());
 Broccolimedia.use(bodyParser.json());
 Broccolimedia.use(bodyParser.urlencoded({ extended: true }));
 // Routes
-Broccolimedia.use(function (req, res, next){
-	res.setHeader("Access-Control-Allow-Origin", '*');
-	res.setHeader("Access-Control-Allow-Headers","Access-Control-Allow-Origin, Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options, Access-Control-Allow-Headers");
-	res.setHeader("Access-Control-Exposed-Headers", "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options");
-	res.setHeader("Access-Control-Allow-Methods", "GET, HEAD, POST, PUT, DELETE, UPDATE");
-	res.setHeader("Access-Control-Allow-Credentials", true);
-	res.setHeader("Access-Control-Max-Age", 31536000);
-	next();
-})
+// Broccolimedia.use(function (req, res, next){
+// 	res.setHeader("Access-Control-Allow-Origin", '*');
+// 	res.setHeader("Access-Control-Allow-Headers","Access-Control-Allow-Origin, Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options, Access-Control-Allow-Headers");
+// 	res.setHeader("Access-Control-Exposed-Headers", "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options");
+// 	res.setHeader("Access-Control-Allow-Methods", "GET, HEAD, POST, PUT, DELETE, UPDATE");
+// 	res.setHeader("Access-Control-Allow-Credentials", true);
+// 	res.setHeader("Access-Control-Max-Age", 31536000);
+// 	next();
+// })
 
 Broccolimedia.use("/auth", authRoute);
 Broccolimedia.use("/user", userRoute);
