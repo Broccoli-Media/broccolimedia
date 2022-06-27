@@ -29,9 +29,9 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
         topDivider && 'has-top-divider',
         bottomDivider && 'has-bottom-divider'
     );
-    const navigate = useNavigate()
-    const { user, loading, error, dispatch } = useContext(AuthContext);
     const [credentials, setCredentials] = useState({ username: undefined, password: undefined, });
+    const { user, loading, error, dispatch } = useContext(AuthContext);
+    const navigate = useNavigate()
 
     // Functions
     const handleChange = (e) => { setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value })); };
@@ -39,12 +39,7 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
         e.preventDefault();
         dispatch({ type: "SIGNIN_START" });
         try {
-            // https://broccolimedia.herokuapp.com
-            // axios.defaults.headers.post['Access-Control-Allow-Origin'] = 'http://localhost:3000';
-            // axios.defaults.headers.post['X-Content-Type-Options'] = 'nosniff';
-            axios.defaults.headers.post['Access-Control-Allow-Credentials'] = true;
-            axios.defaults.headers.post['Access-Control-Allow-Headers'] = 'Access-Control-Allow-Origin, Authorization, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options';
-            const res = await axios.post('https://broccolimedia.herokuapp.com/auth/signin', credentials);
+            const res = await axios.post('/auth/signin', credentials);
             dispatch({ type: "SIGNIN_SUCCESS", payload: res.data.details });
             navigate("/")
         } catch (err) {
@@ -71,9 +66,9 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
                             <span className="Full">&nbsp; Broccoli Media</span>
                         </h1>
                         <div className="container-xs">
-                            <h3 className="m-0 mb-32 reveal-from-bottom" data-reveal-delay="400">
+                            {/* <h3 className="m-0 mb-32 reveal-from-bottom" data-reveal-delay="400">
                                 Enjoy BM wherever you are
-                            </h3>
+                            </h3> */}
                             <br />
                             <div className="m-0 mb-48 reveal-from-bottom" data-reveal-delay="600">
                                 <div className="loginform">

@@ -6,22 +6,14 @@ import NotFound from './Mainpage/views/404.js';
 import SignIn from './Mainpage/views/SignIn.js';
 // Necessary Components
 import ScrollReveal from './Mainpage/utils/ScrollReveal.js';
-import { AuthContext } from "./Mainpage/context/AuthContext.js";
-import { DarkModeContext } from "./Mainpage/context/darkModeContext.js";
 // Profile Components
 import Profile from './Profile/Profile.js';
 import ProfileShow from './Profile/ProfileShow.js';
+import { AuthContext } from './Mainpage/context/AuthContext.js';
 
-export default function BroccoliMedia () {
+export default function BroccoliMedia() {
 	const childRef = useRef();
 	let location = useLocation();
-	const { darkMode } = useContext(DarkModeContext);
-	const { user, userLoading } = useContext(AuthContext);
-
-	const ProtectedRoute = ({ children }) => {
-		if (!user) { return <Navigate to="/signin" />; }
-		return children;
-	};
 
 	useEffect(() => {
 		document.body.classList.add('is-loaded')
@@ -29,25 +21,40 @@ export default function BroccoliMedia () {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [location]);
 
+	const ProtectedRoute = ({ children }) => {
+		const { user } = useContext(AuthContext);
+		if (!user) {
+			return <Navigate to="/login" />;
+		}
+		return children;
+	};
+
 	return (
-		<div className={darkMode ? "app dark" : "app"}>
+		<div className="app">
 			<ScrollReveal
 				ref={childRef}
 				children={() => (
 					<Routes>
 						<Route path="/">
-							<Route path="signin" element={<SignIn />} />
 							{/* For Main Usage */}
 							<Route index element={<Home />} />
+							{/* For Sign In Page */}
+							<Route path="signin" element={<SignIn />} />
 							{/* For Personal Profile */}
 							<Route path="profile">
-								{user && <Route path={`in/${user.username}`} element={
+								<Route path="in/:username" element={
 									<ProtectedRoute>
-										<Profile user={user} isLoading={userLoading} />
+										<Profile />
 									</ProtectedRoute>
-								} />}
+								} />
 								<Route path=":username" element={<ProfileShow />} />
 							</Route>
+							{/* For Register Page */}
+							{/* <Route path="register" >
+								<Route path="influencer" element={''}/>
+								<Route path="company" element={''} />
+								<Route path="visitor" element={''} />
+							</Route> */}
 						</Route>
 						{/* For Error Page */}
 						<Route path="*" element={<NotFound />} />

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { Container, ChakraProvider } from '@chakra-ui/react';
 // Page components
 import Cover from './Cover.js';
@@ -11,10 +11,9 @@ import { theme } from '../Assets/scss/settings/profile/extendTheme.js';
 import useFetch from "../Mainpage/utils/UseFetch.js";
 
 export default function ProfileShow() {
-    const subUrl = useParams();
-    const username = subUrl.username;
-    const { data, loading } = useFetch(`https://broccolimedia.herokuapp.com/user/${username}`);
-
+    const location = useLocation();
+    const username = location.pathname.split("/")[-1];
+    const { data, loading } = useFetch(`/user/${username}`);
 
     return (
         <ChakraProvider theme={theme}>

@@ -6,7 +6,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 import BroccoliMedia from './BroccoliMedia.js';
 import { AuthContextProvider } from "./Mainpage/context/AuthContext.js";
 import { SearchContextProvider } from "./Mainpage/context/SearchContext.js";
-// import { DarkModeContextProvider } from "./Mainpage/context/darkModeContext.js";
 // Scss System
 import './Assets/scss/style.scss';
 // Service Worker
