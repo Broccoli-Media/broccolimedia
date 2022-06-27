@@ -14,10 +14,14 @@ const Broccolimedia = express();
 dotenv.config();
 
 // Database MongoDB
-mongoose
-	.connect(process.env.MONGO, { useNewUrlParser: true, useUnifiedTopology: true })
-	.then(() => console.log("MongoDB connected"))
-	.catch((err) => console.log(err));
+const connect = async () => {
+	try {
+		mongoose.connect(process.env.MONGO);
+		console.log("Connected to mongoDB.");
+	} catch (error) {
+		throw error;
+	}
+};
 
 mongoose.connection.on("disconnected", () => { console.log("Fail to connect MongoDB"); });
 
@@ -41,4 +45,7 @@ Broccolimedia.use((err, req, res, next) => {
 });
 
 // Broccolimedia's port
-Broccolimedia.listen(PORT, () => { console.log(`Listening to ${PORT}`); });
+Broccolimedia.listen(PORT, () => { 
+	connect();
+	console.log(`Listening to ${PORT}`); 
+});

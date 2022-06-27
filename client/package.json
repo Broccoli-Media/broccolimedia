@@ -49,5 +49,5 @@
 	"devDependencies": {
 		"cross-spawn": "^7.0.3"
 	},
-	"proxy": "https://broccolimedia.herokuapp.com/"
+	"proxy": "https://broccolimedia.herokuapp.com"
 }
