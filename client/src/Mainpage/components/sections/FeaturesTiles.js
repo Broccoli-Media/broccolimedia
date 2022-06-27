@@ -60,7 +60,7 @@ const FeaturesTiles = ({ className, topOuterDivider, bottomOuterDivider, topDivi
 										Simple Actions
 									</h4>
 									<p className="m-0 text-sm">
-										You will earn money in few steps with clear instructions
+										Earning money in few steps with clear instructions
 									</p>
 								</div>
 							</div>
@@ -82,7 +82,7 @@ const FeaturesTiles = ({ className, topOuterDivider, bottomOuterDivider, topDivi
 										Friendly Experts
 									</h4>
 									<p className="m-0 text-sm">
-										You will be available to talk to staff easily with fully and instant support
+										Available to talk to staff easily with fully and instant support
 									</p>
 								</div>
 							</div>
@@ -104,7 +104,7 @@ const FeaturesTiles = ({ className, topOuterDivider, bottomOuterDivider, topDivi
 										Privacy Security
 									</h4>
 									<p className="m-0 text-sm">
-										Your privacy will be our priority and safely protected by government and us
+										Privacy will be BM's priority and also be safely protected by government
 									</p>
 								</div>
 							</div>

@@ -89,11 +89,11 @@ const FeaturesSplit = ({
 									height={396} />
 							</div>
 						</div>
-
+						
 						<div className="split-item">
 							<div className="split-item-content center-content-mobile reveal-from-right" data-reveal-container=".split-item">
 								<div className="text-xxs text-color-primary fw-600 tt-u mb-8">
-									Competitive and Grow Faster
+									Competitive &amp; Grow Faster
 								</div>
 								<h3 className="text-color-secondary fw-600 tt-u mt-0 mb-12">
 									Peer Ranking
@@ -115,7 +115,33 @@ const FeaturesSplit = ({
 									height={396} />
 							</div>
 						</div>
+									
 
+						<div className="split-item">
+							<div className="split-item-content center-content-mobile reveal-from-left" data-reveal-container=".split-item">
+								<div className="text-xxs text-color-primary fw-600 tt-u mb-8">
+									Simple &amp; Perfect
+								</div>
+								<h3 className="text-color-secondary fw-600 tt-u mt-0 mb-12">
+									Personal Profile
+								</h3>
+								<p className="m-0">
+									Share your profile and let others know about your great performance
+								</p>
+							</div>
+							<div className={
+								classNames(
+									'split-item-image center-content-mobile reveal-from-bottom',
+									imageFill && 'split-item-image-fill'
+								)}
+								data-reveal-container=".split-item">
+								<Image
+									src={'https://i.imgur.com/hxoFi6p.png'}
+									alt="Features split 01"
+									width={528}
+									height={396} />
+							</div>
+						</div>
 						{/* <div className="split-item">
 							<div className="split-item-content center-content-mobile reveal-from-left" data-reveal-container=".split-item">
 								<div className="text-xxs text-color-primary fw-600 tt-u mb-8">

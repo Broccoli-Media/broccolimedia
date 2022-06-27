@@ -35,7 +35,7 @@ mongoose.connection.on("disconnected", () => { console.log("Fail to connect Mong
 // });
 // Middleware
 var corsOptions = {
-	'origin': "http://localhost:3000",
+	'origin': '*',
 	'allowedHeaders': "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options",
 	'methods': "GET,HEAD,PUT,UPDATE,POST,DELETE",
 	'credential': true,
@@ -51,7 +51,7 @@ Broccolimedia.use(bodyParser.json());
 Broccolimedia.use(bodyParser.urlencoded({ extended: true }));
 // Routes
 Broccolimedia.use(function (req, res, next){
-	res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+	res.setHeader("Access-Control-Allow-Origin", '*');
 	res.setHeader("Access-Control-Allow-Headers","Access-Control-Allow-Origin, Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options, Access-Control-Allow-Headers");
 	res.setHeader("Access-Control-Exposed-Headers", "Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, x-content-type-options");
 	res.setHeader("Access-Control-Allow-Methods", "GET, HEAD, POST, PUT, DELETE, UPDATE");

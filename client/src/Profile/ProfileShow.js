@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, ChakraProvider } from '@chakra-ui/react';
 // Page components
@@ -13,7 +13,8 @@ import useFetch from "../Mainpage/utils/UseFetch.js";
 export default function ProfileShow() {
     const subUrl = useParams();
     const username = subUrl.username;
-    const { data, loading } = useFetch(`https://broccolimedia.herokuapp.com/user/${username}`);
+    const { data, loading, reFetch } = useFetch(`https://broccolimedia.herokuapp.com/user/${username}`);
+
 
     return (
         <ChakraProvider theme={theme}>
