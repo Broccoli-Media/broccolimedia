@@ -30,9 +30,10 @@ Broccolimedia.use(cors());
 Broccolimedia.use(cookieParser());
 Broccolimedia.use(express.json());
 
-Broccolimedia.use("/auth", authRoute);
-Broccolimedia.use("/user", userRoute);
-Broccolimedia.get('/test', testRoute);
+Broccolimedia.use("/api/auth", authRoute);
+Broccolimedia.use("/api/user", userRoute);
+Broccolimedia.get('/api/test', testRoute);
+
 Broccolimedia.use((err, req, res, next) => {
 	const errorStatus = err.status || STATUS_500;
 	const errorMessage = err.message || "Something went wrong!";
