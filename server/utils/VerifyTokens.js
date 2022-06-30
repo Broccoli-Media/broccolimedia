@@ -19,7 +19,7 @@ export function verifyUser(req, res, next) {
 		if (req.user.id === req.params.id || req.user.isAdmin) {
 			next();
 		} else {
-			return next(CreateError(403, "You are not authorized!"));
+			return next(CreateError(403, "Verify User Failed"));
 		}
 	});
 };
@@ -29,7 +29,7 @@ export function verifyAdmin(req, res, next) {
 		if (req.user.isAdmin) {
 			next();
 		} else {
-			return next(CreateError(403, "You are not authorized!"));
+			return next(CreateError(403, "Verify Admin Failed"));
 		}
 	});
 };

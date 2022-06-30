@@ -39,7 +39,7 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
         e.preventDefault();
         dispatch({ type: "SIGNIN_START" });
         try {
-            const res = await axios.post('/auth/signin', credentials);
+            const res = await axios.post('http://localhost:5000/auth/signin', credentials);
             dispatch({ type: "SIGNIN_SUCCESS", payload: res.data.details });
             navigate("/")
         } catch (err) {
@@ -48,8 +48,16 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
         }
     };
 
-    const handleKeypress = (e) => { if (e.key === "Enter") { handleClick(e); } };
-    useEffect(() => { if (user) { navigate(`/profile/in/${user.username}`); } });
+    const handleKeypress = (e) => {
+        if (e.key === "Enter") {
+            handleClick(e);
+        }
+    };
+    useEffect(() => {
+        if (user) {
+            navigate(`/profile/in/${user.username}`);
+        }
+    });
 
     return (
         <section

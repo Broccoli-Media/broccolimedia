@@ -1,12 +1,14 @@
-import cors from "cors";
-import dotenv from "dotenv";
-import express from "express";
-import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
+import bodyParser from "body-parser";
+import mongoose from "mongoose";
+import express from "express";
+import dotenv from "dotenv";
+import cors from "cors";
 // Routers
 import authRoute from "./routes/Auth.js";
 import userRoute from "./routes/User.js";
 import testRoute from "./routes/Test.js";
+
 // App settings
 const PORT = process.env.PORT || 5000
 const STATUS_500 = 500;
@@ -22,17 +24,20 @@ const connect = async () => {
 		throw error;
 	}
 };
-
-mongoose.connection.on("disconnected", () => { console.log("Fail to connect MongoDB"); });
+mongoose.connection.on("disconnected", () => { 
+	console.log("Fail to connect MongoDB"); 
+});
 
 // Middleware
 Broccolimedia.use(cors());
 Broccolimedia.use(cookieParser());
 Broccolimedia.use(express.json());
+Broccolimedia.use(bodyParser.json());
 
-Broccolimedia.use("/api/auth", authRoute);
-Broccolimedia.use("/api/user", userRoute);
-Broccolimedia.get('/api/test', testRoute);
+// Routes
+Broccolimedia.use("/auth", authRoute);
+Broccolimedia.use("/user", userRoute);
+Broccolimedia.get('/test', testRoute);
 
 Broccolimedia.use((err, req, res, next) => {
 	const errorStatus = err.status || STATUS_500;

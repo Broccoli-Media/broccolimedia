@@ -12,8 +12,8 @@ import useFetch from "../Mainpage/utils/UseFetch.js";
 
 export default function ProfileShow() {
     const location = useLocation();
-    const username = location.pathname.split("/")[-1];
-    const { data, loading } = useFetch(`/user/${username}`);
+    const username = location.pathname.split("/")[2];
+    const { data, loading } = useFetch(`http://localhost:5000/user/${username}`);
 
     return (
         <ChakraProvider theme={theme}>

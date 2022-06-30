@@ -13,8 +13,7 @@ export const updateUser = async (req, res, next) => {
 			user.password
 		);
 
-		if (!isPasswordCorrect)
-			return next(CreateError(STATUS_400, "Wrong password or username!"));
+		if (!isPasswordCorrect) { return next(CreateError(STATUS_400, "Wrong password or username!")); }
 
 		const salt = bcrypt.genSaltSync(SALT_NUM);
 		const hash = bcrypt.hashSync(req.body.password, salt);
@@ -32,7 +31,6 @@ export const updateUser = async (req, res, next) => {
 			{ new: true }
 		);
 		res.status(200).json(updatedUser);
-		res.redirect("/api/user/:id");
 	} catch (err) {
 		next(err);
 	}
