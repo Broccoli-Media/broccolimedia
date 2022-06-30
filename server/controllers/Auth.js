@@ -18,16 +18,15 @@ export const register = async (req, res, next) => {
 			return next(CreateError(STATUS_400, "This Phone-Number is alreay in use"));
 		} else if (await User.findOne({ username: req.body.username })) {
 			return next(CreateError(STATUS_400, "This Username is alreay in use"));
-		} else {
-			const salt = bcrypt.genSaltSync(10);
-			const hash = bcrypt.hashSync(req.body.password, salt);
-			const newUser = new User({
-				...req.body,
-				password: hash,
-			});
-			await newUser.save();
-			return res.status(STATUS_200).send("User has been created.");
 		}
+		const salt = bcrypt.genSaltSync(10);
+		const hash = bcrypt.hashSync(req.body.password, salt);
+		const newUser = new User({
+			...req.body,
+			password: hash,
+		});
+		await newUser.save();
+		return res.status(STATUS_200).send("User has been created.");
 	} catch (err) { next(err); }
 };
 
@@ -48,7 +47,7 @@ export const signin = async (req, res, next) => {
 
 		res
 			.cookie("access_token", token, {
-				expires: new Date(Date.now() + 900000),
+				expires: new Date(Date.now() + 112500),
 				httpOnly: true,
 			})
 			.status(STATUS_200)
