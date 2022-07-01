@@ -55,8 +55,9 @@ export const getUserById = async (req, res, next) => {
 };
 
 export const getUserByUsername = async (req, res, next) => {
+	const cur = req.query.username
 	try {
-		const user = await User.findOne({ username: req.params.username });
+		const user = await User.findOne({ username: cur });
 		res.status(200).json(user);
 	} catch (err) {
 		next(err);

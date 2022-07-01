@@ -6,7 +6,7 @@ import Footer from '../components/layout/Footer.js';
 import Hero from '../components/sections/Hero.js';
 import FeaturesTiles from '../components/sections/FeaturesTiles.js';
 import FeaturesSplit from '../components/sections/FeaturesSplit.js';
-import Testimonial from '../components/sections/Testimonial.js';
+import TeamMember from '../components/sections/TeamMember.js';
 import UserCards from '../components/sections/UserCards.js'
 // import Cta from '../components/sections/Cta';
 
@@ -20,7 +20,7 @@ export default function Home () {
 			<Hero />
 			<FeaturesTiles />
 			<FeaturesSplit invertMobile topDivider imageFill />
-			<Testimonial topDivider />
+			<TeamMember topDivider />
 			<UserCards />
 			<Footer />
 		</div>

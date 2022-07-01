@@ -45,6 +45,7 @@ export default function BroccoliMedia() {
 							<Route path="signin" element={<SignIn />} />
 							{/* For Personal Profile */}
 							<Route path="profile">
+								{/* <Route index element={<UserProfiles />} /> */}
 								<Route path="in/:username" element={
 									<ProtectedRoute>
 										<Profile />
@@ -61,6 +62,8 @@ export default function BroccoliMedia() {
 								{/* normal user register */}
 								{/* <Route path="visitor" element={''} /> */}
 							</Route>
+							{/* For About Page */}
+							{/* <Route path="about" element={<About />} /> */}
 						</Route>
 						{/* For Error Page */}
 						<Route path="*" element={<NotFound />} />

@@ -25,9 +25,12 @@ $palette: (
 	golden:(1:#dad460,
 		2:#e0db76,
 		3:#c4c264),
-	wangwang:(1:#5faae3,
+	wangwang:(1:#66a6d7,
 		2:#77c7b3,
-		3:#75a1a1)
+		3:#75a1a1),
+	medium:(1:#003d53,
+		2:#234761,
+		3:#53616b)
 );
 
 // Base typography: color
@@ -45,6 +48,7 @@ $color: (
 	golden: get-color(golden, 1),
 	wangwang: get-color(wangwang, 1),
 	deep-dark: get-color(deep-dark, 1),
+	medium: get-color(medium, 1),
 	// ↓ Inverted colors
 	heading-inverse: get-color(dark, 1),
 	base-inverse: get-color(light, 3),
@@ -55,7 +59,7 @@ $color: (
 
 // Borders and dividers: color
 $border--color: (
-	divider: get-color(dark, 2),
+	divider: get-color(deep-dark, 2),
 	divider-inverse: get-color(light, 1)
 );
 
@@ -87,7 +91,7 @@ $icon--color: (
 
 // Misc elements: background color
 $bg--color: (
-	body: get-color(deep-dark, 1),
+	body: get-color(medium, 1),
 	body-shadow: 0 20px 48px rgba(get-color(dark, 1), .8),
 	// body shadow when a boxed layout is used (set to null if don't want a shadow)
 	body-outer: lighten(get-color(dark, 1), 2%),

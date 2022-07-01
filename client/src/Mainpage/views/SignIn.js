@@ -31,7 +31,7 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
     );
     const [credentials, setCredentials] = useState({ username: undefined, password: undefined, });
     const { user, loading, error, dispatch } = useContext(AuthContext);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     // Functions
     const handleChange = (e) => { setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value })); };

@@ -1,18 +1,19 @@
 import React, { Suspense, useEffect, useState } from 'react';
-import classNames from 'classnames';
 import { SectionTilesProps } from '../../utils/SectionProps';
 import SectionHeader from './partials/SectionHeader';
+import { useNavigate } from 'react-router-dom';
+import classNames from 'classnames';
+import axios from 'axios';
 // Necessary Components
 import useFetch from "../../utils/UseFetch.js";
 import {
 	Avatar, Button, Image, Modal, ModalBody, ModalCloseButton, ModalContent,
 	ModalFooter, ModalHeader, ModalOverlay, useDisclosure, SkeletonCircle
 } from '@chakra-ui/react';
-import axios from 'axios';
 
 const propTypes = { ...SectionTilesProps.types }
 const defaultProps = { ...SectionTilesProps.defaults }
-const Testimonial = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bottomDivider, hasBgColor, invertColor, pushLeft, ...props
+const TeamMember = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bottomDivider, hasBgColor, invertColor, pushLeft, ...props
 }) => {
 
 	const outerClasses = classNames(
@@ -36,9 +37,11 @@ const Testimonial = ({ className, topOuterDivider, bottomOuterDivider, topDivide
 	);
 
 	const sectionHeader = {
-		title: 'We are here all the time',
+		title: 'Meet the Team',
 		paragraph: 'Our company will provides you with premium services all the time',
 	};
+
+	const navigate = useNavigate();
 
 	return (
 		<section
@@ -64,11 +67,14 @@ const Testimonial = ({ className, topOuterDivider, bottomOuterDivider, topDivide
 										mb={"10"}
 										size="md"
 										name={'BM Jackson Feng'}
-										// cursor="pointer"
+										cursor="pointer"
 										// onClick={() => {
 										// 	setCTOOverlay(<CTOOverlay />)
 										// 	onCTOOpen()
 										// }}
+										onClick={() => {
+											navigate('/profile/jackson')
+										}}
 										src={'https://res.cloudinary.com/broccoli-media/image/upload/v1653613774/upload/ffdeisr8fqolp1am5cjd.jpg'}
 									/>
 								</Suspense>
@@ -93,11 +99,14 @@ const Testimonial = ({ className, topOuterDivider, bottomOuterDivider, topDivide
 									mb={"10"}
 									size="sm"
 									name={"BM Jeremy Huang"}
-									// cursor="pointer"
+									cursor="pointer"
 									// onClick={() => {
 									// 	setCTOOverlay(<CTOOverlay />)
 									// 	onCTOOpen()
 									// }}
+									onClick={() => {
+										navigate('/profile/fusheng')
+									}}
 									src={"https://i.imgur.com/ZS2SfLR.jpg?1"}
 								/>
 
@@ -121,14 +130,17 @@ const Testimonial = ({ className, topOuterDivider, bottomOuterDivider, topDivide
 									mb={"10"}
 									size="md"
 									name={"BM Edmond Weng"}
-									// cursor="pointer"
+									cursor="pointer"
 									// onClick={() => {
 									// 	setCofunderOverlay(<CofunderOverlay />)
 									// 	onCofunderOpen()
 									// }}
+									onClick={() => {
+										navigate('/profile/edmond')
+									}}
 									src={"https://i.imgur.com/msQjc8N.png?2"} />
 								<p className="text-sm mb-0">
-									— All our users are valualbe, you deserve the best.
+									— All our users are valuable and deserve the best.
 								</p>
 							</div>
 						</div>
@@ -139,7 +151,7 @@ const Testimonial = ({ className, topOuterDivider, bottomOuterDivider, topDivide
 	);
 }
 
-Testimonial.propTypes = propTypes;
-Testimonial.defaultProps = defaultProps;
+TeamMember.propTypes = propTypes;
+TeamMember.defaultProps = defaultProps;
 
-export default Testimonial;
+export default TeamMember;

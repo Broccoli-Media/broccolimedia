@@ -139,10 +139,10 @@ const Header = ({
 													</li>}
 												{!user && <>
 													<li>
-														<Button className="button button-wangwang button-wide-mobile button-wangwang" href="https://forms.gle/idGkmkmVX61XPAvu9" >Register as Company</Button>
+														<Link to="/signup/com"><Button className="button button-wangwang button-wide-mobile button-wangwang" >Register as Company</Button></Link>
 													</li>
 													<li>
-														<Button mt={2} className="button button-wangwang button-wide-mobile button-wangwang" href="https://forms.gle/svo5zJpeTpUFcrk49" >Register as Influencer</Button>
+														<Link to="/signup/inf"><Button mt={2} className="button button-wangwang button-wide-mobile button-wangwang" >Register as Influencer</Button></Link>
 													</li>
 												</>}
 												{!user ?
@@ -151,7 +151,7 @@ const Header = ({
 													</li>
 													:
 													<li>
-														<Link mt={10} to="/" className="button button-wangwang golden-wide-mobile button-golden " onClick={signOut}>Sign Out</Link>
+														<Link mt={10} to="/" className="button button-golden golden-wide-mobile button-golden " onClick={signOut}>Sign Out</Link>
 													</li>
 												}
 
@@ -167,22 +167,22 @@ const Header = ({
 														_hover={{ bg: 'gray.400' }}
 														_expanded={{ bg: 'blue.400' }}
 														_focus={{ boxShadow: 'outline' }}
-														className="button button-wangwang button-wide-mobile button-wangwang"
+														className="button button-wangwang button-wide-mobile"
 													>
 														{isOpen ? 'Welcome' : 'Here'}
 													</MenuButton>
 													<MenuList>
-														{user && <Link to={`/profile/in/${user.username}`} ><MenuItem className="button button-golden button-wide-mobile button-golden">{user.displayName}</MenuItem></Link>}
+													{user && <Link to={`/profile/in/${user.username}`} ><MenuItem textColor={'deep-dark'} className="button button-golden button-wide-mobile button-golden">{user.displayName}</MenuItem></Link>}
 														{!user &&
 															<>
-																<Link to="/signup/com"><MenuItem mt={10} className="button button-wangwang button-wide-mobile button-dark" >Register as Company</MenuItem></Link>
-																<Link to="/signup/inf"><MenuItem mt={10} className="button button-wangwang button-wide-mobile button-dark " >Register as Influencer</MenuItem></Link>
+																<Link to="/signup/com"><MenuItem mt={10} textColor={'deep-dark'} fontStyle={{ color: "black" }} className="button button-wangwang button-wide-mobile" >Register as Company</MenuItem></Link>
+																<Link to="/signup/inf"><MenuItem mt={10} textColor={'deep-dark'} className="button button-wangwang button-wide-mobile" >Register as Influencer</MenuItem></Link>
 															</>}
 														<MenuDivider />
 														{user ?
-															<Link to="/"><MenuItem className="button button-golden button-wide-mobile button-golden" onClick={signOut}>Sign Out</MenuItem></Link>
+															<Link to="/"><MenuItem textColor={'deep-dark'} className="button button-golden button-wide-mobile" onClick={signOut}>Sign Out</MenuItem></Link>
 															:
-															<Link to="/signin"><MenuItem className="button button-golden button-wide-mobile button-golden">Sign In</MenuItem></Link>
+															<Link to="/signin"><MenuItem textColor={'deep-dark'} className="button button-golden button-wide-mobile">Sign In</MenuItem></Link>
 														}
 													</MenuList>
 												</>

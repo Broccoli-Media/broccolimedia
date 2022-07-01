@@ -8,7 +8,7 @@ router.get("/allnormal", getNormalUsers);
 router.get("/alladmin", getAdminUsers);
 // router.get("/:id", getUserById);
 router.get("/countbycity", countByCity);
-router.get("/:username", getUserByUsername);
+router.get("/", getUserByUsername);
 router.put("/:username", verifyUser, updateUser);
 router.delete("/:username", verifyAdmin, deleteUser);
 
