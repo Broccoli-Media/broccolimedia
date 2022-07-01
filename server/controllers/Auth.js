@@ -7,7 +7,7 @@ const STATUS_200 = 200;
 const STATUS_400 = 400;
 const STATUS_404 = 404;
 
-export const register = async (req, res, next) => {
+export const signup = async (req, res, next) => {
 	try {
 		// const existingEmail = await User.findOne({ email: req.body.email });
 		// const existingPhone = await User.findOne({ phone: req.body.phone });

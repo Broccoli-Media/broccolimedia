@@ -139,7 +139,7 @@ const Header = ({
 													</li>}
 												{!user && <>
 													<li>
-														<Button  className="button button-wangwang button-wide-mobile button-wangwang" href="https://forms.gle/idGkmkmVX61XPAvu9" >Register as Company</Button>
+														<Button className="button button-wangwang button-wide-mobile button-wangwang" href="https://forms.gle/idGkmkmVX61XPAvu9" >Register as Company</Button>
 													</li>
 													<li>
 														<Button mt={2} className="button button-wangwang button-wide-mobile button-wangwang" href="https://forms.gle/svo5zJpeTpUFcrk49" >Register as Influencer</Button>
@@ -175,8 +175,8 @@ const Header = ({
 														{user && <Link to={`/profile/in/${user.username}`} ><MenuItem className="button button-golden button-wide-mobile button-golden">{user.displayName}</MenuItem></Link>}
 														{!user &&
 															<>
-																<MenuItem mt={10} className="button button-wangwang button-wide-mobile button-dark" href="https://forms.gle/idGkmkmVX61XPAvu9">Register as Company</MenuItem>
-																<MenuItem mt={10} className="button button-wangwang button-wide-mobile button-dark " href="https://forms.gle/svo5zJpeTpUFcrk49">Register as Influencer</MenuItem>
+																<Link to="/signup/com"><MenuItem mt={10} className="button button-wangwang button-wide-mobile button-dark" >Register as Company</MenuItem></Link>
+																<Link to="/signup/inf"><MenuItem mt={10} className="button button-wangwang button-wide-mobile button-dark " >Register as Influencer</MenuItem></Link>
 															</>}
 														<MenuDivider />
 														{user ?
