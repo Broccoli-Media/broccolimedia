@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import express from "express";
 import dotenv from "dotenv";
+import path from "path";
 import cors from "cors";
 // Routers
 import authRoute from "./routes/Auth.js";
