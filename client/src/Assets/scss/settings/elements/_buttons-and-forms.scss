@@ -31,7 +31,7 @@ $button--bg: (
 	button-wangwang: get-color(wangwang, 1),
 	button-wangwang-hover: darken(get-color(wangwang, 1), 10%),
 	button-golden: get-color(golden, 1),
-	button-golden-hover: darken(get-color(golden, 1), 5%)
+	button-golden-hover: darken(get-color(golden, 2), 10%)
 );
 
 // Buttons: border color

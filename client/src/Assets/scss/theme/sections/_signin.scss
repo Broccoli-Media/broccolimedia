@@ -29,6 +29,14 @@ html {
     font-size: 2rem;
 }
 
+.label {
+    text-align: center;
+    font-family: 'open sans', sans-serif;
+    padding: 2rem 0;
+    margin: 0;
+    font-size: 0.8rem;
+}
+
 .row {
     display: flex;
     flex-direction: column;

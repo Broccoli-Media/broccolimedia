@@ -9,9 +9,11 @@ import ScrollReveal from './Mainpage/utils/ScrollReveal.js';
 // Profile Components
 import Profile from './Profile/Profile.js';
 import ProfileShow from './Profile/ProfileShow.js';
-import SignupInf from './Mainpage/views/SignupInf.js';
-import SignupCom from './Mainpage/views/SignupCom.js';
+import SignUp from './Mainpage/views/signup/SignUp.js';
+import SignupInf from './Mainpage/views/signup/SignupInf.js';
+import SignupCom from './Mainpage/views/signup/SignupCom.js';
 import { AuthContext } from './Mainpage/context/AuthContext.js';
+import About from './Mainpage/views/about/About.js';
 
 
 export default function BroccoliMedia() {
@@ -38,7 +40,10 @@ export default function BroccoliMedia() {
 				ref={childRef}
 				children={() => (
 					<Routes>
+						{/* For Sharing Profile */}
+						<Route exact path="/profile/:username" element={<ProfileShow />} />
 						<Route path="/">
+
 							{/* For Main Usage */}
 							<Route index element={<Home />} />
 							{/* For Sign In Page */}
@@ -51,19 +56,18 @@ export default function BroccoliMedia() {
 										<Profile />
 									</ProtectedRoute>
 								} />
-								<Route path=":username" element={<ProfileShow />} />
+								{/* <Route path=":username" element={<ProfileShow />} /> */}
 							</Route>
 							{/* For Register Page */}
 							<Route path="signup" >
+								<Route index element={<SignUp />} />
 								{/* influencer register */}
-								<Route path="inf" element={<SignupInf />} /> 
+								<Route path="inf" element={<SignupInf />} />
 								{/* company owner register */}
 								<Route path="com" element={<SignupCom />} />
-								{/* normal user register */}
-								{/* <Route path="visitor" element={''} /> */}
 							</Route>
 							{/* For About Page */}
-							{/* <Route path="about" element={<About />} /> */}
+							<Route path="about" element={<About />} />
 						</Route>
 						{/* For Error Page */}
 						<Route path="*" element={<NotFound />} />

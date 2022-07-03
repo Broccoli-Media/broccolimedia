@@ -1,6 +1,6 @@
 import { FormHelperText, FormControl, FormLabel, Switch, Button } from '@chakra-ui/react';
 
-export default function Notifications(user) {
+export default function Notifications() {
 	return (
 		<>
 			<FormControl

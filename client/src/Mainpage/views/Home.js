@@ -3,11 +3,9 @@ import React from 'react';
 import Header from '../components/layout/Header.js';
 import Footer from '../components/layout/Footer.js';
 // import sections
-import Hero from '../components/sections/Hero.js';
-import FeaturesTiles from '../components/sections/FeaturesTiles.js';
-import FeaturesSplit from '../components/sections/FeaturesSplit.js';
-import TeamMember from '../components/sections/TeamMember.js';
-import UserCards from '../components/sections/UserCards.js'
+import Hero from '../sections/home/Hero.js';
+import FeaturesTiles from '../sections/home/FeaturesTiles.js';
+import FeaturesSplit from '../sections/home/FeaturesSplit.js';
 // import Cta from '../components/sections/Cta';
 
 export default function Home () {
@@ -20,8 +18,6 @@ export default function Home () {
 			<Hero />
 			<FeaturesTiles />
 			<FeaturesSplit invertMobile topDivider imageFill />
-			<TeamMember topDivider />
-			<UserCards />
 			<Footer />
 		</div>
 	);
