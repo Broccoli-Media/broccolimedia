@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Button, FormLabel, Input, VStack } from "@chakra-ui/react";
+import React, { useCallback, useContext, useEffect, useState } from "react";
+import { Button, CircularProgress, FormLabel, Input, VStack } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
 import classNames from 'classnames';
 import { useFormik } from 'formik';
@@ -56,30 +56,6 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
         }
     };
 
-    // const handleKeypress = (e) => {
-    //     if (e.key === "Enter") {
-    //         check(e);
-    //     }
-    // };
-
-    const SignInSchema = Yup.object().shape({
-        username: Yup.string()
-            .required('Username cannot be empty'),
-        password: Yup.string()
-            .required('Password cannot be empty'),
-    });
-
-    const formik = useFormik({
-        initialValues: {
-            username: "",
-            password: "",
-        },
-        validationSchema: SignInSchema,
-        onSubmit: (values) => {
-            alert(JSON.stringify(values, null, 2));
-        }
-    });
-
     const check = (e) => {
         e.preventDefault()
         const usercheck = (formik.values.username === "");
@@ -103,12 +79,41 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
         }
     }
 
-    useEffect(() => {
-        if (user) {
-            navigate(`/profile/in/${user.username}`);
+    const handleKeypress = useCallback((event) => {
+        if (event.key === 'Enter') {
+            check(event);
         }
+    })
 
+    const SignInSchema = Yup.object().shape({
+        username: Yup.string()
+            .required('Username cannot be empty'),
+        password: Yup.string()
+            .required('Password cannot be empty'),
     });
+
+    const formik = useFormik({
+        initialValues: {
+            username: "",
+            password: "",
+        },
+        validationSchema: SignInSchema,
+        onSubmit: (values) => {
+            alert(JSON.stringify(values, null, 2));
+        }
+    });
+
+
+
+    useEffect(() => {
+        if (user) { navigate(`/profile/in/${user.username}`); }
+
+        window.addEventListener("keydown", handleKeypress);
+        return () => {
+            window.removeEventListener("keydown", handleKeypress);
+        };
+
+    }, [handleKeypress, navigate, user]);
 
     return (
         <>
@@ -131,29 +136,36 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
                             <div className="container-xs">
                                 <div className="m-0 mb-48 reveal-from-bottom" data-reveal-delay="600">
                                     <FormHeader className="headerTitle" title="Sign In" />
-                                    <VStack>
-                                        <FormLabel>Username</FormLabel>
-                                        <Input
-                                            id="username"
-                                            name="username"
-                                            type="text"
-                                            onChange={formik.handleChange}
-                                            value={formik.values.username}
-                                        />
-                                        {theuser && <FormLabel>Username is required</FormLabel>}
-                                    </VStack>
-                                    <br />
-                                    <VStack>
-                                        <FormLabel>Password</FormLabel>
-                                        <Input
-                                            id="password"
-                                            name="password"
-                                            type="password"
-                                            onChange={formik.handleChange}
-                                            value={formik.values.password}
-                                        />
-                                        {pass && <FormLabel>Password is required</FormLabel>}
-                                    </VStack>
+                                    {loading ?
+                                        <CircularProgress mb={30} size='160px' isIndeterminate color='green.600' />
+                                        :
+                                        (<>
+                                            <VStack>
+                                                <FormLabel>Username</FormLabel>
+                                                <Input
+                                                    id="username"
+                                                    name="username"
+                                                    type="text"
+                                                    onKeyUp={handleKeypress}
+                                                    onChange={formik.handleChange}
+                                                    value={formik.values.username}
+                                                />
+                                                {theuser && <FormLabel>Username is required</FormLabel>}
+                                            </VStack>
+                                            <br />
+                                            <VStack>
+                                                <FormLabel>Password</FormLabel>
+                                                <Input
+                                                    id="password"
+                                                    name="password"
+                                                    type="password"
+                                                    onKeyUp={handleKeypress}
+                                                    onChange={formik.handleChange}
+                                                    value={formik.values.password}
+                                                />
+                                                {pass && <FormLabel>Password is required</FormLabel>}
+                                            </VStack>
+                                        </>)}
                                     <br />
                                     {loading ?
                                         (<Button type="submit" className="button button-dark" tag="a" disabled={loading}>

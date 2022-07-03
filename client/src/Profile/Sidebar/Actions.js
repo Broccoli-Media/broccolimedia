@@ -18,9 +18,9 @@ export function Public(props) {
 	return (
 		<VStack py={4} px={5} spacing={3}>
 			<Link isExternal href={`https://broccolimedia.net/profile/${user.username}`}>
-				<Button w="full" variant="outline">
-				View Public Profile
-			</Button>
+				<Button w="full" variant="outline" >
+					View Public Profile
+				</Button>
 			</Link>
 
 			<InputGroup>

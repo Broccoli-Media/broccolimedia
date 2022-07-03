@@ -3,13 +3,14 @@ import { Box, Button, Skeleton, Tab, TabList, TabPanel, TabPanels, Tabs } from '
 // Import important sections
 import Notifications from '../Notifications.js';
 import Settings from '../Settings.js';
-import AddUser from './AddUser.js';
+// import AddUser from './AddUser.js';
 import Account from '../Account.js';
 
 export default function Content (user, isLoading){
 	const cur_user = user.user;
 	const [showUpdate, setShowUpdate] = useState(false);
-	const tabs = (!showUpdate) ? ['Account', 'Add User', 'Notifications'] : ['Settings', 'Add User', 'Notifications'];
+	// const tabs = (!showUpdate) ? ['Account', 'Add User', 'Notifications'] : ['Settings', 'Add User', 'Notifications'];
+	const tabs = (!showUpdate) ? ['Account', 'Notifications'] : ['Settings', 'Notifications'];
 
 	return (
 		<>
@@ -62,9 +63,9 @@ export default function Content (user, isLoading){
 									<Button ml={0} onClick={() => { setShowUpdate(!showUpdate) }}>Cancel</Button>
 								</Box>
 							</TabPanel>}
-							<TabPanel>
+							{/* <TabPanel>
 								<AddUser user={cur_user} />
-							</TabPanel>
+							</TabPanel> */}
 							<TabPanel>
 								<Notifications user={cur_user} />
 							</TabPanel>

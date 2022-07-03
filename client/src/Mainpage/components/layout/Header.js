@@ -138,8 +138,14 @@ const Header = ({
 												<li>
 													<Link to="/about" className="button button-wangwang button-wide-mobile button-sm" >About Us</Link>
 												</li>
+												{!user &&
+													(signup ?
+														null
+														:
+														<Link to="/signup" mb={10} textcolor={'deep-dark'} className="button button-wangwang button-wide-mobile button-sm" >Sign Up</Link>
+													)}
 												{!user ?
-													(!signin ? null : (
+													(signin ? null : (
 														<li>
 															<Link mt={10} to="/signin" className="button button-golden button-wide-mobile button-sm">Sign In</Link>
 														</li>))
@@ -165,7 +171,7 @@ const Header = ({
 														{isOpen ? 'Welcome' : 'Here'}
 													</MenuButton>
 													<MenuList>
-														{user && <Link to={`/profile/in/${user.username}`} ><MenuItem textColor={'deep-dark'} className="button button-golden button-wide-mobile button-sm">{user.displayName}</MenuItem></Link>}
+														{user && <Link to={`/profile/in/${user.username}`} ><MenuItem mb={10} textColor={'deep-dark'} className="button button-golden button-wide-mobile button-sm">{user.displayName}</MenuItem></Link>}
 														<MenuDivider />
 														<Link to="/about"><MenuItem mb={10} textColor={'deep-dark'} className="button button-wangwang button-wide-mobile button-sm" >About Us</MenuItem></Link>
 														<MenuDivider />

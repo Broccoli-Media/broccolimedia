@@ -20,7 +20,6 @@ export default function ProfileShow() {
         <>
             <Header navPosition="right" className="reveal-from-bottom" />
             <ChakraProvider theme={theme}>
-
                 <Cover />
                 <Container display={{ base: 'block', md: 'flex' }} maxW="1240px">
                     <SidebarShow user={data} isLoading={loading} />

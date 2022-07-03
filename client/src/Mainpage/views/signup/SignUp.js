@@ -127,7 +127,7 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
 										</Button>)
 										:
 										(<Button type="submit" className="button button-golden" tag="a" onClick={check}>
-											Sign Up Here
+											Join BM
 										</Button>)}
 									<br />
 									<br />
