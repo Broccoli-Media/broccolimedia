@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useContext } from 'react';
 import { useLocation, Routes, Route, Navigate } from 'react-router-dom';
 // Views 
 import Home from './Mainpage/views/Home.js';
-import NotFound from './Mainpage/views/404.js';
+// import NotFound from './Mainpage/views/404.js';
 import SignIn from './Mainpage/views/SignIn.js';
 // Necessary Components
 import ScrollReveal from './Mainpage/utils/ScrollReveal.js';
@@ -40,37 +40,30 @@ export default function BroccoliMedia() {
 				ref={childRef}
 				children={() => (
 					<Routes>
+
+						{/* For Main Usage */}
+						<Route exact path="/" element={<Home />} />
+						{/* For About Page */}
+						<Route exact path="/about" element={<About />} />
+						{/* For Sign In Page */}
+						<Route exact path="/signin" element={<SignIn />} />
+						{/* For Register Page */}
+						<Route exact path="/signup" element={<SignUp />} />
+						{/* For Personal Profile */}
+						<Route exact path="/profile/in/:username" element={
+							<ProtectedRoute>
+								<Profile />
+							</ProtectedRoute>
+						} />
 						{/* For Sharing Profile */}
 						<Route exact path="/profile/:username" element={<ProfileShow />} />
-						<Route path="/">
-
-							{/* For Main Usage */}
-							<Route index element={<Home />} />
-							{/* For Sign In Page */}
-							<Route path="signin" element={<SignIn />} />
-							{/* For Personal Profile */}
-							<Route path="profile">
-								{/* <Route index element={<UserProfiles />} /> */}
-								<Route path="in/:username" element={
-									<ProtectedRoute>
-										<Profile />
-									</ProtectedRoute>
-								} />
-								{/* <Route path=":username" element={<ProfileShow />} /> */}
-							</Route>
-							{/* For Register Page */}
-							<Route path="signup" >
-								<Route index element={<SignUp />} />
-								{/* influencer register */}
-								<Route path="inf" element={<SignupInf />} />
-								{/* company owner register */}
-								<Route path="com" element={<SignupCom />} />
-							</Route>
-							{/* For About Page */}
-							<Route path="about" element={<About />} />
-						</Route>
+						{/* influencer register */}
+						<Route exact path="/signup/inf" element={<SignupInf />} />
+						{/* company owner register */}
+						<Route exact path="/signup/com" element={<SignupCom />} />
 						{/* For Error Page */}
-						<Route path="*" element={<NotFound />} />
+						{/* <Route path="*" element={<NotFound />} /> */}
+
 					</Routes>
 				)}
 			/>

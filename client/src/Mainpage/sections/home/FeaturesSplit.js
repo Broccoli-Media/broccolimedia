@@ -73,7 +73,7 @@ const FeaturesSplit = ({
 									Personal Dashboard
 								</h3>
 								<p className="m-0">
-									Visulize your profit and know what you have now
+									Visulize profit and make everything possible
 								</p>
 							</div>
 							<div className={
@@ -85,8 +85,8 @@ const FeaturesSplit = ({
 								<Image
 									src={'https://i.imgur.com/iiaeUJz.png'}
 									alt="Features split 01"
-									width={528}
-									height={396} />
+									width={300}
+									height={100} />
 							</div>
 						</div>
 						
@@ -99,7 +99,7 @@ const FeaturesSplit = ({
 									Peer Ranking
 								</h3>
 								<p className="m-0">
-									You will know how popular the other influencers are and learn from others to grow faster 
+									Showing the most popular influencers are and learn from others to grow faster 
 								</p>
 							</div>
 							<div className={
@@ -136,7 +136,7 @@ const FeaturesSplit = ({
 								)}
 								data-reveal-container=".split-item">
 								<Image
-									src={'https://i.imgur.com/hxoFi6p.png'}
+									src={'https://i.imgur.com/6v6wDOK.png'}
 									alt="Features split 01"
 									width={528}
 									height={396} />

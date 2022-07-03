@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Skeleton, Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
+import { Box, SkeletonCircle, SkeletonText, Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
 // Import sections
 import PublicData from './PublicData.js';
 import UserPost from './UserPost.js';
@@ -68,7 +68,11 @@ export default function ContentShow(props) {
 					borderColor="gray.200"
 					style={{ transform: 'translateY(-100px)' }}
 				>
-					<Skeleton startColor='blue.200' endColor='green.600' height='100%' width='100%' />
+					<SkeletonCircle startColor='blue.200' endColor='green.600' mt='4' size='100' />
+					<SkeletonText startColor='blue.200' endColor='green.600' mt='8' height='100px' />
+
+					<SkeletonCircle startColor='blue.200' endColor='green.600'  size='100' />
+					<SkeletonText startColor='blue.200' endColor='green.600' mt='8'  />
 				</Box>)}
 		</>
 	)

@@ -53,7 +53,7 @@ function Data(props) {
 					borderBottomWidth={1}
 					borderColor="brand.light"
 				>
-					<Text color="brand.dark" fontSize="md">{item.name}</Text>
+					<Text color="brand.dark" fontSize="md">{item.name} </Text>
 					{(item.id !== 4) &&
 						<Text color={`brand.${item.color}`} fontWeight="bold">
 							{item.value}

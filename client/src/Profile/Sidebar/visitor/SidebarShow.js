@@ -38,7 +38,7 @@ export default function SidebarShow(props) {
 					style={{ transform: 'translateY(-100px)' }}
 				>
 					<SkeletonCircle startColor='blue.200' endColor='green.600' mt='4' ml={'auto'} mr={'auto'} size='200' />
-					<Skeleton startColor='blue.200' endColor='green.600' mt='8' height='400px' />
+					<Skeleton startColor='blue.200' endColor='green.600' mt='8' height='200px' />
 				</Box>)
 			}
 		</>

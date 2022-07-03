@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, CircularProgress, CircularProgressLabel, Heading, Text, Wrap, WrapItem } from '@chakra-ui/react';
+import { CircularProgress, CircularProgressLabel, Heading, Text, Wrap, WrapItem } from '@chakra-ui/react';
 let folTimer;
 let comTimer;
 let showFol;
@@ -68,7 +68,7 @@ export default function PublicData(props) {
 			clearInterval(folTimer)
 			clearInterval(comTimer)
 		}
-	}, [countFol, countCom, fol, coCom])
+	}, [countFol, countCom, fol, coCom, intervalCom, intervalFol])
 
 	showFol = Math.round((countFol / totalFol) * 100);
 	showCom = Math.round((countCom / totalCom) * 100);

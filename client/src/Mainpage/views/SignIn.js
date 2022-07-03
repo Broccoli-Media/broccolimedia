@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Button, FormLabel, Input, VStack } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import classNames from 'classnames';
 import { useFormik } from 'formik';
 import * as Yup from "yup";
@@ -107,13 +107,13 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
         if (user) {
             navigate(`/profile/in/${user.username}`);
         }
-        
+
     });
 
     return (
         <>
-            <Header signin={false} />
-            <br/>
+            <Header signin={true} navPosition="right" className="reveal-from-bottom" />
+            <br />
             <br />
             <section
                 {...props}
@@ -156,17 +156,20 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
                                     </VStack>
                                     <br />
                                     {loading ?
-                                        (<Button type="submit" className="button button-dark button-wide-mobile" tag="a" disabled={loading}>
+                                        (<Button type="submit" className="button button-dark" tag="a" disabled={loading}>
                                             Almost there
                                         </Button>)
                                         :
-                                        (<Button type="submit" className="button button-golden button-wide-mobile" tag="a" onClick={check}>
+                                        (<Button type="submit" className="button button-golden" tag="a" onClick={check}>
                                             Start Here
                                         </Button>)}
                                     <br />
                                     <br />
                                     <VStack>
                                         {error && <FormLabel>{error.message}</FormLabel>}
+                                    </VStack>
+                                    <VStack>
+                                        <FormLabel>Not yet have account ? <Link to="/signup">SignUp</Link></FormLabel>
                                     </VStack>
                                 </div>
                             </div>

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { Menu, MenuButton, MenuList, MenuItem, MenuDivider, Button } from "@chakra-ui/react";
+import { Menu, MenuButton, MenuList, MenuItem, MenuDivider } from "@chakra-ui/react";
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../context/AuthContext";
 import Logo from './partials/Logo';
@@ -12,7 +12,8 @@ const propTypes = {
 	hideSignin: PropTypes.bool,
 	bottomOuterDivider: PropTypes.bool,
 	bottomDivider: PropTypes.bool,
-	signin: PropTypes.bool
+	signin: PropTypes.bool,
+	signup: PropTypes.bool
 }
 
 const defaultProps = {
@@ -21,7 +22,8 @@ const defaultProps = {
 	hideSignin: false,
 	bottomOuterDivider: false,
 	bottomDivider: false,
-	signin: true
+	signin: false,
+	signup: false,
 }
 
 const Header = ({
@@ -32,6 +34,7 @@ const Header = ({
 	bottomOuterDivider,
 	bottomDivider,
 	signin,
+	signup,
 	...props
 }) => {
 	const { user } = useContext(AuthContext);
@@ -125,16 +128,6 @@ const Header = ({
 										isActive && 'is-active'
 									)}>
 								<div className="header-nav-inner">
-									{/* <ul className={
-										classNames(
-											'list-reset text-xs',
-											navPosition && `header-nav-${navPosition}`
-										)}>
-										<li>
-											<Link to="/about" onClick={closeMenu}>About</Link>
-										</li>
-									</ul> */}
-
 									<ul className="list-reset header-nav-right">
 										{!hideNav && isActive &&
 											<>
@@ -143,30 +136,21 @@ const Header = ({
 														<Link to={`/profile/in/${user.username}`} className="button button-golden button-wide-mobile button-sm">{user.displayName}</Link>
 													</li>}
 												<li>
-													<Link to="/about"><Button className="button button-wangwang button-wide-mobile button-wangwang button-sm" >About Us</Button></Link>
+													<Link to="/about" className="button button-wangwang button-wide-mobile button-sm" >About Us</Link>
 												</li>
-												{/* {!user && <>
-													<li>
-														<Link to="/signup/com"><Button className="button button-wangwang button-wide-mobile button-wangwang button-sm" >Register as Company</Button></Link>
-													</li>
-													<li>
-														<Link to="/signup/inf"><Button mt={2} className="button button-wangwang button-wide-mobile button-wangwang button-sm" >Register as Influencer</Button></Link>
-													</li>
-												</>} */}
 												{!user ?
 													(!signin ? null : (
 														<li>
-															<Link mt={10} to="/signin" className="button button-golden button-wide-mobile button-golden button-sm">Sign In</Link>
+															<Link mt={10} to="/signin" className="button button-golden button-wide-mobile button-sm">Sign In</Link>
 														</li>))
 													:
 													<li>
-														<Link mt={10} to="/" className="button button-golden golden-wide-mobile button-golden button-sm" onClick={signOut}>Sign Out</Link>
+														<Link mt={10} to="/" className="button button-golden button-wide-mobile button-sm" onClick={signOut}>Sign Out</Link>
 													</li>
 												}
 
 											</>
 										}
-
 										{!isActive && <Menu>
 											{({ isOpen }) => (
 												<>
@@ -181,31 +165,28 @@ const Header = ({
 														{isOpen ? 'Welcome' : 'Here'}
 													</MenuButton>
 													<MenuList>
-														{user && <Link to={`/profile/in/${user.username}`} ><MenuItem textColor={'deep-dark'} className="button button-golden button-wide-mobile button-golden button-sm">{user.displayName}</MenuItem></Link>}
+														{user && <Link to={`/profile/in/${user.username}`} ><MenuItem textColor={'deep-dark'} className="button button-golden button-wide-mobile button-sm">{user.displayName}</MenuItem></Link>}
 														<MenuDivider />
-														<Link to="/about"><MenuItem mt={10} textColor={'deep-dark'} className="button button-wangwang button-wide-mobile button-sm" >About Us</MenuItem></Link>
+														<Link to="/about"><MenuItem mb={10} textColor={'deep-dark'} className="button button-wangwang button-wide-mobile button-sm" >About Us</MenuItem></Link>
 														<MenuDivider />
-														{/* {!user &&
-															<>
-
-																<Link to="/signup/com"><MenuItem mt={10} textColor={'deep-dark'} className="button button-wangwang button-wide-mobile button-sm" >Register as Company</MenuItem></Link>
-																<Link to="/signup/inf"><MenuItem mt={10} textColor={'deep-dark'} className="button button-wangwang button-wide-mobile button-sm" >Register as Influencer</MenuItem></Link>
-															</>}
-														<MenuDivider /> */}
-														{user ?
-															<Link to="/"><MenuItem textColor={'deep-dark'} className="button button-golden button-sm" onClick={signOut}>Sign Out</MenuItem></Link>
-															:
-															(!signin ?
+														{!user &&
+															(signup ?
 																null
 																:
-																(<Link to="/signin"><MenuItem textColor={'deep-dark'} className="button button-golden button-sm">Sign In</MenuItem></Link>))
+																<Link to="/signup"><MenuItem mb={10} textColor={'deep-dark'} className="button button-wangwang button-wide-mobile button-sm" >Sign Up</MenuItem></Link>
+															)}
+														{user ?
+															<Link to="/"><MenuItem textColor={'deep-dark'} className="button button-golden button-wide-mobile button-sm" onClick={signOut}>Sign Out</MenuItem></Link>
+															:
+															(signin ?
+																null
+																:
+																(<Link to="/signin"><MenuItem textColor={'deep-dark'} className="button button-golden button-wide-mobile button-sm">Sign In</MenuItem></Link>))
 														}
 													</MenuList>
 												</>
 											)}
 										</Menu>}
-										{/* <Link to="/registercompany"><MenuItem className="button button-wangwang button-wide-mobile button-wangwang">Register as Company</MenuItem></Link>
-										<Link to="/registerinfluencer"><MenuItem className="button button-wangwang button-wide-mobile button-wangwang">Register as Influencer</MenuItem></Link> */}
 									</ul>
 								</div>
 							</nav>
