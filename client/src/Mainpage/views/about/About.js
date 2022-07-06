@@ -15,6 +15,7 @@ export default function About() {
         <div>
             <Header navPosition="right" className="reveal-from-bottom" />
             <br />
+            <br />
             <Hero />
             {/* <FeaturesTiles />
             <FeaturesSplit invertMobile topDivider imageFill /> */}

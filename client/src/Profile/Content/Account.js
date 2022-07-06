@@ -9,15 +9,9 @@ export default function Account(user) {
 			gap={6}
 		>
 			<FormControl id="firstName">
-				<FormLabel>First Name</FormLabel>
+				<FormLabel>Full Name</FormLabel>
 				<Text color="brand.dark" fontSize="lg">
-					{cur_user.firstName}
-				</Text>
-			</FormControl>
-			<FormControl id="lastName">
-				<FormLabel>Last Name</FormLabel>
-				<Text color="brand.dark" fontSize="lg">
-					{cur_user.lastName}
+					{cur_user.firstName} {cur_user.lastName}
 				</Text>
 			</FormControl>
 			<FormControl id="displayname">
@@ -38,12 +32,12 @@ export default function Account(user) {
 					{cur_user.email}
 				</Text>
 			</FormControl>
-			<FormControl id="city">
+			{/* <FormControl id="city">
 				<FormLabel>Your Living City</FormLabel>
 				<Text color="brand.dark" fontSize="lg">
 					{cur_user.livingCity}
 				</Text>
-			</FormControl>
+			</FormControl> */}
 			<FormControl id="revenue">
 				<FormLabel>On Revenue</FormLabel>
 				<Text color="brand.dark" fontSize="lg">

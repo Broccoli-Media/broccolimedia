@@ -25,8 +25,8 @@ export default function ProfileShow() {
                     <SidebarShow user={data} isLoading={loading} />
                     <ContentShow user={data} isLoading={loading} />
                 </Container>
-                <Footer />
             </ChakraProvider>
+            <Footer />
         </>
 
     )

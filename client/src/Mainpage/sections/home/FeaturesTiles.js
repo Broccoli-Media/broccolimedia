@@ -30,7 +30,7 @@ const FeaturesTiles = ({ className, topOuterDivider, bottomOuterDivider, topDivi
 	);
 
 	const sectionHeader = {
-		title: 'Opportunity starts from here',
+		title: 'Opportunity Starts From Here',
 		paragraph: 'Let BM be your best friend and explore more possibility'
 	};
 
@@ -44,7 +44,7 @@ const FeaturesTiles = ({ className, topOuterDivider, bottomOuterDivider, topDivi
 					<SectionHeader data={sectionHeader} className="center-content" />
 					<div className={tilesClasses}>
 
-						<div className="tiles-item reveal-from-bottom">
+						<div className="tiles-item reveal-from-bottom" data-reveal-delay="200">
 							<div className="tiles-item-inner">
 								<div className="features-tiles-item-header">
 									<div className="features-tiles-item-image mb-16">
@@ -88,7 +88,7 @@ const FeaturesTiles = ({ className, topOuterDivider, bottomOuterDivider, topDivi
 							</div>
 						</div>
 
-						<div className="tiles-item reveal-from-bottom" data-reveal-delay="400">
+						<div className="tiles-item reveal-from-bottom" data-reveal-delay="200">
 							<div className="tiles-item-inner">
 								<div className="features-tiles-item-header">
 									<div className="features-tiles-item-image mb-16">

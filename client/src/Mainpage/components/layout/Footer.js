@@ -45,7 +45,7 @@ const Footer = ({
 					</div>
 					<div className="footer-bottom space-between text-xxs invert-order-desktop">
 						{/* <FooterNav /> */}
-						<p >Copyright &copy; BROCCOLI MEDIA {(new Date().getFullYear())}</p>
+						<p className="light" >Copyright &copy; BROCCOLI MEDIA {(new Date().getFullYear())}</p>
 					</div>
 				</div>
 			</div>

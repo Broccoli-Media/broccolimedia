@@ -64,58 +64,6 @@ const FeaturesSplit = ({
 					<SectionHeader data={sectionHeader} className="center-content" />
 					<div className={splitClasses}>
 
-						<div className="split-item">
-							<div className="split-item-content center-content-mobile reveal-from-left" data-reveal-container=".split-item">
-								<div className="text-xxs text-color-primary fw-600 tt-u mb-8">
-									Super clear &amp; easy
-								</div>
-								<h3 className="text-color-secondary fw-600 tt-u mt-0 mb-12">
-									Personal Dashboard
-								</h3>
-								<p className="m-0">
-									Visulize profit and make everything possible
-								</p>
-							</div>
-							<div className={
-								classNames(
-									'split-item-image center-content-mobile reveal-from-bottom',
-									imageFill && 'split-item-image-fill'
-								)}
-								data-reveal-container=".split-item">
-								<Image
-									src={'https://i.imgur.com/iiaeUJz.png'}
-									alt="Features split 01"
-									width={300}
-									height={100} />
-							</div>
-						</div>
-						
-						<div className="split-item">
-							<div className="split-item-content center-content-mobile reveal-from-right" data-reveal-container=".split-item">
-								<div className="text-xxs text-color-primary fw-600 tt-u mb-8">
-									Competitive &amp; Grow Faster
-								</div>
-								<h3 className="text-color-secondary fw-600 tt-u mt-0 mb-12">
-									Peer Ranking
-								</h3>
-								<p className="m-0">
-									Showing the most popular influencers are and learn from others to grow faster 
-								</p>
-							</div>
-							<div className={
-								classNames(
-									'split-item-image center-content-mobile reveal-from-bottom',
-									imageFill && 'split-item-image-fill'
-								)}
-								data-reveal-container=".split-item">
-								<Image
-									src={'https://i.imgur.com/dTqsVKt.png'}
-									alt="Features split 02"
-									width={528}
-									height={396} />
-							</div>
-						</div>
-									
 
 						<div className="split-item">
 							<div className="split-item-content center-content-mobile reveal-from-left" data-reveal-container=".split-item">
@@ -142,16 +90,16 @@ const FeaturesSplit = ({
 									height={396} />
 							</div>
 						</div>
-						{/* <div className="split-item">
+						<div className="split-item">
 							<div className="split-item-content center-content-mobile reveal-from-left" data-reveal-container=".split-item">
 								<div className="text-xxs text-color-primary fw-600 tt-u mb-8">
-									Lightning fast workflow
+									Super clear &amp; easy
 								</div>
-								<h3 className="mt-0 mb-12">
-									Data-driven insights
+								<h3 className="text-color-secondary fw-600 tt-u mt-0 mb-12">
+									Personal Dashboard
 								</h3>
 								<p className="m-0">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua — Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+									Visulize profit and make everything possible
 								</p>
 							</div>
 							<div className={
@@ -161,13 +109,38 @@ const FeaturesSplit = ({
 								)}
 								data-reveal-container=".split-item">
 								<Image
-									src={require('./../../assets/images/features-split-image-03.png')}
-									alt="Features split 03"
+									src={'https://i.imgur.com/iiaeUJz.png'}
+									alt="Features split 01"
+									width={300}
+									height={100} />
+							</div>
+						</div>
+
+						<div className="split-item">
+							<div className="split-item-content center-content-mobile reveal-from-right" data-reveal-container=".split-item">
+								<div className="text-xxs text-color-primary fw-600 tt-u mb-8">
+									Competitive &amp; Grow Faster
+								</div>
+								<h3 className="text-color-secondary fw-600 tt-u mt-0 mb-12">
+									Peer Ranking
+								</h3>
+								<p className="m-0">
+									Showing the most popular influencers are and learn from others to grow faster
+								</p>
+							</div>
+							<div className={
+								classNames(
+									'split-item-image center-content-mobile reveal-from-bottom',
+									imageFill && 'split-item-image-fill'
+								)}
+								data-reveal-container=".split-item">
+								<Image
+									src={'https://i.imgur.com/dTqsVKt.png'}
+									alt="Features split 02"
 									width={528}
 									height={396} />
 							</div>
-						</div> */}
-
+						</div>
 					</div>
 				</div>
 			</div>

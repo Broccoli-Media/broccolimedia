@@ -1,28 +1,38 @@
 import { useState, useRef } from 'react';
 import {
-	Avatar, AvatarBadge, Badge, Button, Heading, HStack, Modal, ModalBody, ModalCloseButton,
-	ModalContent, ModalFooter, ModalHeader, ModalOverlay, Text, useDisclosure, VStack
+	Avatar, AvatarBadge, Badge, Heading, HStack, Link, Modal, ModalBody, ModalCloseButton,
+	ModalContent, ModalHeader, ModalOverlay, Text, useDisclosure, VStack
 } from '@chakra-ui/react';
 
 function Personal(props) {
 	const user = props.user;
+	const [showUpdate, setUpdate] = useState(false);
+	const [userProfile, setUserProfile] = useState(null);
 
-	const [userProfile, setUserProfile] = useState(null)
-	const { isOpen, onOpen, onClose } = useDisclosure()
-	const profileImage = useRef(null)
-	const openChooseImage = () => { profileImage.current.click() }
+	const profileImage = useRef(null);
+	const { isOpen, onOpen, onClose } = useDisclosure();
+	const openChooseImage = () => { profileImage.current.click(); }
 
 	const changeProfileImage = event => {
-		const ALLOWED_TYPES = ['image/png', 'image/jpeg', 'image/jpg']
-		const selected = event.target.files[0]
+		const ALLOWED_TYPES = ['image/png', 'image/jpeg', 'image/jpg'];
+		const selected = event.target.files[0];
+		event.target.value = null;
+		if ((selected === null) || (selected === undefined)) return;
 
 		if (selected && ALLOWED_TYPES.includes(selected.type)) {
+			setUpdate(true);
 			let reader = new FileReader()
 			reader.onloadend = () => setUserProfile(reader.result)
 			return reader.readAsDataURL(selected)
 		}
-		onOpen()
+		onOpen();
 	}
+
+	const cancelUpdate = (e) => {
+		setUpdate(false);
+		setUserProfile(null);
+	}
+
 	return (
 		<VStack spacing={3} py={5} borderBottomWidth={1} borderColor="brand.light">
 
@@ -49,15 +59,25 @@ function Personal(props) {
 				ref={profileImage}
 				onChange={changeProfileImage}
 			/>
+			{showUpdate ?
+				<>
+					<Link className='button button-wangwang button-sm'>Update Profile Image</Link>
+					<Link className='button button-wangwang button-sm' onClick={cancelUpdate}>Cancel Update</Link>
+				</>
+				:
+				null}
 			<VStack spacing={1}>
-				<Heading as="h3" fontSize="xl" color="brand.dark">
+				{/* <Heading as="h3" fontSize="xl" color="brand.dark">
 					{user.username}
+				</Heading> */}
+				<Heading as="h3" color="brand.dark" fontSize="md">
+					{user.userTitle}
 				</Heading>
 				<Text color="brand.gray" fontSize="sm">
-					{user.userTitle}
+					{user.livingCity}
 				</Text>
 			</VStack>
-			<Modal isOpen={isOpen} onClose={onClose}>
+			<Modal isOpen={(isOpen && !showUpdate)} onClose={onClose}>
 				<ModalOverlay />
 				<ModalContent>
 					<ModalHeader>Something went wrong</ModalHeader>
@@ -73,10 +93,24 @@ function Personal(props) {
 							<Badge colorScheme="green">JPEG</Badge>
 						</HStack>
 					</ModalBody>
-
-					<ModalFooter>
-						<Button onClick={onClose}>Close</Button>
-					</ModalFooter>
+				</ModalContent>
+			</Modal>
+			<Modal isOpen={(isOpen)} onClose={onClose}>
+				<ModalOverlay />
+				<ModalContent>
+					<ModalHeader>Something went wrong</ModalHeader>
+					<ModalCloseButton />
+					<ModalBody>
+						<Text>File not supported!</Text>
+						<HStack mt={1}>
+							<Text color="brand.cadet" fontSize="sm">
+								Supported types:
+							</Text>
+							<Badge colorScheme="green">PNG</Badge>
+							<Badge colorScheme="green">JPG</Badge>
+							<Badge colorScheme="green">JPEG</Badge>
+						</HStack>
+					</ModalBody>
 				</ModalContent>
 			</Modal>
 		</VStack>

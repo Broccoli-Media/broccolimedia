@@ -3,7 +3,6 @@ import { Button, CircularProgress, FormLabel, Input, VStack } from "@chakra-ui/r
 import { Link, useNavigate } from "react-router-dom";
 import classNames from 'classnames';
 import { useFormik } from 'formik';
-import * as Yup from "yup";
 import axios from "axios";
 // import important components 
 import { AuthContext } from "../context/AuthContext.js";
@@ -85,19 +84,11 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
         }
     })
 
-    const SignInSchema = Yup.object().shape({
-        username: Yup.string()
-            .required('Username cannot be empty'),
-        password: Yup.string()
-            .required('Password cannot be empty'),
-    });
-
     const formik = useFormik({
         initialValues: {
             username: "",
             password: "",
         },
-        validationSchema: SignInSchema,
         onSubmit: (values) => {
             alert(JSON.stringify(values, null, 2));
         }
@@ -178,7 +169,7 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
                                     <br />
                                     <br />
                                     <VStack>
-                                        {error && <FormLabel>{error.message}</FormLabel>}
+                                        {error && <h4>{error.message}</h4>}
                                     </VStack>
                                     <VStack>
                                         <FormLabel>Not yet have account ? <Link to="/signup">SignUp</Link></FormLabel>

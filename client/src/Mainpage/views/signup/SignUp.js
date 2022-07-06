@@ -1,17 +1,14 @@
-import React, { useContext, useState } from "react";
-import { Button, FormLabel, Input, VStack } from "@chakra-ui/react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import classNames from 'classnames';
-import { useFormik } from 'formik';
-import * as Yup from "yup";
-import axios from "axios";
+import { ExpandMore } from '@mui/icons-material';
+import { Accordion, AccordionDetails, AccordionSummary, Button, Typography } from "@mui/material";
 // import important components 
-import { AuthContext } from "../../context/AuthContext.js";
 import { SectionProps } from '../../utils/SectionProps.js';
 // import other sections
 import Footer from '../../components/layout/Footer.js';
 import FormHeader from '../../components/elements/FormHeader.js';
 import Header from "../../components/layout/Header.js";
+import { Link } from "react-router-dom";
 
 const propTypes = { ...SectionProps.types };
 const defaultProps = { ...SectionProps.defaults };
@@ -30,53 +27,12 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
 		topDivider && 'has-top-divider',
 		bottomDivider && 'has-bottom-divider'
 	);
-	const { user, dispatch, error } = useContext(AuthContext);
-	const [loading, setLoading] = useState(false);
-	const navigate = useNavigate();
 
-	// Functions
-	const handleClick = async () => {
-		dispatch({ type: "SIGNIN_START" });
-		try {
-			setLoading(true);
-			const res = await axios.post('https://broccolimedia.herokuapp.com/auth/signin',
-				{
-					username: formik.values.username,
-					password: formik.values.password
-				});
-			dispatch({ type: "SIGNIN_SUCCESS", payload: res.data.details });
-			setLoading(false);
-			navigate("/")
-		} catch (err) {
-			dispatch({ type: "SIGNIN_FAILURE", payload: err.response.data });
-			setLoading(false);
-			navigate("/signup")
-		}
+	const [expanded, setExpanded] = useState(false);
+
+	const handleChange = (panel) => (event, isExpanded) => {
+		setExpanded(isExpanded ? panel : false);
 	};
-
-
-	const SignInSchema = Yup.object().shape({
-		username: Yup.string()
-			.required('Username cannot be empty'),
-		password: Yup.string()
-			.required('Password cannot be empty'),
-	});
-
-	const formik = useFormik({
-		initialValues: {
-			username: "",
-			password: "",
-		},
-		validationSchema: SignInSchema,
-		onSubmit: (values) => {
-			alert(JSON.stringify(values, null, 2));
-		}
-	});
-
-	const check = (e) => {
-		e.preventDefault()
-		handleClick();
-	}
 
 	return (
 		<>
@@ -89,55 +45,74 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
 			>
 				<div className="container-sm">
 					<div className={innerClasses}>
-						<div className="signin-content">
-							<h1 className="mt-0 mb-16 reveal-from-bottom" data-reveal-delay="200">
-								<span className="Sim">
-									<b>BM</b>
-								</span>
-								<span className="Full">&nbsp; Broccoli Media</span>
-							</h1>
-							<div className="container-xs">
-								<div className="m-0 mb-48 reveal-from-bottom" data-reveal-delay="600">
-									<FormHeader className="headerTitle" title="Sign Up" />
-									<VStack>
-										<FormLabel>Username</FormLabel>
-										<Input
-											id="username"
-											name="username"
-											type="text"
-											onChange={formik.handleChange}
-											value={formik.values.username}
-										/>
-									</VStack>
-									<br />
-									<VStack>
-										<FormLabel>Password</FormLabel>
-										<Input
-											id="password"
-											name="password"
-											type="password"
-											onChange={formik.handleChange}
-											value={formik.values.password}
-										/>
-									</VStack>
-									<br />
-									{loading ?
-										(<Button type="submit" className="button button-dark" tag="a" disabled={loading}>
-											Almost there
-										</Button>)
-										:
-										(<Button type="submit" className="button button-golden" tag="a" onClick={check}>
-											Join BM
-										</Button>)}
-									<br />
-									<br />
-									<VStack>
-										{error && <FormLabel>{error.message}</FormLabel>}
-									</VStack>
-									<VStack>
-										<FormLabel>Already have account ? <Link to="/signup">SignIn</Link></FormLabel>
-									</VStack>
-								</div>
+						<h1 className="mt-0 mb-16 reveal-from-bottom" data-reveal-delay="200">
+							<span className="Sim">
+								<b>BM</b>
+							</span>
+							<span className="Full">&nbsp; Broccoli Media</span>
+						</h1>
+						<div className="container-xs">
+							<div className="m-0 mb-48 reveal-from-bottom" data-reveal-delay="600">
+								<FormHeader className="headerTitle" title="Sign Up" />
+								<Accordion expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+									<AccordionSummary
+										expandIcon={<ExpandMore />}
+										aria-controls="panel1bh-content"
+										id="panel1bh-header"
+									>
+										<Typography sx={{ width: '33%', flexShrink: 0 }}>
+											General Rules
+										</Typography>
+										<Typography sx={{ color: 'text.secondary' }}>For all users</Typography>
+									</AccordionSummary>
+									<AccordionDetails>
+										<Typography>
+											We are not able to provide normal visitor with a dashboard and a personal profile based on company policy.
+											You can still look around and join our big falimy later.
+										</Typography>
+										<Link to="/"><Button>Back to Main Page</Button></Link>
+									</AccordionDetails>
+								</Accordion>
+								<Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+									<AccordionSummary
+										expandIcon={<ExpandMore />}
+										aria-controls="panel2bh-content"
+										id="panel2bh-header"
+									>
+										<Typography sx={{ width: '33%', flexShrink: 0 }}>Company</Typography>
+										<Typography sx={{ color: 'text.secondary' }}>
+											For Company Owners
+										</Typography>
+									</AccordionSummary>
+									<AccordionDetails>
+										<Typography>
+											Will need to contact us for quick reviewing to confirm your compoany.
+										</Typography>
+										<Button disabled> Not yet open to register</Button>
+										{/* <Link to="/signup/com"><Button>Enter basic details </Button></Link> */}
+									</AccordionDetails>
+								</Accordion>
+								<Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
+									<AccordionSummary
+										expandIcon={<ExpandMore />}
+										aria-controls="panel3bh-content"
+										id="panel3bh-header"
+									>
+										<Typography sx={{ width: '33%', flexShrink: 0 }}>
+											Influencer
+										</Typography>
+										<Typography sx={{ color: 'text.secondary' }}>
+											For Individual Influencer
+										</Typography>
+									</AccordionSummary>
+									<AccordionDetails>
+										<Typography>
+											Choose your work type and check if you want to start on revenue mode.
+										</Typography>
+										{/* <Link to="/signup/inf"><Button>Join BM family</Button></Link> */}
+										<Button disabled> Not yet open to register</Button>
+									</AccordionDetails>
+								</Accordion>
 							</div>
 						</div>
 					</div>

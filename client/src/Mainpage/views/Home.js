@@ -4,11 +4,12 @@ import Header from '../components/layout/Header.js';
 import Footer from '../components/layout/Footer.js';
 // import sections
 import Hero from '../sections/home/Hero.js';
+import FeeIntro from '../sections/home/FeeIntro.js';
 import FeaturesTiles from '../sections/home/FeaturesTiles.js';
 import FeaturesSplit from '../sections/home/FeaturesSplit.js';
-// import Cta from '../components/sections/Cta';
+import CompanyPartners from '../sections/home/CompanyPartners.js';
 
-export default function Home () {
+export default function Home() {
 
 	return (
 		<div>
@@ -17,7 +18,9 @@ export default function Home () {
 			<br />
 			<Hero />
 			<FeaturesTiles />
-			<FeaturesSplit invertMobile topDivider imageFill />
+			<FeaturesSplit />
+			<CompanyPartners />
+			<FeeIntro />
 			<Footer />
 		</div>
 	);
