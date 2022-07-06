@@ -2,8 +2,6 @@
 import React from 'react';
 import classNames from 'classnames';
 import { SectionProps } from '../../utils/SectionProps';
-// import Image from '../elements/Image';
-// import Modal from '../elements/Modal';
 
 const propTypes = {
 	...SectionProps.types

@@ -60,15 +60,15 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
 										aria-controls="panel1bh-content"
 										id="panel1bh-header"
 									>
-										<Typography sx={{ width: '33%', flexShrink: 0 }}>
+										<Typography sx={{ width: '33%', flexShrink: 0, color: 'text.primary' }}>
 											General Rules
 										</Typography>
 										<Typography sx={{ color: 'text.secondary' }}>For all users</Typography>
 									</AccordionSummary>
 									<AccordionDetails>
-										<Typography>
-											We are not able to provide normal visitor with a dashboard and a personal profile based on company policy.
-											You can still look around and join our big falimy later.
+										<Typography sx={{ color: 'text.secondary' }}>
+											We are not able to provide visitors with dashboard and personal profile based on Broccoli Media's policy.
+											You can still look around and decide whether to join us later.
 										</Typography>
 										<Link to="/"><Button>Back to Main Page</Button></Link>
 									</AccordionDetails>
@@ -79,13 +79,13 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
 										aria-controls="panel2bh-content"
 										id="panel2bh-header"
 									>
-										<Typography sx={{ width: '33%', flexShrink: 0 }}>Company</Typography>
+										<Typography sx={{ width: '33%', flexShrink: 0, color: 'text.primary' }}>Company</Typography>
 										<Typography sx={{ color: 'text.secondary' }}>
 											For Company Owners
 										</Typography>
 									</AccordionSummary>
 									<AccordionDetails>
-										<Typography>
+										<Typography sx={{ color: 'text.secondary' }}>
 											Will need to contact us for quick reviewing to confirm your compoany.
 										</Typography>
 										<Button disabled> Not yet open to register</Button>
@@ -98,7 +98,7 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
 										aria-controls="panel3bh-content"
 										id="panel3bh-header"
 									>
-										<Typography sx={{ width: '33%', flexShrink: 0 }}>
+										<Typography sx={{ width: '33%', flexShrink: 0, color: 'text.primary' }}>
 											Influencer
 										</Typography>
 										<Typography sx={{ color: 'text.secondary' }}>
@@ -106,7 +106,7 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
 										</Typography>
 									</AccordionSummary>
 									<AccordionDetails>
-										<Typography>
+										<Typography sx={{ color: 'text.secondary' }}>
 											Choose your work type and check if you want to start on revenue mode.
 										</Typography>
 										{/* <Link to="/signup/inf"><Button>Join BM family</Button></Link> */}

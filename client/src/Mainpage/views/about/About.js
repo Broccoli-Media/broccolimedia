@@ -5,7 +5,7 @@ import Footer from '../../components/layout/Footer.js';
 // import sections
 import Hero from '../../sections/about/Hero.js';
 import FeaturesTiles from '../../sections/about/FeaturesTiles.js';
-import FeaturesSplit from '../../sections/about/FeaturesSplit.js';
+import CompanyStory from '../../sections/about/CompanyStory.js';
 import TeamMember from '../../sections/about/TeamMember.js';
 // import Cta from '../components/sections/Cta';
 
@@ -17,8 +17,8 @@ export default function About() {
             <br />
             <br />
             <Hero />
-            {/* <FeaturesTiles />
-            <FeaturesSplit invertMobile topDivider imageFill /> */}
+            <CompanyStory />
+            {/* <FeaturesSplit /> */}
             <TeamMember />
             <Footer />
         </div>

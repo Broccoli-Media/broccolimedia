@@ -37,7 +37,8 @@ const CompanyPartners = ({ className, topOuterDivider, bottomOuterDivider, topDi
 	};
 
 	const companies = [
-		{ id: 1, img: '/assets/images/austchina.jpg' },
+
+		{ id: 1, img: '/assets/images/fusheng.jpg' },
 		{ id: 2, img: '/assets/images/gaosheng.jpg' },
 		{ id: 3, img: '/assets/images/haicheng.jpg' },
 		{ id: 4, img: '/assets/images/jinshi.jpg' },
@@ -45,6 +46,7 @@ const CompanyPartners = ({ className, topOuterDivider, bottomOuterDivider, topDi
 		{ id: 6, img: '/assets/images/pia.jpg' },
 		{ id: 7, img: '/assets/images/tianfu.jpg' },
 		{ id: 8, img: '/assets/images/unitop.jpg' },
+		{ id: 9, img: '/assets/images/austchina.jpg' },
 	]
 
 	return (
@@ -56,13 +58,13 @@ const CompanyPartners = ({ className, topOuterDivider, bottomOuterDivider, topDi
 				<div className={innerClasses} >
 					<SectionHeader data={sectionHeader} className="center-content" />
 					<div data-reveal-delay="200">
-						<Marquee speed={120} pauseOnHover gradient={false}>
+						<Marquee speed={80} pauseOnHover gradient={false}>
 							{companies.map(({ id, img }) => (
 								<Image key={id} boxSize='45px' margin={'auto 40px'} src={img} width="80%" />
 							))}
 						</Marquee>
 						<br />
-						<Marquee speed={120} pauseOnHover gradient={false} direction={'right'}>
+						<Marquee speed={80} pauseOnHover gradient={false} direction={'right'}>
 							{companies.map(({ id, img }) => (
 								<Image key={id} boxSize='45px' margin={'auto 40px'} src={img} width="80%" />
 							))}
