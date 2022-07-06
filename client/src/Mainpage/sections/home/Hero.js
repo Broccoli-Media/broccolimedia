@@ -71,7 +71,7 @@ const Hero = ({
 							</h3>
 						</div>
 					</div>
-					<video width="800" height="200" autoPlay loop>
+					<video autoPlay="autoPlay" loop width="800" height="200" muted>
 						<source src="/assets/video/Intro.mp4" type="video/mp4" />
 					</video>
 					{/* <div className="hero-figure reveal-from-bottom illustration-element-01" data-reveal-value="20px" data-reveal-delay="800">
