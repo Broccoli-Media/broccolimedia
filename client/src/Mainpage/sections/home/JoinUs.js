@@ -47,13 +47,8 @@ const JoinUs = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
 				<div className={innerClasses}>
 					<SectionHeader data={sectionHeader} className="center-content" />
 					<div className={splitClasses}>
-
-
 						<div className="split-item">
 							<div className="split-item-content center-content-mobile reveal-from-left" data-reveal-container=".split-item">
-								{/* <div className="text-xxs text-color-primary fw-600 tt-u mb-8">
-									Simple &amp; Perfect
-								</div> */}
 								<h3 className="text-color-secondary fw-600 tt-u mt-0 mb-12">
 									Start from Everywhere
 								</h3>
@@ -83,7 +78,6 @@ const JoinUs = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
 									width={350}
 									height={350} />
 							</div>
-
 						</div>
 					</div>
 				</div>

@@ -37,7 +37,7 @@ const Hero = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bott
 							<span className="Full">&nbsp; Broccoli Media</span>
 						</h1>
 					</div>
-					
+					<br />
 					<video autoPlay="autoPlay" loop width="800" height="200" muted>
 						<source src="/assets/video/adventure.mp4" type="video/mp4" />
 					</video>

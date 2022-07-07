@@ -1,5 +1,9 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# basic trivial files
+*.txt
+*.ico
+
 # dependencies
 /node_modules
 /.pnp
@@ -9,7 +13,13 @@
 /coverage
 
 # production
-/build
+/build/*
+/build/_redirects
+/build/favicon.ico
+/build/logo192.png
+/build/logo512.png
+/build/manifest.json
+/build/robots.txt
 
 # misc
 .DS_Store

@@ -1,25 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Logo from './partials/Logo';
-// import FooterNav from './partials/FooterNav';
-import FooterSocial from './partials/FooterSocial';
+import Logo from './partials/Logo.js';
+import FooterNav from './partials/FooterNav.js';
+import FooterSocial from './partials/FooterSocial.js';
 
-const propTypes = {
-	topOuterDivider: PropTypes.bool,
-	topDivider: PropTypes.bool
-}
-
-const defaultProps = {
-	topOuterDivider: false,
-	topDivider: false
-}
-
-const Footer = ({
-	className,
-	topOuterDivider,
-	topDivider,
-	...props
+const propTypes = { topOuterDivider: PropTypes.bool, topDivider: PropTypes.bool }
+const defaultProps = { topOuterDivider: false, topDivider: false }
+const Footer = ({ className, topOuterDivider, topDivider, ...props
 }) => {
 
 	const classes = classNames(
@@ -44,8 +32,8 @@ const Footer = ({
 						<FooterSocial />
 					</div>
 					<div className="footer-bottom space-between text-xxs invert-order-desktop">
-						{/* <FooterNav /> */}
-						<p className="light" >Copyright &copy; BROCCOLI MEDIA {(new Date().getFullYear())}</p>
+						<FooterNav />
+						<p className="mt-32 light" >Copyright &copy; BROCCOLI MEDIA {(new Date().getFullYear())}</p>
 					</div>
 				</div>
 			</div>

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { Menu, MenuButton, MenuList, MenuItem, MenuDivider, Accordion, AccordionItem, AccordionButton, AccordionPanel, AccordionIcon, Box, } from "@chakra-ui/react";
+import { Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../../context/AuthContext";
 import Logo from './partials/Logo';
@@ -170,11 +170,9 @@ const Header = ({
 													>
 														{isOpen ? 'Welcome' : 'Here'}
 													</MenuButton>
-													<MenuList>
+													<MenuList sx={{ marginTop: 15 }}>
 														{user && <Link to={`/profile/in/${user.username}`} ><MenuItem mb={10} textColor={'deep-dark'} className="button button-golden button-wide-mobile button-sm">{user.displayName}</MenuItem></Link>}
-														<MenuDivider />
 														<Link to="/about"><MenuItem mb={10} textColor={'deep-dark'} className="button button-wangwang button-wide-mobile button-sm" >About Us</MenuItem></Link>
-														<MenuDivider />
 														{!user &&
 															(signup ?
 																null

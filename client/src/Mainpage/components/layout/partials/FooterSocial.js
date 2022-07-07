@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import Modal from '../../elements/Modal';
+import { Modal, Box } from '@mui/material';
 
 const FooterSocial = ({
 	className,
@@ -16,24 +16,32 @@ const FooterSocial = ({
 	const [redBookModalActive, setRedBookmodalactive] = useState(false);
 
 	const openWechatModal = (e) => {
-		e.preventDefault();
 		setWeChatmodalactive(true);
 	}
 
 	const openRedBookModal = (e) => {
-		e.preventDefault();
 		setRedBookmodalactive(true);
 	}
 
 	const closeWechatModal = (e) => {
-		e.preventDefault();
 		setWeChatmodalactive(false);
 	}
 
 	const closeRedBookModal = (e) => {
-		e.preventDefault();
 		setRedBookmodalactive(false);
 	}
+
+	const style = {
+		position: 'absolute',
+		top: '50%',
+		left: '50%',
+		transform: 'translate(-50%, -50%)',
+		width: 400,
+		bgcolor: 'background.paper',
+		border: '2px solid #000',
+		boxShadow: 24,
+		p: 4,
+	};
 
 	return (
 		<div
@@ -86,10 +94,20 @@ const FooterSocial = ({
 						</svg>
 					</div>
 					<Modal
+						open={weChateModalActive}
+						onClose={closeWechatModal}
+						aria-labelledby="modal-modal-title"
+						aria-describedby="modal-modal-description"
+					>
+						<Box sx={style}>
+							<img src='https://i.imgur.com/uRmOf78.png' alt='BM WeChat' />
+						</Box>
+					</Modal>
+					{/* <Modal
 						id="image-modal"
 						show={weChateModalActive}
 						handleClose={closeWechatModal}
-						image={'https://i.imgur.com/uRmOf78.png'} />
+						image={'https://i.imgur.com/uRmOf78.png'} /> */}
 				</li>
 				<li>
 					<div onClick={openRedBookModal}>
@@ -107,11 +125,15 @@ const FooterSocial = ({
 						</svg>
 					</div>
 					<Modal
-						id="image-modal"
-						show={redBookModalActive}
-						handleClose={closeRedBookModal}
-						image={'https://i.imgur.com/BniK6m8.png?1'} />
-
+						open={redBookModalActive}
+						onClose={closeRedBookModal}
+						aria-labelledby="modal-modal-title"
+						aria-describedby="modal-modal-description"
+					>
+						<Box sx={style}>
+							<img src='https://i.imgur.com/BniK6m8.png?1' alt='BM Little Red Book' />
+						</Box>
+					</Modal>
 				</li>
 			</ul>
 		</div>

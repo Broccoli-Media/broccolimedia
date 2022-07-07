@@ -66,11 +66,11 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
 										<Typography sx={{ color: 'text.secondary' }}>For all users</Typography>
 									</AccordionSummary>
 									<AccordionDetails>
-										<Typography sx={{ color: 'text.secondary' }}>
+										<Typography sx={{ color: 'text.primary' }}>
 											We are not able to provide visitors with dashboard and personal profile based on Broccoli Media's policy.
 											You can still look around and decide whether to join us later.
 										</Typography>
-										<Link to="/"><Button>Back to Main Page</Button></Link>
+										<Link to="/"><Button sx={{ backgroundColor: "#b2c2ce", marginTop: 3 }}>Back to Main Page</Button></Link>
 									</AccordionDetails>
 								</Accordion>
 								<Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
@@ -85,11 +85,11 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
 										</Typography>
 									</AccordionSummary>
 									<AccordionDetails>
-										<Typography sx={{ color: 'text.secondary' }}>
+										<Typography sx={{ color: 'text.primary' }}>
 											Will need to contact us for quick reviewing to confirm your compoany.
 										</Typography>
-										<Button disabled> Not yet open to register</Button>
-										{/* <Link to="/signup/com"><Button>Enter basic details </Button></Link> */}
+										<Button disabled sx={{ backgroundColor: "#E9E9FF", marginTop: 3 }}>Open to register soon</Button>
+										{/* <Link to="/signup/com"><Button sx={{ backgroundColor: "#b2c2ce", marginTop: 3 }}>Request Company Account</Button></Link> */}
 									</AccordionDetails>
 								</Accordion>
 								<Accordion expanded={expanded === 'panel3'} onChange={handleChange('panel3')}>
@@ -106,11 +106,11 @@ const SignIn = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bo
 										</Typography>
 									</AccordionSummary>
 									<AccordionDetails>
-										<Typography sx={{ color: 'text.secondary' }}>
+										<Typography sx={{ color: 'text.primary' }}>
 											Choose your work type and check if you want to start on revenue mode.
 										</Typography>
-										{/* <Link to="/signup/inf"><Button>Join BM family</Button></Link> */}
-										<Button disabled> Not yet open to register</Button>
+										<Button disabled sx={{ backgroundColor: "#E9E9FF", marginTop: 3 }}>Open to register soon</Button>
+										{/* <Link to="/signup/inf"><Button sx={{ backgroundColor: "#b2c2ce", marginTop: 3 }}>Join Us</Button></Link> */}
 									</AccordionDetails>
 								</Accordion>
 							</div>

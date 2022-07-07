@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
+import { Link } from '@chakra-ui/react';
 
 const FooterNav = ({
   className,
@@ -19,10 +19,10 @@ const FooterNav = ({
     >
       <ul className="list-reset">
         <li>
-          <Link to="/contact">Contact</Link>
+          <Link href="/">Home</Link>
         </li>
         <li>
-          <Link to="/about">About us</Link>
+          <Link href="/about">About us</Link>
         </li>
       </ul>
     </nav>

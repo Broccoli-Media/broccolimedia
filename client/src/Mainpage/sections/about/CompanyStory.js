@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import { Box, Stepper, Step, StepContent, Button, Typography } from "@mui/material";
+import { Box, Stepper, Step, StepContent, Button, Typography, Link } from "@mui/material";
 // Import Neccesary Components
 import { SectionTilesProps } from '../../utils/SectionProps.js';
 import SectionHeader from './partials/SectionHeader.js';
@@ -80,6 +80,17 @@ const CompanyStory = ({ className, topOuterDivider, bottomOuterDivider, topDivid
 											<Typography mb={3}>{step.des2}</Typography>
 											<Box sx={{ mb: 2 }}>
 												<div>
+													{activeStep === steps.length - 1 && (
+														<Link href='/signup'>
+															<Button
+																onClick={handleBack}
+																sx={{ mt: 1, mr: 1, color: "#E9E9FF", backgroundColor: "#107257" }}
+																className="button-sm"
+															>
+																Join Us
+															</Button>
+														</Link>
+													)}
 													{activeStep < steps.length - 1 && (
 														<Button
 															variant="contained"
@@ -92,9 +103,8 @@ const CompanyStory = ({ className, topOuterDivider, bottomOuterDivider, topDivid
 													)}
 													{activeStep === steps.length - 1 && (
 														<Button
-															variant="contained"
 															onClick={handleReset}
-															sx={{ mt: 1, mr: 1, backgroundColor: "#107257" }}
+															sx={{ mt: 1, mr: 1, color: "#ACADFF" }}
 															className="button-sm"
 														>
 															Start again
