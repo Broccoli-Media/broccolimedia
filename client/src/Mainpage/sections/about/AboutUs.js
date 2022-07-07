@@ -136,6 +136,15 @@ const AboutUs = ({ className, topOuterDivider, bottomOuterDivider, topDivider, b
 				<div className={innerClasses}>
 					<SectionHeader data={sectionHeader} className="center-content" />
 					<div className={tilesClasses}>
+						{/* Company Introduction */}
+						<h4 style={{ marginTop: 60, color: "#E9E9FF" }}>
+							Broccoli Media is a management-oriented platform, providing clients with connection to individual users.
+						</h4>
+						<h4 style={{ marginTop: 10, color: "#E9E9FF" }}>
+							Broccoli Media is offering users great oppotunities promoting clients' products and/or services with reasonable pay,
+							also, clients make payment to certain level users which meet the promotion performance requirements.
+						</h4>
+
 						<Grid container spacing={12} >
 							{/* Statistics Display */}
 							<Grid item xs={12}>
@@ -157,17 +166,6 @@ const AboutUs = ({ className, topOuterDivider, bottomOuterDivider, topDivider, b
 								</Grid>
 							</Grid>
 						</Grid>
-
-						{/* Company Introduction */}
-
-						<h4 style={{ marginTop: 60, color: "#E9E9FF" }}>
-							Broccoli Media is a management-oriented platform, providing clients with connection to individual users.
-						</h4>
-						<h4 style={{ marginTop: 10, color: "#E9E9FF" }}>
-							Broccoli Media is offering users great oppotunities promoting clients' products and/or services with reasonable pay,
-							also, clients make payment to certain level users which meet the promotion performance requirements.
-						</h4>
-
 					</div>
 				</div>
 			</div>
