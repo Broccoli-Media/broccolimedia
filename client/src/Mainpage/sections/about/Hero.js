@@ -1,38 +1,11 @@
-// import React, { useState } from 'react';
 import React from 'react';
 import classNames from 'classnames';
 import { SectionProps } from '../../utils/SectionProps';
 
-const propTypes = {
-	...SectionProps.types
-}
-
-const defaultProps = {
-	...SectionProps.defaults
-}
-
-const Hero = ({
-	className,
-	topOuterDivider,
-	bottomOuterDivider,
-	topDivider,
-	bottomDivider,
-	hasBgColor,
-	invertColor,
-	...props
+const propTypes = { ...SectionProps.types }
+const defaultProps = { ...SectionProps.defaults }
+const Hero = ({ className, topOuterDivider, bottomOuterDivider, topDivider, bottomDivider, hasBgColor, invertColor, ...props
 }) => {
-
-	// const [videoModalActive, setVideomodalactive] = useState(false);
-
-	// const openModal = (e) => {
-	// 	e.preventDefault();
-	// 	setVideomodalactive(true);
-	// }
-
-	// const closeModal = (e) => {
-	// 	e.preventDefault();
-	// 	setVideomodalactive(false);
-	// }
 
 	const outerClasses = classNames(
 		'hero section center-content',
@@ -57,18 +30,17 @@ const Hero = ({
 			<div className="container-sm">
 				<div className={innerClasses}>
 					<div className="hero-content">
-						<h1 className="mt-0 mb-16 reveal-from-bottom" data-reveal-delay="200">
+						<h1 className="mt-0 mb-64 reveal-from-bottom" data-reveal-delay="200">
 							<span className="Sim">
 								<b>BM</b>
 							</span>
 							<span className="Full">&nbsp; Broccoli Media</span>
 						</h1>
-						<div className="container-xs">
-							<h3 className="m-0 mb-0 reveal-from-bottom" data-reveal-delay="400">
-								Enjoy BM wherever you are
-							</h3>
-						</div>
 					</div>
+					
+					<video autoPlay="autoPlay" loop width="800" height="200" muted>
+						<source src="/assets/video/adventure.mp4" type="video/mp4" />
+					</video>
 				</div>
 			</div>
 		</section>
@@ -77,5 +49,4 @@ const Hero = ({
 
 Hero.propTypes = propTypes;
 Hero.defaultProps = defaultProps;
-
 export default Hero;

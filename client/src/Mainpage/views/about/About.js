@@ -4,7 +4,7 @@ import Header from '../../components/layout/Header.js';
 import Footer from '../../components/layout/Footer.js';
 // import sections
 import Hero from '../../sections/about/Hero.js';
-import FeaturesTiles from '../../sections/about/FeaturesTiles.js';
+import AboutUs from '../../sections/about/AboutUs.js';
 import CompanyStory from '../../sections/about/CompanyStory.js';
 import TeamMember from '../../sections/about/TeamMember.js';
 // import Cta from '../components/sections/Cta';
@@ -17,8 +17,8 @@ export default function About() {
             <br />
             <br />
             <Hero />
+            <AboutUs />
             <CompanyStory />
-            {/* <FeaturesSplit /> */}
             <TeamMember />
             <Footer />
         </div>

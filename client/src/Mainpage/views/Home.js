@@ -4,6 +4,8 @@ import Header from '../components/layout/Header.js';
 import Footer from '../components/layout/Footer.js';
 // import sections
 import Hero from '../sections/home/Hero.js';
+import JoinUs from '../sections/home/JoinUs.js';
+// import Subscribe from '../sections/home/Subscribe.js';
 // import FeeIntro from '../sections/home/FeeIntro.js';
 import FeaturesTiles from '../sections/home/FeaturesTiles.js';
 import FeaturesSplit from '../sections/home/FeaturesSplit.js';
@@ -21,6 +23,7 @@ export default function Home() {
 			<FeaturesSplit />
 			<CompanyPartners />
 			{/* <FeeIntro /> */}
+			<JoinUs />
 			<Footer />
 		</div>
 	);

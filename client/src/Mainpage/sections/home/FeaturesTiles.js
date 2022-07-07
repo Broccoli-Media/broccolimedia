@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+// Import Neccesary Components
 import { SectionTilesProps } from '../../utils/SectionProps.js';
 import SectionHeader from './partials/SectionHeader.js';
 import Image from '../../components/elements/Image.js';
@@ -30,7 +31,7 @@ const FeaturesTiles = ({ className, topOuterDivider, bottomOuterDivider, topDivi
 	);
 
 	const sectionHeader = {
-		title: 'Opportunity Starts From Here',
+		title: 'Opportunity Starts Here',
 		paragraph: 'Let BM be your best friend and explore more possibility'
 	};
 

@@ -21,7 +21,7 @@ const TeamMember = ({ className, topOuterDivider, bottomOuterDivider, topDivider
 	);
 
 	const innerClasses = classNames(
-		'testimonial-inner section-inner',
+		'testimonial-inner section-inner pt-0',
 		topDivider && 'has-top-divider',
 		bottomDivider && 'has-bottom-divider'
 	);
@@ -47,7 +47,7 @@ const TeamMember = ({ className, topOuterDivider, bottomOuterDivider, topDivider
 				<div className={innerClasses}>
 					<SectionHeader data={sectionHeader} className="center-content" />
 					<div className={tilesClasses}>
-						<div className="tiles-item reveal-from-right" data-reveal-delay="200">
+						<div className="tiles-item reveal-from-bottom" data-reveal-delay="200">
 							<div className="tiles-item-inner">
 								<span className="testimonial-item-name text-color-high">Co-Funder &amp; CEO</span>
 								<div className="testimonial-item-footer text-xs mt-10 mb-0 has-top-divider">
@@ -75,7 +75,7 @@ const TeamMember = ({ className, topOuterDivider, bottomOuterDivider, topDivider
 							</div>
 						</div>
 
-						<div className="tiles-item reveal-from-bottom">
+						<div className="tiles-item reveal-from-bottom" data-reveal-delay="200">
 							<div className="tiles-item-inner">
 								<span className="testimonial-item-name text-color-high">Co-Funder</span>
 								<div className="testimonial-item-footer text-xs mt-10 mb-0 has-top-divider">
@@ -99,7 +99,7 @@ const TeamMember = ({ className, topOuterDivider, bottomOuterDivider, topDivider
 							</div>
 						</div>
 
-						<div className="tiles-item reveal-from-bottom">
+						<div className="tiles-item reveal-from-bottom" data-reveal-delay="200">
 							<div className="tiles-item-inner">
 								<span className="testimonial-item-name text-color-high">Co-Funder &amp; CTO</span>
 								<div className="testimonial-item-footer text-xs mt-10 mb-0 has-top-divider">
